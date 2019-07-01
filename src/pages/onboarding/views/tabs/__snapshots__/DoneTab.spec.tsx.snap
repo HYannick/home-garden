@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Done Tab should render properly 1`] = `
+<Styled(div)>
+  <EmotionCssPropInternal
+    __EMOTION_LABEL_PLEASE_DO_NOT_USE__="DoneTab"
+    __EMOTION_TYPE_PLEASE_DO_NOT_USE__="img"
+    alt="mascot"
+    css={
+      Object {
+        "map": undefined,
+        "name": "1s8iw12",
+        "next": undefined,
+        "styles": "
+              width: 20rem;
+              height: 20rem;
+              margin-bottom: 2rem;
+          ",
+      }
+    }
+    src="mascot-1.svg"
+  />
+  <Typography
+    alignment="center"
+    variant="title"
+    weight="600"
+  >
+    onboarding.done
+  </Typography>
+</Styled(div)>
+`;

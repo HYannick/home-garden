@@ -1,0 +1,13 @@
+{
+  "welcome": "Hello fellow {{user}}",
+  "header": {
+    "hi": "Hi"
+  },
+  "onboarding": {
+    "welcome": "Welcome to your new watering manager.\nI am PyHerb and I will help you to take care of your plants!",
+    "introduction": "For starters\nhow can I call you?",
+    "skip": "You can skip this one ;)",
+    "greetings": "Greetings, {{username}}!\nDo you want to set an avatar?",
+    "done": "We are all set.\nLet’s add some plant to your garden!"
+  }
+}

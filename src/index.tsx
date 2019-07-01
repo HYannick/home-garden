@@ -3,8 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {ThemeProvider} from 'emotion-theming'
+import {theme} from './theme';
+import './i18n';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+Enzyme.configure({ adapter: new Adapter() });
+const Main: React.FC = () => (
+  <ThemeProvider theme={theme}>
+    <App/>
+  </ThemeProvider>
+);
+
+ReactDOM.render(<Main/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
