@@ -1,15 +1,23 @@
 /** @jsx jsx */
-import React, {useEffect, useState, Fragment} from 'react';
+import React, {useEffect, useState, Fragment, MouseEventHandler} from 'react';
 import {jsx} from "@emotion/core";
 import styled from "@emotion/styled";
 import Drop from "../core/svg/Drop";
 import {NavLink, RouteComponentProps, withRouter} from "react-router-dom";
 import Add from "../core/svg/Add";
 import Profile from '../core/svg/Profile';
-import {Overlay} from "../layout/Header";
-import plant from '../core/svg/green-tea.svg'
+import {Overlay} from "./Header";
+import plant from '../core/svg/green-tea.svg';
 
-const IconWrapper = styled('div')`
+interface BottomNavBarProps {
+  isOpen?: boolean
+}
+
+interface NavOverlayProps extends BottomNavBarProps {
+  onClick: MouseEventHandler,
+}
+
+const IconWrapper = styled('div')<BottomNavBarProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,15 +27,15 @@ const IconWrapper = styled('div')`
     width: 2.5rem;
     height: 2.5rem;
   }
-  transform: rotate(${(props: any) => props.isOpen ? '45deg' : 0});
+  transform: rotate(${({isOpen}) => isOpen ? '45deg' : 0});
   transition: transform 0.3s;
 `;
 
 const NavWrapper = styled('div')`
   height: 7rem;
   border-radius: 5rem 5rem 0 0;
-  box-shadow: 0 -0.3rem 0.6rem 0.6rem rgba(196, 196, 196, 0.15);
-  background-color: white;
+  box-shadow: 0 -0.3rem 0.6rem 0rem rgba(196, 196, 196, 0.15);
+  background-color: ${({theme}) => theme.palette.light};
   display: flex;
   align-items: center;
   justify-content: space-between; 
@@ -42,7 +50,7 @@ const NavWrapper = styled('div')`
       content : '';
       position: absolute;
       z-index: -1;
-      background-color: ${(props: any) => props.theme.palette.primary.light};
+      background-color: ${({theme}) => theme.palette.primary.light};
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0.6);
@@ -62,7 +70,7 @@ const NavWrapper = styled('div')`
       width: 0.6rem;
       height: 0.6rem;
       border-radius: 5rem;
-      background-color: ${(props: any) => props.theme.palette.primary.dark};
+      background-color: ${({theme}) => theme.palette.primary.dark};
       transform: translateX(-50%);
       transition: opacity 0.3s , transform 0.3s ;
     }
@@ -78,19 +86,19 @@ const NavWrapper = styled('div')`
     & .outlined {
       & svg path {
         fill: none;
-        stroke: ${(props: any) => props.theme.palette.primary.dark};
+        stroke: ${({theme}) => theme.palette.primary.dark};
       }
     }
     & svg path {
-      fill: ${(props: any) => props.theme.palette.primary.dark};
-      stroke: ${(props: any) => props.theme.palette.primary.dark};
+      fill: ${({theme}) => theme.palette.primary.dark};
+      stroke: ${({theme}) => theme.palette.primary.dark};
       transition: fill 0.3s , stroke 0.3s;
     }
   }
 `;
 
 const OptionsWrapper = styled('div')`
-  background-color: white;
+  background-color: ${({theme}) => theme.palette.light};
   & ul {
     margin: 0 auto;
     padding: 0 2rem 1rem;
@@ -103,43 +111,46 @@ const OptionsWrapper = styled('div')`
   }
   
   a {
-    color:  ${(props: any) => props.theme.palette.grey.dark};
+    color:  ${({theme}) => theme.palette.grey.dark};
     font-weight: 600;
     font-size: 2rem;
     text-decoration: none;
+    display: block;
+    padding: 1rem;
   }
 `;
 
-const MainWrapper = styled('div')`
+const MainWrapper = styled('div')<BottomNavBarProps>`
   position: fixed;
   z-index: 1;
   bottom: 0;
   width: 100%;
   transition: transform 0.3s;
-  transform: translateY(${(props: any) => props.isOpen ? 0 : '8.3rem'});
+  transform: translateY(${({isOpen}) => isOpen ? 0 : '12.3rem'});
   .nav__link {
-    opacity: ${(props: any) => props.isOpen ? 0 : 1};
+    opacity: ${({isOpen}) => isOpen ? 0 : 1};
     transition: opacity 0.3s visibility 0.3s;
-    pointer-events:  ${(props: any) => props.isOpen ? 'none' : 'auto'}; 
+    pointer-events:  ${({isOpen}) => isOpen ? 'none' : 'auto'}; 
   }
 `;
 
-const AddWrapper = styled('div')`
+
+const AddWrapper = styled('div')<BottomNavBarProps>`
   position: relative;
   z-index: 1;
   & svg path {
-    fill: ${(props: any) => props.isOpen && props.theme.palette.danger.dark};
+    fill: ${({isOpen, theme}) => isOpen && theme.palette.danger.dark};
     transition: fill 0.3s , stroke 0.3s;
   }
   &:before {
       content : '';
       position: absolute;
       z-index: -1;
-      background-color: ${(props: any) => props.theme.palette.danger.light};
+      background-color: ${({theme}) => theme.palette.danger.light};
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(${(props: any) => props.isOpen ? 1 : 0.4});
-      opacity: ${(props: any) => props.isOpen ? 1 : 0};
+      transform: translate(-50%, -50%) scale(${({isOpen}) => isOpen ? 1 : 0.4});
+      opacity: ${({isOpen}) => isOpen ? 1 : 0};
       width: 5rem;
       height: 5rem;
       border-radius: 5rem;
@@ -147,11 +158,11 @@ const AddWrapper = styled('div')`
   }
 `;
 
-const NavOverlay = styled(Overlay)`
+const NavOverlay = styled(Overlay)<NavOverlayProps>`
   z-index: 0; 
-  background-color:  ${(props: any) => props.theme.palette.grey.darker};
-  opacity: ${(props: any) => props.isOpen ? 0.8 : 0};
-  pointer-events: ${(props: any) => props.isOpen ? 'auto' : 'none'};
+  background-color:  ${({theme}) => theme.palette.grey.darker};
+  opacity: ${({isOpen}) => isOpen ? 0.8 : 0};
+  pointer-events: ${({isOpen}) => isOpen ? 'auto' : 'none'};
   transition: opacity 0.3s;
 `;
 
@@ -159,7 +170,7 @@ const Divider = styled('div')`
   width: 100%;
   height: 0.1rem;
   margin: 1rem 0;
-  background-color:  ${(props: any) => props.theme.palette.grey.light};
+  background-color:  ${({theme}) => theme.palette.grey.light};
 `;
 
 const Infos = styled('div')`
@@ -176,11 +187,11 @@ const Infos = styled('div')`
     right: 2rem;
   }
   h2 {
-    color: ${(props: any) => props.theme.palette.primary.light};
+    color: ${({theme}) => theme.palette.primary.light};
     font-size: 4rem;
   }
   p {
-    color: white;
+    color: ${({theme}) => theme.palette.light};
     font-size: 1.5rem;
   }
   
@@ -192,11 +203,13 @@ const Infos = styled('div')`
     transform: translateX(-50%);
     width: 10rem;
     height: 0.6rem;
-    background-color: white;
-    border-radius: 20px;
+    background-color: ${({theme}) => theme.palette.light};
+    border-radius: 2rem;
   }
 `;
-const BottomNavBar: React.FC<RouteComponentProps> = ({location}) => {
+
+
+export const BottomNavBar: React.FC<RouteComponentProps> = ({location}) => {
   const [isOpen, expand] = useState(false);
 
   const hide = () => expand(false);
@@ -210,11 +223,15 @@ const BottomNavBar: React.FC<RouteComponentProps> = ({location}) => {
     return null;
   }
 
-  const title = '';
+  if (location.pathname.match('/create')) {
+    return null;
+  }
+
+  const iconDefaultColor = '#707070';
 
   return (
     <Fragment>
-      <MainWrapper {...{isOpen}}>
+      <MainWrapper isOpen={isOpen}>
         <div>
           {
             isOpen && (
@@ -227,32 +244,30 @@ const BottomNavBar: React.FC<RouteComponentProps> = ({location}) => {
           <NavWrapper>
             <NavLink to="/" exact activeClassName="nav__link--active" className="nav__link">
               <IconWrapper className="outlined">
-                <Drop stroke="#707070" fill="none"/>
+                <Drop stroke={iconDefaultColor} fill="none"/>
               </IconWrapper>
             </NavLink>
-            <AddWrapper {...{isOpen}}>
-              <IconWrapper onClick={toggle} {...{isOpen}}>
-                <Add fill="#707070"/>
+            <AddWrapper isOpen={isOpen}>
+              <IconWrapper data-testid="add" onClick={toggle} isOpen={isOpen}>
+                <Add fill={iconDefaultColor}/>
               </IconWrapper>
             </AddWrapper>
             <NavLink to="/profile" exact activeClassName="nav__link--active" className="nav__link">
               <IconWrapper>
-                <Profile fill="#707070" stroke="#707070"/>
+                <Profile fill={iconDefaultColor} stroke={iconDefaultColor}/>
               </IconWrapper>
             </NavLink>
           </NavWrapper>
         </div>
         <OptionsWrapper>
           <ul>
-            <li><NavLink to="/photo">Take a photo</NavLink></li>
-            <li>
-              <Divider/>
-            </li>
+            <li><NavLink to="/create">Take a photo</NavLink></li>
+            <li><Divider/></li>
             <li><NavLink to="/search">Search in library</NavLink></li>
           </ul>
         </OptionsWrapper>
       </MainWrapper>
-      <NavOverlay onClick={hide} {...{title, isOpen}}/>
+      <NavOverlay onClick={hide} isOpen={isOpen}/>
     </Fragment>
   );
 };

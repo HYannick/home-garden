@@ -14,15 +14,17 @@ interface ParagraphProps {
 }
 
 const Typography: React.FC<ParagraphProps> = ({variant, color, children, alignment, weight, tag = 'span', noMargin}) => {
+
   const props = {color, alignment, weight, noMargin};
-  const BaseParagraph = styled(tag)`
+
+  const BaseParagraph = styled(tag)<ParagraphProps>`
     font-size: 1.6rem;
     white-space: pre-line;
-    margin: ${(props: any) => props.noMargin ? 0 : '2rem'};
+    margin: ${({noMargin}) => noMargin ? 0 : '2rem'};
     padding: 0;
-    color: ${(props: any) => props.color || props.theme.palette.grey.darkest};
-    font-weight: ${(props: any) => props.weight || 400};
-    text-align: ${(props: any) => props.alignment || 'left'};
+    color: ${({color, theme}) => color || theme.palette.grey.darkest};
+    font-weight: ${({weight}) => weight || 400};
+    text-align: ${({alignment}) => alignment || 'left'};
   `;
 
   const Title = styled(BaseParagraph)`

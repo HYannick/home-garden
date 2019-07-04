@@ -7,7 +7,7 @@ import {css, jsx} from "@emotion/core";
 import mascotImage from '../../../../core/svg/mascot-1.svg';
 import {ActionType} from "../../onboarding.types";
 import Typography from '../../../../components/Typography';
-import {Input} from '../../../../components/FormInput';
+import {Input} from '../../../../components/forms/FormInput';
 import {useDisableNext} from "../../onboarding.hooks";
 
 const Wrapper = styled('div')`
@@ -27,7 +27,7 @@ const UsernameFormTab: React.FC = () => {
   const {t} = useTranslation();
   const {state: {username}, dispatch} = useContext(UserContext);
 
-  const changeUsername = (e: any) => {
+  const changeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: ActionType.SET_USERNAME,
       payload: {

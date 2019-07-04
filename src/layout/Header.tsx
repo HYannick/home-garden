@@ -11,15 +11,20 @@ interface HeaderProps {
   avatarUrl?: string
 }
 
-export const Overlay = styled('div')`
+interface OverlayProps {
+  color?: string,
+  opacity?: number
+}
+
+export const Overlay = styled('div')<OverlayProps>`
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   z-index: 1;
-  background-color: ${(props: any) => props.color};
-  opacity: ${(props: any) => props.opacity};
+  background-color: ${(props) => props.color};
+  opacity: ${(props) => props.opacity};
 `;
 
 const Header: React.FC<HeaderProps> = ({username, cover, avatarUrl}) => {
@@ -44,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({username, cover, avatarUrl}) => {
         right:0;
         z-index: -1;
       `}>
-        <Overlay {...{color: "#333", opacity: 0.7}}/>
+        <Overlay color="#333" opacity={0.7}/>
       </div>
       <div css={css`
         margin-left: 3.5rem;
@@ -71,5 +76,5 @@ const Header: React.FC<HeaderProps> = ({username, cover, avatarUrl}) => {
     </div>
 
   )
-}
+};
 export default Header

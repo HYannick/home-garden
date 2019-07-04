@@ -1,11 +1,5 @@
 import styled from "@emotion/styled";
 
-interface StyledInputProps {
-  theme: {
-    palette: any
-  }
-}
-
 const BaseInput = styled('input')`
   text-align: center;
   border-radius: 5rem;
@@ -16,6 +10,6 @@ const BaseInput = styled('input')`
 `;
 
 export const Input = styled(BaseInput)`
-  border: 0.4rem solid ${(props: StyledInputProps) => props.theme.palette.grey.light};
-  outline: ${(props: StyledInputProps) => props.theme.palette.grey.light};
+  border: 0.4rem solid ${({theme}) => theme.palette.grey.light};
+  outline: ${({theme}) => theme.palette.grey.light};
 `;

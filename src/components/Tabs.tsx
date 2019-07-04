@@ -14,8 +14,6 @@ interface TabsProps {
   direction?: string
   items: ItemProp[],
   asSlider?: boolean
-
-  onChange?(e: any): void
 }
 
 const Tabs: React.FC<TabsProps> = ({currentTab, items, direction, asSlider}) => {
@@ -32,7 +30,7 @@ const Tabs: React.FC<TabsProps> = ({currentTab, items, direction, asSlider}) => 
         enter: {opacity: 1},
         leave: {opacity: 0}
       }
-    )
+    );
   const sliderTransitions = useTransition(currentTab, null, transitionOpts);
   return (
     <div css={css`

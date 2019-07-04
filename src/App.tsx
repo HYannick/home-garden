@@ -6,7 +6,8 @@ import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom
 import OnBoarding from "./pages/onboarding/views/OnBoarding";
 import HomeScreen from "./pages/home/Home";
 import localForage from "localforage";
-import BottomNavBar from './components/BottomNavBar';
+import BottomNavBar from './layout/BottomNavBar';
+import PlantCreate from './pages/create/PlantCreate';
 
 export const PrivateRoute: React.FC<any> = ({component: Component, ...rest}) => {
   const [hasUserInfos, setUserInfos] = useState(false);
@@ -56,7 +57,7 @@ const App: React.FC = () => {
       <Router>
         <Switch>
           <PrivateRoute path="/" exact component={HomeScreen}/>
-          <PrivateRoute path="/private" exact component={() => <div>Private route</div>}/>
+          <PrivateRoute path="/create" exact component={PlantCreate}/>
           <Route path="/onboarding" exact component={OnBoarding}/>
         </Switch>
         <BottomNavBar />

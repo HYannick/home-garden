@@ -1,5 +1,10 @@
 export const theme = {
   palette: {
+    light: '#FFFFFF',
+    blue: {
+      light: '#D6FCFF',
+      dark: '#90EAFF'
+    },
     primary: {
       light: '#EFFFE2',
       dark: '#B4ED86'
@@ -7,7 +12,6 @@ export const theme = {
     warning: {
       light: '#FFF3E2',
       dark: '#EDAE86',
-
     },
     danger: {
       light: '#FFE2E2',

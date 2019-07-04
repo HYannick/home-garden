@@ -11,8 +11,8 @@ export const useGetUserInfos = () => {
 
   useEffect(() => {
     setLoading(true);
-    localForage.getItem('userInfos')
-      .then((userInfos: any) => {
+    localForage.getItem<Promise<UserInfosProps>>('userInfos')
+      .then((userInfos) => {
         setUserInfos((prevState) => ({...prevState, ...userInfos}));
         setLoading(false);
       })

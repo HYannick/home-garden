@@ -5,11 +5,11 @@ import {css, jsx} from "@emotion/core";
 import Typography from "./Typography";
 
 
-const Heading = styled('div')`
+const Heading = styled('div')<{variant?: string}>`
   margin-top: 2rem;
   & h1 {
     font-size: 3rem;
-    color: ${(props: any) => props.theme.palette.grey.dark};
+    color: ${({theme}) => theme.palette.grey.dark};
     position: relative;
     &:before {
       content: '';
@@ -17,8 +17,8 @@ const Heading = styled('div')`
       left: -1.5rem;
       top: 50%;
       transform: translateY(-50%);
-      background-color:  ${(props: any) => props.theme.palette[props.variant].light};
-      border:  0.2rem solid ${(props: any) => props.theme.palette[props.variant].dark};
+      background-color:  ${({variant, theme}) => theme.palette[variant  || 'primary'].light};
+      border:  0.2rem solid ${({variant, theme}) => theme.palette[variant || 'primary'].dark};
       width: 0.5rem;
       height: 0.5rem;
       border-radius: 1rem;
@@ -26,27 +26,31 @@ const Heading = styled('div')`
   }
   & h6 {
     font-size: 1.7rem;
-    color: ${(props: any) => props.theme.palette.grey.light};
+    color: ${({theme}) => theme.palette.grey.light};
     margin-bottom: 2rem;
   }
 `;
+interface CardProps {
+  key: string,
+  imgUrl: string
+}
 
-const Card = styled('div')`
+const Card = styled('div')<CardProps>`
   
 `;
 
 const PlaceHolder = styled('div')`
-  background-color: ${(props: any) => props.theme.palette.primary.light};
+  background-color: ${({theme}) => theme.palette.primary.light};
   border-radius: 1rem 0 0 1rem;
   width: 100%;
   height: 10rem;
   display: flex;
   align-items: center;
   padding: 2rem;
-  border: 0.1rem dotted ${(props: any) => props.theme.palette.primary.dark};
+  border: 0.1rem dotted ${({theme}) => theme.palette.primary.dark};
   
   & p {
-  color: ${(props: any) => props.theme.palette.primary.dark};
+  color: ${({theme}) => theme.palette.primary.dark};
   font-size: 1.7rem;
   }
 `;
@@ -63,7 +67,7 @@ interface PlantProps {
 }
 
 const Schedule: React.FC = () => {
-  const [plants, setPlants] = useState([]);
+  const [plants] = useState([]);
 
   useEffect(() => {
 
@@ -73,7 +77,7 @@ const Schedule: React.FC = () => {
     <div css={css`
       padding-left: 3.5rem;
     `}>
-      <Heading {...{variant: 'primary'}}>
+      <Heading variant="primary">
         <Typography variant="title" weight="600" tag="h1" noMargin>Your Schedule</Typography>
         <Typography variant="body" weight="400" tag="h6" noMargin><strong>2</strong> plants need your attention</Typography>
       </Heading>
@@ -81,7 +85,7 @@ const Schedule: React.FC = () => {
       {
         !!plants.length ? (
           plants.map(({imgUrl, id}: PlantProps) => (
-            <Card {...{key: id, imgUrl: imgUrl}}/>
+            <Card key={id} imgUrl={imgUrl}/>
           ))
         ) : (
           <PlaceHolder>
