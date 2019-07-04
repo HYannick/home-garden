@@ -13,4 +13,9 @@ export const Button = styled('button')<ButtonProps>`
   padding: 1rem 3rem;
   font-size: 1.5rem;
   font-weight: bold;
+  &:disabled {
+    background-color:  ${({theme}) => theme.palette.grey.light};
+    color: ${({theme}) => theme.palette.grey.dark};
+    border: 0.2rem solid ${({theme}) => theme.palette.grey.dark};
+  }
 `;

@@ -207,8 +207,7 @@
     text-shadow: 1px 0 0 #B4ED86;
 }
 
-.DayPicker:not(.DayPicker--interactionDisabled),
-.DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
     background-color: #F0F8FF;
 }
 

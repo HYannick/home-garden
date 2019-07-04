@@ -13,6 +13,7 @@ import plantCreateValidation from "./plant-create.validation";
 import {SideLayer} from "../../layout/SideLayer";
 import {Trans, useTranslation} from "react-i18next";
 import {Button} from "../../components/Button";
+import {mapPlantData} from "./plant-create.mapper";
 
 
 interface InitialValuesProps {
@@ -151,8 +152,21 @@ const PlantCreate: React.FC = () => {
     need_watering_frequency: false
   };
 
-  const submitPlant = (values: any, actions: any) => {
-    console.log(values, actions)
+  const submitPlant = async (values: InitialValuesProps, actions: any) => {
+    console.log(values, actions);
+    console.log(mapPlantData(values));
+    actions.setSubmitting(true);
+
+    try {
+      /* TODO: should check the sensorId and connect, if there is one
+       * if not return an error on the sensor_id
+       */
+      setTimeout(() => actions.setSubmitting(false), 1000)
+      //await somecall(mapPlantData(values))
+    } catch (e) {
+      // catch Error
+      actions.setSubmitting(false)
+    }
   };
 
   return (
