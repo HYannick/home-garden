@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import React, {useState} from 'react';
-import styled from "@emotion/styled";
-import {css, jsx} from '@emotion/core';
+import React, { useState } from 'react';
+import styled from '@emotion/styled';
+import { css, jsx } from '@emotion/core';
 
 interface ImageUploadProps {
   onImageLoaded: Function,
@@ -16,7 +16,7 @@ const InputPlaceHolder = styled('label')<{ bgImage: string }>`
   width: 100%;
   height: 100%;
   border-radius: 2rem;
-  background: ${({bgImage, theme}) => `url('${bgImage}') center center no-repeat ${theme.palette.grey.light}`};
+  background: ${({ bgImage, theme }) => `url('${bgImage}') center center no-repeat ${theme.palette.grey.light}`};
   background-size: cover;
 `;
 
@@ -29,7 +29,7 @@ const HiddenInput = styled('input')`
   z-index: -1;
 `;
 
-const ImageUpload: React.FC<ImageUploadProps> = ({field, className, onImageLoaded, source}) => {
+const ImageUpload: React.FC<ImageUploadProps> = ({ field, className, onImageLoaded, source }) => {
   const [src, setSrc] = useState<string>(source || '');
   const [loading, setLoading] = useState(false);
 
@@ -38,15 +38,15 @@ const ImageUpload: React.FC<ImageUploadProps> = ({field, className, onImageLoade
     if (!img) return;
     const fr: FileReader = new FileReader();
     fr.onloadstart = () => {
-      setLoading(true)
+      setLoading(true);
     };
 
     fr.onload = () => {
       setSrc(fr.result as string);
     };
     fr.onloadend = (data: any) => {
-      onImageLoaded({src: data.target.result, url: img});
-      setLoading(false)
+      onImageLoaded({ src: data.target.result, url: img });
+      setLoading(false);
     };
     fr.readAsDataURL(img[0]);
   };

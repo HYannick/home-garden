@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const BaseInput = styled('input')`
   text-align: center;
@@ -10,6 +10,6 @@ const BaseInput = styled('input')`
 `;
 
 export const Input = styled(BaseInput)`
-  border: 0.4rem solid ${({theme}) => theme.palette.grey.light};
-  outline: ${({theme}) => theme.palette.grey.light};
+  border: 0.4rem solid ${({ theme }) => theme.palette.grey.light};
+  outline: ${({ theme }) => theme.palette.grey.light};
 `;

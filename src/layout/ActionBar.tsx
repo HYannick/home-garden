@@ -1,10 +1,11 @@
-import React, {MouseEventHandler, ReactNode} from 'react';
-import styled from "@emotion/styled";
-import ArrowBack from "../core/svg/ArrowBack";
-import {NavLink, RouteComponentProps, withRouter} from "react-router-dom";
-import Typography from "../components/Typography";
+import React, { MouseEventHandler, ReactNode } from 'react';
+import styled from '@emotion/styled';
+import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
+import ArrowBack from '../core/svg/ArrowBack';
+import Typography from '../components/Typography';
 
 interface ActionProps {
+  key: number,
   icon: React.FC<{ fill?: string, stroke?: string }>,
   onClick: MouseEventHandler
 }
@@ -49,22 +50,22 @@ const Action = styled('button')`
   border: none;
   background: transparent;
   padding: 0;
-  outline: ${({theme}) => theme.palette.light};
+  outline: ${({ theme }) => theme.palette.light};
   margin-left: 1.5rem;
 `;
 
-const ActionBar: React.FC<ActionBarProps> = ({title, actions}) => {
+const ActionBar: React.FC<ActionBarProps> = ({ title, actions }) => {
   return (
     <ActionWrapper>
       <BackButton>
-        <NavLink to={'/'}><ArrowBack/></NavLink>
+        <NavLink to="/"><ArrowBack/></NavLink>
       </BackButton>
       <Title>
         <Typography noMargin variant="title" weight="800">{title}</Typography>
       </Title>
       <Actions>
-        {actions && actions.map(({icon: Icon, onClick}: ActionProps, i: number) => (
-          <Action key={i} onClick={onClick}>
+        {actions && actions.map(({ key, icon: Icon, onClick }: ActionProps) => (
+          <Action key={key} onClick={onClick}>
             <Icon fill="#4A4A4A"/>
           </Action>
         ))}

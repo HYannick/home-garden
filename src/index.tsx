@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import {ThemeProvider} from 'emotion-theming'
-import {theme} from './theme';
-import './i18n';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import './index.css';
+import { ThemeProvider } from 'emotion-theming';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import { theme } from './theme';
+import './i18n';
 
 Enzyme.configure({ adapter: new Adapter() });
 const Main: React.FC = () => (

@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import styled from "@emotion/styled";
-import React from "react";
-import {css, jsx} from "@emotion/core";
-import Typography from "../components/Typography";
-import {useTranslation} from "react-i18next";
+import styled from '@emotion/styled';
+import React from 'react';
+import { css, jsx } from '@emotion/core';
+import { useTranslation } from 'react-i18next';
+import Typography from '../components/Typography';
 
 interface HeaderProps {
   username: string,
@@ -27,8 +27,8 @@ export const Overlay = styled('div')<OverlayProps>`
   opacity: ${(props) => props.opacity};
 `;
 
-const Header: React.FC<HeaderProps> = ({username, cover, avatarUrl}) => {
-  const {t} = useTranslation();
+const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
+  const { t } = useTranslation();
   const now = new Date().toDateString();
   return (
     <div css={css`
@@ -57,8 +57,13 @@ const Header: React.FC<HeaderProps> = ({username, cover, avatarUrl}) => {
         <Typography variant="subtitle" color="white" alignment="left" weight="200" tag="p" noMargin> {now}</Typography>
         <Typography variant="title" color="white" alignment="left" weight="400" tag="p" noMargin>
           {t('header.hi')},&nbsp;
-          <Typography variant="title" color="#B4ED86" alignment="left" weight="600" tag="span"
-                      noMargin>{username}</Typography>
+          <Typography
+            variant="title"
+            color="#B4ED86"
+            alignment="left"
+            weight="600"
+            tag="span"
+            noMargin>{username}</Typography>
         </Typography>
       </div>
 
@@ -75,6 +80,6 @@ const Header: React.FC<HeaderProps> = ({username, cover, avatarUrl}) => {
       `}/>
     </div>
 
-  )
+  );
 };
-export default Header
+export default Header;

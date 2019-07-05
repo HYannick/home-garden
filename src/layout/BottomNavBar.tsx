@@ -1,13 +1,14 @@
 /** @jsx jsx */
-import React, {useEffect, useState, Fragment, MouseEventHandler} from 'react';
-import {jsx} from "@emotion/core";
-import styled from "@emotion/styled";
-import Drop from "../core/svg/Drop";
-import {NavLink, RouteComponentProps, withRouter} from "react-router-dom";
-import Add from "../core/svg/Add";
+import React, { useEffect, useState, Fragment, MouseEventHandler } from 'react';
+import { jsx } from '@emotion/core';
+import styled from '@emotion/styled';
+import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
+import Drop from '../core/svg/Drop';
+import Add from '../core/svg/Add';
 import Profile from '../core/svg/Profile';
-import {Overlay} from "./Header";
+// @ts-ignore
 import plant from '../core/svg/green-tea.svg';
+import { Overlay } from './Header';
 
 interface BottomNavBarProps {
   isOpen?: boolean
@@ -27,7 +28,7 @@ const IconWrapper = styled('div')<BottomNavBarProps>`
     width: 2.5rem;
     height: 2.5rem;
   }
-  transform: rotate(${({isOpen}) => isOpen ? '45deg' : 0});
+  transform: rotate(${({ isOpen }) => isOpen ? '45deg' : 0});
   transition: transform 0.3s;
 `;
 
@@ -35,7 +36,7 @@ const NavWrapper = styled('div')`
   height: 7rem;
   border-radius: 5rem 5rem 0 0;
   box-shadow: 0 -0.3rem 0.6rem 0rem rgba(196, 196, 196, 0.15);
-  background-color: ${({theme}) => theme.palette.light};
+  background-color: ${({ theme }) => theme.palette.light};
   display: flex;
   align-items: center;
   justify-content: space-between; 
@@ -50,7 +51,7 @@ const NavWrapper = styled('div')`
       content : '';
       position: absolute;
       z-index: -1;
-      background-color: ${({theme}) => theme.palette.primary.light};
+      background-color: ${({ theme }) => theme.palette.primary.light};
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0.6);
@@ -70,7 +71,7 @@ const NavWrapper = styled('div')`
       width: 0.6rem;
       height: 0.6rem;
       border-radius: 5rem;
-      background-color: ${({theme}) => theme.palette.primary.dark};
+      background-color: ${({ theme }) => theme.palette.primary.dark};
       transform: translateX(-50%);
       transition: opacity 0.3s , transform 0.3s ;
     }
@@ -86,19 +87,19 @@ const NavWrapper = styled('div')`
     & .outlined {
       & svg path {
         fill: none;
-        stroke: ${({theme}) => theme.palette.primary.dark};
+        stroke: ${({ theme }) => theme.palette.primary.dark};
       }
     }
     & svg path {
-      fill: ${({theme}) => theme.palette.primary.dark};
-      stroke: ${({theme}) => theme.palette.primary.dark};
+      fill: ${({ theme }) => theme.palette.primary.dark};
+      stroke: ${({ theme }) => theme.palette.primary.dark};
       transition: fill 0.3s , stroke 0.3s;
     }
   }
 `;
 
 const OptionsWrapper = styled('div')`
-  background-color: ${({theme}) => theme.palette.light};
+  background-color: ${({ theme }) => theme.palette.light};
   & ul {
     margin: 0 auto;
     padding: 0 2rem 1rem;
@@ -111,7 +112,7 @@ const OptionsWrapper = styled('div')`
   }
   
   a {
-    color:  ${({theme}) => theme.palette.grey.dark};
+    color:  ${({ theme }) => theme.palette.grey.dark};
     font-weight: 600;
     font-size: 2rem;
     text-decoration: none;
@@ -126,11 +127,11 @@ const MainWrapper = styled('div')<BottomNavBarProps>`
   bottom: 0;
   width: 100%;
   transition: transform 0.3s;
-  transform: translateY(${({isOpen}) => isOpen ? 0 : '12.3rem'});
+  transform: translateY(${({ isOpen }) => isOpen ? 0 : '12.3rem'});
   .nav__link {
-    opacity: ${({isOpen}) => isOpen ? 0 : 1};
+    opacity: ${({ isOpen }) => isOpen ? 0 : 1};
     transition: opacity 0.3s visibility 0.3s;
-    pointer-events:  ${({isOpen}) => isOpen ? 'none' : 'auto'}; 
+    pointer-events:  ${({ isOpen }) => isOpen ? 'none' : 'auto'}; 
   }
 `;
 
@@ -139,18 +140,18 @@ const AddWrapper = styled('div')<BottomNavBarProps>`
   position: relative;
   z-index: 1;
   & svg path {
-    fill: ${({isOpen, theme}) => isOpen && theme.palette.danger.dark};
+    fill: ${({ isOpen, theme }) => isOpen && theme.palette.danger.dark};
     transition: fill 0.3s , stroke 0.3s;
   }
   &:before {
       content : '';
       position: absolute;
       z-index: -1;
-      background-color: ${({theme}) => theme.palette.danger.light};
+      background-color: ${({ theme }) => theme.palette.danger.light};
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(${({isOpen}) => isOpen ? 1 : 0.4});
-      opacity: ${({isOpen}) => isOpen ? 1 : 0};
+      transform: translate(-50%, -50%) scale(${({ isOpen }) => isOpen ? 1 : 0.4});
+      opacity: ${({ isOpen }) => isOpen ? 1 : 0};
       width: 5rem;
       height: 5rem;
       border-radius: 5rem;
@@ -160,9 +161,9 @@ const AddWrapper = styled('div')<BottomNavBarProps>`
 
 const NavOverlay = styled(Overlay)<NavOverlayProps>`
   z-index: 0; 
-  background-color:  ${({theme}) => theme.palette.grey.darker};
-  opacity: ${({isOpen}) => isOpen ? 0.8 : 0};
-  pointer-events: ${({isOpen}) => isOpen ? 'auto' : 'none'};
+  background-color:  ${({ theme }) => theme.palette.grey.darker};
+  opacity: ${({ isOpen }) => isOpen ? 0.8 : 0};
+  pointer-events: ${({ isOpen }) => isOpen ? 'auto' : 'none'};
   transition: opacity 0.3s;
 `;
 
@@ -170,7 +171,7 @@ const Divider = styled('div')`
   width: 100%;
   height: 0.1rem;
   margin: 1rem 0;
-  background-color:  ${({theme}) => theme.palette.grey.light};
+  background-color:  ${({ theme }) => theme.palette.grey.light};
 `;
 
 const Infos = styled('div')`
@@ -187,11 +188,11 @@ const Infos = styled('div')`
     right: 2rem;
   }
   h2 {
-    color: ${({theme}) => theme.palette.primary.light};
+    color: ${({ theme }) => theme.palette.primary.light};
     font-size: 4rem;
   }
   p {
-    color: ${({theme}) => theme.palette.light};
+    color: ${({ theme }) => theme.palette.light};
     font-size: 1.5rem;
   }
   
@@ -203,20 +204,20 @@ const Infos = styled('div')`
     transform: translateX(-50%);
     width: 10rem;
     height: 0.6rem;
-    background-color: ${({theme}) => theme.palette.light};
+    background-color: ${({ theme }) => theme.palette.light};
     border-radius: 2rem;
   }
 `;
 
 
-export const BottomNavBar: React.FC<RouteComponentProps> = ({location}) => {
+export const BottomNavBar: React.FC<RouteComponentProps> = ({ location }) => {
   const [isOpen, expand] = useState(false);
 
   const hide = () => expand(false);
   const toggle = () => expand(!isOpen);
 
   useEffect(() => {
-    hide()
+    hide();
   }, [location]);
 
   if (location.pathname.match('/onboarding')) {

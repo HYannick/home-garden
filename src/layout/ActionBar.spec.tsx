@@ -1,49 +1,51 @@
 import React from 'react';
-import 'jest-dom/extend-expect'
-import {renderWithTheme} from "../theme-wrapper";
-import {cleanup} from "@testing-library/react";
-import {BrowserRouter as Router} from "react-router-dom";
-import ActionBar from "./ActionBar";
+import 'jest-dom/extend-expect';
+import { cleanup } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { renderWithTheme } from '../theme-wrapper';
+import ActionBar from './ActionBar';
 
 afterEach(cleanup);
 describe('ActionBar', () => {
   const routerProps = {
-    location: {pathname: ''},
+    location: { pathname: '' },
     match: jest.fn(),
-    history: {}
+    history: {},
   };
 
 
   it('should render the actionBar properly without action', () => {
-    const {container} = renderWithTheme(
+    const { container } = renderWithTheme(
       <Router>
         <ActionBar title="New Species" actions={[{
+          key: 1,
           icon: () => <div>Icon Edit</div>,
-          onClick: () => console.log('Edit Mode')
+          onClick: () => console.log('Edit Mode'),
         }]} {...routerProps}/>
-      </Router>
+      </Router>,
     );
-    expect(container).toMatchSnapshot()
+    expect(container).toMatchSnapshot();
   });
 
   it('should render the actionBar properly with the right title', () => {
-    const {getByText} = renderWithTheme(
+    const { getByText } = renderWithTheme(
       <Router>
         <ActionBar title="New Species" actions={[]} {...routerProps}/>
-      </Router>
+      </Router>,
     );
-    expect(getByText(/^New Species/)).toHaveTextContent('New Species')
+    expect(getByText(/^New Species/)).toHaveTextContent('New Species');
   });
 
   it('should render the actionBar properly with actions', () => {
-    const {getByText} = renderWithTheme(
+    const { getByText } = renderWithTheme(
       <Router>
         <ActionBar title="New Species" actions={[{
+          key: 1,
           icon: () => <div>Icon Edit</div>,
-          onClick: () => console.log('Edit Mode')
+          onClick: () => console.log('Edit Mode'),
         }]} {...routerProps}/>
-      </Router>
+      </Router>,
     );
-    expect(getByText(/^Icon Edit/)).toHaveTextContent('Icon Edit')
+    expect(getByText(/^Icon Edit/)).toHaveTextContent('Icon Edit');
   });
 });

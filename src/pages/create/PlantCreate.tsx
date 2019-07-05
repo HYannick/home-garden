@@ -1,19 +1,20 @@
 /** @jsx jsx */
-import React, {Fragment} from 'react';
-import {css, jsx} from '@emotion/core';
+import React, { Fragment } from 'react';
+import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
-import ActionBar from "../../layout/ActionBar";
-import ImageUpload from "../../components/forms/ImageUpload";
-import {Field, Form, Formik} from "formik";
+import { Field, Form, Formik } from 'formik';
+import { Trans, useTranslation } from 'react-i18next';
+import ActionBar from '../../layout/ActionBar';
+import ImageUpload from '../../components/forms/ImageUpload';
 import InputRange from '../../components/forms/InputRange';
-import Switch from "../../components/forms/Switch";
-import InputField from "../../components/forms/InputField";
-import DatePicker from "../../components/forms/DatePicker";
-import plantCreateValidation from "./plant-create.validation";
-import {SideLayer} from "../../layout/SideLayer";
-import {Trans, useTranslation} from "react-i18next";
-import {Button} from "../../components/Button";
-import {mapPlantData} from "./plant-create.mapper";
+import Switch from '../../components/forms/Switch';
+import InputField from '../../components/forms/InputField';
+import DatePicker from '../../components/forms/DatePicker';
+import { SideLayer } from '../../layout/SideLayer';
+import { Button } from '../../components/Button';
+import PlantsAPI from '../../api/plants.api';
+import plantCreateValidation from './plant-create.validation';
+import { mapPlantData } from './plant-create.mapper';
 
 
 interface InitialValuesProps {
@@ -50,7 +51,7 @@ const FormTitle = styled('div')`
     margin: 0;
     font-size: 2.5rem;
     font-weight: 800;
-    color: ${({theme}) => theme.palette.warning.dark};
+    color: ${({ theme }) => theme.palette.warning.dark};
     transform: rotate(-90deg);
     transform-origin: 0 0.6rem;
   }
@@ -67,7 +68,7 @@ const StyledForm = styled(Form)`
     position: absolute;
     top: 4rem;
     left: 1.5rem;
-    background-color: ${({theme}) => theme.palette.warning.dark};
+    background-color: ${({ theme }) => theme.palette.warning.dark};
     border-radius: 40px;
     width: 1rem;
     height: 1rem;
@@ -83,12 +84,12 @@ const ButtonWrapper = styled('div')`
 `;
 
 const Infos = styled('p')`
-  color: ${({theme}) => theme.palette.grey.dark};
+  color: ${({ theme }) => theme.palette.grey.dark};
   margin: 2rem 0;
 `;
 
 
-const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Function, values: InitialValuesProps, errors: any, touched: any, t: Function }> = ({setFieldValue, resetField, values, errors, touched, t}: any) => (
+const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Function, values: InitialValuesProps, errors: any, touched: any, t: Function }> = ({ setFieldValue, resetField, values, errors, touched, t }: any) => (
   <Fragment>
     <div css={(theme) => css`
         margin: 1rem 0 1.5rem;
@@ -109,22 +110,26 @@ const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Funct
       </div>
     </FormControl>
     <FormControl>
-      <Field type="checkbox" name="need_watering_frequency"
-             component={Switch}
-             label="Do you want to set a watering frequency?"
-             onChange={(need_watering_frequency: boolean) => {
-               if (!need_watering_frequency) resetField('watering_frequency');
-               setFieldValue('need_watering_frequency', need_watering_frequency)
-             }}
+      <Field
+        type="checkbox"
+        name="need_watering_frequency"
+        component={Switch}
+        label="Do you want to set a watering frequency?"
+        onChange={(need_watering_frequency: boolean) => {
+          if (!need_watering_frequency) resetField('watering_frequency');
+          setFieldValue('need_watering_frequency', need_watering_frequency);
+        }}
       />
     </FormControl>
     {
       values.need_watering_frequency && (
         <FormControl>
           <div css={css`margin: 2rem 1rem`}>
-            <Field type="range" name="watering_frequency" label={t('plant_create.field_watering_frequency')}
-                   component={InputRange} min={2} max={31} step={1}
-                   onChange={(value: number) => setFieldValue('watering_frequency', value)}
+            <Field
+              type="range" name="watering_frequency"
+              label={t('plant_create.field_watering_frequency')}
+              component={InputRange} min={2} max={31} step={1}
+              onChange={(value: number) => setFieldValue('watering_frequency', value)}
             />
           </div>
         </FormControl>
@@ -136,11 +141,16 @@ const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Funct
 
 export const ErrorField = styled('div')`
   padding: 1rem 0;
-  color: ${({theme}) => theme.palette.danger.dark};
+  color: ${({ theme }) => theme.palette.danger.dark};
 `;
+const getFormData = (values: any) => {
+  const formData = new FormData();
+  Object.keys(values).forEach(key => formData.append(key, values[key]));
+  return formData;
+};
 
 const PlantCreate: React.FC = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const initialValues: InitialValuesProps = {
     name: '',
@@ -149,23 +159,21 @@ const PlantCreate: React.FC = () => {
     has_moisture_sensor: false,
     sensor_id: '',
     watering_frequency: 2,
-    need_watering_frequency: false
+    need_watering_frequency: false,
   };
 
   const submitPlant = async (values: InitialValuesProps, actions: any) => {
-    console.log(values, actions);
-    console.log(mapPlantData(values));
     actions.setSubmitting(true);
-
     try {
       /* TODO: should check the sensorId and connect, if there is one
        * if not return an error on the sensor_id
        */
-      setTimeout(() => actions.setSubmitting(false), 1000)
-      //await somecall(mapPlantData(values))
+      actions.setSubmitting(false);
+      const { data: plant } = await PlantsAPI.post('/plants', getFormData(mapPlantData(values)));
+      console.log(plant);
     } catch (e) {
       // catch Error
-      actions.setSubmitting(false)
+      actions.setSubmitting(false);
     }
   };
 
@@ -177,13 +185,16 @@ const PlantCreate: React.FC = () => {
         onSubmit={submitPlant}
         initialValues={initialValues}
         render={(props) => {
-          const {errors, touched, isSubmitting, values, setFieldValue} = props;
+          const { errors, touched, isSubmitting, values, setFieldValue } = props;
           const resetField = (field: string) => setFieldValue(field, '');
 
           return (
             <StyledForm>
-              <Field type="text" name="picture" component={ImageCreate}
-                     onImageLoaded={(imgData: { src: string, url: string }) => setFieldValue('picture', imgData.url)}/>
+              <Field
+                type="text"
+                name="picture"
+                component={ImageCreate}
+                onImageLoaded={(imgData: { src: string, url: string }) => setFieldValue('picture', imgData.url)}/>
               <FormWrapper>
                 <FormTitle>
                   <p>Plant infos</p>
@@ -194,29 +205,37 @@ const PlantCreate: React.FC = () => {
                     {errors.name && touched.name && <ErrorField>{errors.name}</ErrorField>}
                   </FormControl>
                   <FormControl>
-                    <Field type="date" name="last_watering_date" component={DatePicker}
-                           label={t('plant_create.field_last_watering_date')}
-                           onDateSelected={(date: Date) => setFieldValue('last_watering_date', date)}/>
+                    <Field
+                      type="date"
+                      name="last_watering_date"
+                      component={DatePicker}
+                      label={t('plant_create.field_last_watering_date')}
+                      onDateSelected={(date: Date) => setFieldValue('last_watering_date', date)}/>
                     {errors.last_watering_date && touched.last_watering_date &&
                     <ErrorField>{errors.last_watering_date}</ErrorField>}
                   </FormControl>
                   <FormControl>
-                    <Field type="checkbox" name="has_moisture_sensor"
-                           component={Switch}
-                           label={t('plant_create.field_has_moisture_sensor')}
-                           onChange={(has_moisture_sensor: boolean) => {
-                             if (!has_moisture_sensor) resetField('sensor_id');
-                             setFieldValue('has_moisture_sensor', has_moisture_sensor)
-                           }}
+                    <Field
+                      type="checkbox"
+                      name="has_moisture_sensor"
+                      component={Switch}
+                      label={t('plant_create.field_has_moisture_sensor')}
+                      onChange={(has_moisture_sensor: boolean) => {
+                        if (!has_moisture_sensor) resetField('sensor_id');
+                        setFieldValue('has_moisture_sensor', has_moisture_sensor);
+                      }}
                     />
                     {values.has_moisture_sensor && (<MoistureSensorInput {...props} resetField={resetField} t={t}/>)}
                   </FormControl>
                   {
                     !values.has_moisture_sensor && (
                       <FormControl>
-                        <Field type="range" name="watering_frequency" label={t('plant_create.field_watering_frequency')}
-                               component={InputRange} min={2} max={31} step={1}
-                               onChange={(value: number) => setFieldValue('watering_frequency', value)}
+                        <Field
+                          type="range"
+                          name="watering_frequency"
+                          label={t('plant_create.field_watering_frequency')}
+                          component={InputRange} min={2} max={31} step={1}
+                          onChange={(value: number) => setFieldValue('watering_frequency', value)}
                         />
                       </FormControl>
                     )
@@ -241,7 +260,7 @@ const PlantCreate: React.FC = () => {
                 </div>
               </FormWrapper>
             </StyledForm>
-          )
+          );
         }}
       />
       <SideLayer/>

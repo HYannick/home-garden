@@ -3,11 +3,11 @@ export const theme = {
     light: '#FFFFFF',
     blue: {
       light: '#D6FCFF',
-      dark: '#90EAFF'
+      dark: '#90EAFF',
     },
     primary: {
       light: '#EFFFE2',
-      dark: '#B4ED86'
+      dark: '#B4ED86',
     },
     warning: {
       light: '#FFF3E2',
@@ -21,17 +21,17 @@ export const theme = {
       light: '#D9D9D9',
       dark: '#707070',
       darker: '#5F5F5F',
-      darkest: '#4A4A4A'
+      darkest: '#4A4A4A',
     },
   },
   typography: {
     fontFamily: 'Dosis, sans-serif',
     fontSize: {
       title: 20,
-      subtitle: 10
-    }
+      subtitle: 10,
+    },
   },
   easings: {
-    smooth: 'cubic-bezier(0.8, 0, 0.2, 1)'
-  }
+    smooth: 'cubic-bezier(0.8, 0, 0.2, 1)',
+  },
 };

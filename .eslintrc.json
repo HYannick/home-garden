@@ -1,0 +1,91 @@
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "parser": "babel-eslint",
+  "plugins": ["import", "react", "prettier"],
+  "rules": {
+    "indent": ["error", 2],
+    "react/prop-types": 0,
+    "prefer-rest-params": 0,
+    "camelcase": 0,
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/sort-comp": [
+      2,
+      {
+        "order": [
+          "static-methods",
+          "instance-variables",
+          "lifecycle",
+          "everything-else",
+          "/^on.+$/",
+          "render"
+        ],
+        "groups": {
+          "lifecycle": [
+            "displayName",
+            "contextTypes",
+            "childContextTypes",
+            "mixins",
+            "statics",
+            "defaultProps",
+            "constructor",
+            "getDefaultProps",
+            "state",
+            "getInitialState",
+            "getChildContext",
+            "getDerivedStateFromProps",
+            "componentWillMount",
+            "UNSAFE_componentWillMount",
+            "componentDidMount",
+            "componentWillReceiveProps",
+            "UNSAFE_componentWillReceiveProps",
+            "shouldComponentUpdate",
+            "componentWillUpdate",
+            "UNSAFE_componentWillUpdate",
+            "getSnapshotBeforeUpdate",
+            "componentDidUpdate",
+            "componentDidCatch",
+            "componentWillUnmount"
+          ]
+        }
+      }
+    ],
+    "semi": ["error", "always"],
+    "quotes": [2, "single"],
+    "import/prefer-default-export": "off",
+    "import/no-named-as-default": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-shadow": "off",
+    "import/no-unresolved": "off",
+    "jsx-a11y/no-static-element-interactions": 1,
+    "jsx-a11y/click-events-have-key-events": 1,
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ]
+      }
+    ],
+    "no-underscore-dangle": "off"
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "expect": true,
+    "FileReader": true,
+    "FormData": true,
+    "fetch": true
+  },
+  "env": {
+    "jest": true,
+    "browser": true,
+    "node": true
+  }
+}

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const BoardingWrapper = styled('div')`
   position: absolute;
@@ -13,4 +13,4 @@ const BoardingWrapper = styled('div')`
   width: 100%;
 `;
 
-export default BoardingWrapper
+export default BoardingWrapper;

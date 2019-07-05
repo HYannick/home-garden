@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import React, {Fragment, useState} from 'react';
-import styled from "@emotion/styled";
-import {jsx} from '@emotion/core';
-import {Range, getTrackBackground} from "react-range";
+import React, { Fragment, useState } from 'react';
+import styled from '@emotion/styled';
+import { jsx } from '@emotion/core';
+import { Range, getTrackBackground } from 'react-range';
 
 interface RangeProps {
   field?: any,
@@ -20,7 +20,7 @@ interface RailProps {
 
 const FrequencyLabel = styled('label')`
   font-size: 1.6rem;
-  color: ${({theme}) => theme.palette.grey.dark};
+  color: ${({ theme }) => theme.palette.grey.dark};
 `;
 
 const Rail = styled('div')`
@@ -32,16 +32,16 @@ const Rail = styled('div')`
 const Track = styled('div')`
   height: 1.2rem;
   width: 100%;
-  box-shadow: 0 0 0 0.3rem ${({theme}) => theme.palette.grey.dark};
+  box-shadow: 0 0 0 0.3rem ${({ theme }) => theme.palette.grey.dark};
   border-radius: 2rem;
-  background: ${({values, theme, min, max}: any) => (
-  getTrackBackground({
-    values,
-    colors: [theme.palette.primary.light, theme.palette.light],
-    min,
-    max
-  })
-)};
+  background: ${({ values, theme, min, max }: any) => (
+    getTrackBackground({
+      values,
+      colors: [theme.palette.primary.light, theme.palette.light],
+      min,
+      max,
+    })
+  )};
   align-self: center
 `;
 
@@ -50,17 +50,17 @@ const Thumb = styled('div')<RailProps>`
   height: 3rem;
   width: 2.5rem;
   border-radius: 0.4rem;
-  background-color: ${({isDragged, theme}) => isDragged ? theme.palette.grey.dark : theme.palette.light}; 
+  background-color: ${({ isDragged, theme }) => isDragged ? theme.palette.grey.dark : theme.palette.light}; 
   display: flex;
   justify-content: center;
   font-weight: bold;
   align-items: center;
-  box-shadow: 0 0 0 0.3rem ${({theme}) => theme.palette.grey.dark};
-  color:  ${({isDragged, theme}) => isDragged ? theme.palette.light : theme.palette.grey.dark};
+  box-shadow: 0 0 0 0.3rem ${({ theme }) => theme.palette.grey.dark};
+  color:  ${({ isDragged, theme }) => isDragged ? theme.palette.light : theme.palette.grey.dark};
 `;
 
 const Tips = styled('span')`
-  color: ${({theme}) => theme.palette.grey.light};
+  color: ${({ theme }) => theme.palette.grey.light};
   position: absolute;
   bottom: -1rem;
   right: 0;
@@ -83,12 +83,12 @@ const MinMax = styled('div')`
   font-size: 1rem;
 `;
 
-const InputRange: React.FC<RangeProps> = ({field, min, max, step, onChange}) => {
+const InputRange: React.FC<RangeProps> = ({ field, min, max, step, onChange }) => {
   const [values, setValues] = useState<number[]>([min]);
 
   const changeValues = (values: number[]) => {
     setValues(values);
-    onChange(values[0])
+    onChange(values[0]);
   };
 
   return (
@@ -101,14 +101,14 @@ const InputRange: React.FC<RangeProps> = ({field, min, max, step, onChange}) => 
           max={max}
           step={step}
           onChange={changeValues}
-          renderTrack={({props, children}) => (
+          renderTrack={({ props, children }) => (
             <Rail onMouseDown={props.onMouseDown} onTouchStart={props.onTouchStart}>
-              <Track ref={props.ref} {...props} {...{values, min, max}}>{children}</Track>
+              <Track ref={props.ref} {...props} {...{ values, min, max }}>{children}</Track>
             </Rail>
           )}
-          renderThumb={({props, isDragged}) => (
+          renderThumb={({ props, isDragged }) => (
             <Thumb{...props} isDragged={isDragged}>
-              {props["aria-valuenow"]}
+              {props['aria-valuenow']}
             </Thumb>
           )}
         />

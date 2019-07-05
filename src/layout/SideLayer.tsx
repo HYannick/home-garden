@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const SideLayer = styled('div')`
   position: fixed;
@@ -8,5 +8,5 @@ export const SideLayer = styled('div')`
   bottom:0;
   z-index: -1;
   width: 5rem;
-  background-color: ${({theme}) => theme.palette.warning.light};
+  background-color: ${({ theme }) => theme.palette.warning.light};
 `;

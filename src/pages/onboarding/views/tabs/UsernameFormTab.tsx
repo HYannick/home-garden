@@ -1,14 +1,15 @@
 /** @jsx jsx */
-import React, {useContext} from 'react';
-import {useTranslation} from "react-i18next";
-import {UserContext} from '../OnBoarding';
+import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled-base';
-import {css, jsx} from "@emotion/core";
+import { css, jsx } from '@emotion/core';
+import { UserContext } from '../OnBoarding';
+// @ts-ignore
 import mascotImage from '../../../../core/svg/mascot-1.svg';
-import {ActionType} from "../../onboarding.types";
+import { ActionType } from '../../onboarding.types';
 import Typography from '../../../../components/Typography';
-import {Input} from '../../../../components/forms/FormInput';
-import {useDisableNext} from "../../onboarding.hooks";
+import { Input } from '../../../../components/forms/FormInput';
+import { useDisableNext } from '../../onboarding.hooks';
 
 const Wrapper = styled('div')`
   position: absolute;
@@ -24,28 +25,29 @@ const Wrapper = styled('div')`
 `;
 
 const UsernameFormTab: React.FC = () => {
-  const {t} = useTranslation();
-  const {state: {username}, dispatch} = useContext(UserContext);
+  const { t } = useTranslation();
+  const { state: { username }, dispatch } = useContext(UserContext);
 
   const changeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: ActionType.SET_USERNAME,
       payload: {
-        username: e.target.value
-      }
-    })
+        username: e.target.value,
+      },
+    });
   };
 
   useDisableNext(username, dispatch);
 
   return (
     <Wrapper>
-      <img css={css`
+      <img
+        css={css`
           width: 20rem;
           height: 20rem;
           margin-bottom: 2rem;
-      `}
-           src={mascotImage} alt="mascot"/>
+        `}
+        src={mascotImage} alt="mascot"/>
       <Typography variant="title" alignment="center" weight="600">{t('onboarding.introduction')}</Typography>
       <Input aria-label="username" placeholder="Username" value={username} onChange={changeUsername}
       />
