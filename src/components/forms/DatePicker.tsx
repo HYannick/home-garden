@@ -37,7 +37,7 @@ const DatePicker: React.FC<DateProps> = ({ field, label, onDateSelected }) => {
   return (
     <Fragment>
       <Label htmlFor={field.name}>{label}</Label>
-      <StyledDayPicker disabledDays={{ before: new Date() }} onDayClick={handleDateClick} selectedDays={selectedDay}/>
+      <StyledDayPicker disabledDays={{ after: new Date() }} onDayClick={handleDateClick} selectedDays={selectedDay}/>
     </Fragment>
   );
 };

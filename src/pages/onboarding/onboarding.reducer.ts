@@ -10,7 +10,7 @@ export const initialState: IStateProps = {
   loading: true,
 };
 
-const changeState = (state: IStateProps, key: any, value: any) => {
+const changeState = (state: IStateProps, key: string, value: any) => {
   return {
     ...state,
     [key]: value,

@@ -2,11 +2,20 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css, jsx } from '@emotion/core';
+import Camera from '../../core/svg/Camera';
+
+
+const resizeOpts = {
+  width: 500,
+  height: 500,
+  type: 'image/jpeg',
+  quality: 0.90,
+};
 
 interface ImageUploadProps {
   onImageLoaded: Function,
   source?: string,
-  className?: any,
+  className?: string,
   field?: any,
   form?: any
 }
@@ -15,9 +24,12 @@ const InputPlaceHolder = styled('label')<{ bgImage: string }>`
   display: flex;
   width: 100%;
   height: 100%;
-  border-radius: 2rem;
-  background: ${({ bgImage, theme }) => `url('${bgImage}') center center no-repeat ${theme.palette.grey.light}`};
+  border-radius: 4rem;
+  background: ${({ bgImage, theme }) => `url('${bgImage}') center center no-repeat ${theme.palette.primary.light}`};
   background-size: cover;
+  border: 0.1rem dashed ${({ theme }) => theme.palette.primary.dark};
+  align-items: center;
+  justify-content: center;
 `;
 
 const HiddenInput = styled('input')`
@@ -29,24 +41,69 @@ const HiddenInput = styled('input')`
   z-index: -1;
 `;
 
+const Tip = styled('div')`
+  color: ${({ theme }) => theme.palette.primary.dark};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2rem;
+  > svg {
+    width: 5rem;
+    height: 5rem;
+    path, circle {
+      fill: ${({ theme }) => theme.palette.primary.dark};
+      stroke: ${({ theme }) => theme.palette.primary.dark};
+    }
+  }
+`
+
+interface resizeOptionsProps {
+  width: number,
+  height: number,
+  type: string,
+  quality: number
+}
+
+
+const resizeImage = (fr: FileReader, options: resizeOptionsProps): Promise<string> => new Promise((resolve, reject) => {
+  const img = new Image();
+  img.src = fr.result as string;
+  img.onload = () => {
+    const el = document.createElement('canvas');
+    const scaleFactor = options.width / img.width;
+    el.width = options.width;
+    el.height = img.height * scaleFactor;
+    const ctx: any = el.getContext('2d');
+    ctx.drawImage(img, 0, 0, options.width, (img.height * scaleFactor));
+    const imgData = ctx.canvas.toDataURL(options.type, options.quality);
+    resolve(imgData);
+  };
+  img.onerror = (e) => {
+    reject(e);
+  };
+});
+
 const ImageUpload: React.FC<ImageUploadProps> = ({ field, className, onImageLoaded, source }) => {
   const [src, setSrc] = useState<string>(source || '');
   const [loading, setLoading] = useState(false);
 
   const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+
     const img = e.target.files;
     if (!img) return;
     const fr: FileReader = new FileReader();
     fr.onloadstart = () => {
       setLoading(true);
     };
-
-    fr.onload = () => {
-      setSrc(fr.result as string);
-    };
-    fr.onloadend = (data: any) => {
-      onImageLoaded({ src: data.target.result, url: img });
-      setLoading(false);
+    fr.onloadend = () => {
+      resizeImage(fr, resizeOpts).then((imgData) => {
+        setSrc(imgData);
+        onImageLoaded({ src: imgData, url: img });
+        setLoading(false);
+      }).catch((e) => {
+        console.log(e)
+      });
     };
     fr.readAsDataURL(img[0]);
   };
@@ -56,7 +113,14 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ field, className, onImageLoad
       width: 100%; 
       height: 100%;
     `}>
-      <InputPlaceHolder htmlFor={field.name} bgImage={src}/>
+      <InputPlaceHolder htmlFor={field.name} bgImage={src}>
+        {!src && (
+          <Tip>
+            <Camera />
+            <span>Provide a photo here</span>
+          </Tip>
+        )}
+      </InputPlaceHolder>
       {loading && <div>Loading ...</div>}
       <HiddenInput id={field.name} type="file" onChange={uploadImage}/>
     </div>

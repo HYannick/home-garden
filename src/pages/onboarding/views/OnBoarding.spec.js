@@ -11,7 +11,7 @@ afterEach(cleanup);
 describe('OnBoarding', () => {
   test('It should contain the loading component on loading', async () => {
     const { result } = renderHook(() => useReducer(boardingReducer, initialState));
-    const [state, dispatch] = result.current;
+    const [dispatch] = result.current;
     const props = {
       history: jest.fn(),
       location: jest.fn(),
@@ -24,7 +24,6 @@ describe('OnBoarding', () => {
       dispatch({ type: 'SET_LOADING', payload: { loading: false } });
       expect(getByText(/^loading/)).toHaveTextContent('loading');
     });
-
 
   });
   test('It should contain the right onboarding text', () => {

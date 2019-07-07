@@ -25,9 +25,9 @@ export const BaseButton = styled('button')<CircularButtonProps>`
   visibility: ${({ hidden }) => hidden ? 'none' : 'visible'};
   transition: background-color 0.3s, opacity 0.3s, visibility 0.3s;
   svg {
-    width: 15px;
-    height: 15px;
-    transition: fill 0.3s stroke 0.3s; 
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: fill 0.3s, stroke 0.3s; 
   }
   &:disabled {
     background-color:  ${({ theme }) => theme.palette.grey.light};
@@ -40,8 +40,8 @@ export const BaseButton = styled('button')<CircularButtonProps>`
 
 const Button = styled(BaseButton)<ButtonProps>`
   background-color: ${({ variant, theme }) => theme.palette[variant || 'primary'].light};
-  width: 70px;
-  height: 70px;
+  width: 7rem;
+  height: 7rem;
   svg {
    fill: ${({ variant, theme }) => theme.palette[variant || 'primary'].dark};
    stroke: ${({ variant, theme }) => theme.palette[variant || 'primary'].dark};

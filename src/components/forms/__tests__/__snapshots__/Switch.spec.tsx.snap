@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch should render properly 1`] = `
+<div>
+  <label
+    class="css-npa6bc"
+    for="puke"
+  >
+    Should I puke?
+  </label>
+  <label
+    class="css-qwug7p"
+    for="puke"
+  >
+    <input
+      type="checkbox"
+    />
+    <input
+      class="css-x6ytko"
+      id="puke"
+      name="puke"
+      type="checkbox"
+    />
+    <span
+      class="slider round css-843eyc"
+    />
+  </label>
+</div>
+`;

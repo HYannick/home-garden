@@ -1,15 +1,15 @@
 /** @jsx jsx */
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { UserContext } from '../OnBoarding';
 import { css, jsx } from '@emotion/core';
+import styled from '@emotion/styled';
+import { UserContext } from '../OnBoarding';
 import Typography from '../../../../components/Typography';
 // @ts-ignore
 import mascotImage from '../../../../core/svg/mascot-2.svg';
 import ImageUpload from '../../../../components/forms/ImageUpload';
 import { ActionType } from '../../onboarding.types';
 import BoardingWrapper from '../BoardingWrapper';
-import styled from '@emotion/styled';
 
 
 const AvatarFormTab: React.FC = () => {

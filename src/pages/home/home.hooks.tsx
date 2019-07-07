@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import localForage from 'localforage';
 import { UserInfosProps } from '../onboarding/onboarding.types';
+import { plantStore, userStore } from '../../api/plants.api';
 
 export const useGetUserInfos = () => {
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ export const useGetUserInfos = () => {
 
   useEffect(() => {
     setLoading(true);
-    localForage.getItem<Promise<UserInfosProps>>('userInfos')
+    userStore.getItem<Promise<UserInfosProps>>('user_infos')
       .then((userInfos) => {
         setUserInfos((prevState) => ({ ...prevState, ...userInfos }));
         setLoading(false);
@@ -21,5 +21,29 @@ export const useGetUserInfos = () => {
   return {
     loading,
     userInfos,
+  };
+};
+
+export const useGetPlantList = (nbItems?: number) => {
+  const [loading, setLoading] = useState(true);
+  const [plants, setPlants] = useState<any[]>([]);
+
+  useEffect(() => {
+    setLoading(true);
+    const plantList: any = {};
+    plantStore.iterate((value, key, iterationNumber) => {
+      if(nbItems && (iterationNumber > nbItems)) {
+        return;
+      }
+      plantList[key] = value;
+    }).then(() => {
+      setPlants(Object.values(plantList));
+      setLoading(false);
+    });
+  }, []);
+
+  return {
+    loading,
+    plants,
   };
 };

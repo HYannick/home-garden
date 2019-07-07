@@ -8,6 +8,7 @@ import OnBoarding from './pages/onboarding/views/OnBoarding';
 import HomeScreen from './pages/home/Home';
 import BottomNavBar from './layout/BottomNavBar';
 import PlantCreate from './pages/create/PlantCreate';
+import { userStore } from './api/plants.api';
 
 export const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) => {
   const [hasUserInfos, setUserInfos] = useState(false);
@@ -16,7 +17,7 @@ export const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) =
   const getUserInfos = async (didCancel: boolean) => {
     setLoadingRoute(true);
     try {
-      const userData = await localForage.getItem('userInfos');
+      const userData = await userStore.getItem('user_infos');
       if (!didCancel) setUserInfos(!!userData);
       setLoadingRoute(false);
     } catch (e) {

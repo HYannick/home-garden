@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputRange should render properly 1`] = `
+<div>
+  <label
+    class="css-he3bhv"
+    for="puke"
+  >
+    What will your 
+    <strong>
+      watering frequency
+    </strong>
+     be?
+  </label>
+  <div
+    class="css-18uljbk"
+  >
+    <div
+      class="css-98r97g"
+    >
+      <div
+        class="css-1wypj0"
+        max="10"
+        min="2"
+        style="cursor: pointer;"
+        values="2"
+      >
+        <div
+          aria-valuemax="10"
+          aria-valuemin="2"
+          aria-valuenow="2"
+          class="css-1r0bhv1"
+          draggable="false"
+          role="slider"
+          style="position: absolute; z-index: 0; cursor: grab; user-select: none; transform: translate(NaNpx, NaNpx);"
+          tabindex="0"
+        >
+          2
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-yvyril"
+    >
+      <span>
+        2
+      </span>
+      <span>
+        10
+      </span>
+    </div>
+    <span
+      class="css-1ia2zn2"
+    >
+      in days
+    </span>
+  </div>
+</div>
+`;

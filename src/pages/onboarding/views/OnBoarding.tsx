@@ -2,7 +2,6 @@
 import React, { createContext, Fragment, useEffect } from 'react';
 import { jsx } from '@emotion/core';
 import styled from '@emotion/styled';
-import localForage from 'localforage';
 import { RouteComponentProps } from 'react-router';
 import { ActionType, Directions, IStateProps, UserInfosProps } from '../onboarding.types';
 
@@ -11,6 +10,9 @@ import ArrowRight from '../../../core/svg/ArrowRight';
 import ArrowLeft from '../../../core/svg/ArrowLeft';
 import Tabs from '../../../components/Tabs';
 import { useOnBoardingHook } from '../onboarding.hooks';
+import { userStore } from '../../../api/plants.api';
+import ButtonExpander from '../../../components/ButtonExpander';
+import Camera from '../../../core/svg/Camera';
 import WelcomeTab from './tabs/WelcomeTab';
 import UsernameFormTab from './tabs/UsernameFormTab';
 import AvatarFormTab from './tabs/AvatarFormTab';
@@ -31,7 +33,7 @@ const BottomNav = styled.div`
 export const UserContext = createContext<IStateProps | any>(undefined);
 
 export const submitUserInfos = async ({ username, avatar }: UserInfosProps, history: any) => {
-  await localForage.setItem('userInfos', { username, avatar });
+  await userStore.setItem('user_infos', { username, avatar, plant_list: [] });
   return history.push('/');
 };
 
@@ -62,7 +64,7 @@ const OnBoarding: React.FC<RouteComponentProps<any>> = ({ history }) => {
     const getData = async () => {
       try {
         dispatch({ type: ActionType.SET_LOADING, payload: { loading: true } });
-        const data = await localForage.getItem('userInfos');
+        const data = await userStore.getItem('user_infos');
         if (!didCancel && !!data) {
           return history.push('/');
         }
@@ -97,8 +99,13 @@ const OnBoarding: React.FC<RouteComponentProps<any>> = ({ history }) => {
             onClick={() => handleChange(Directions.PREV)}/>
         </div>
         <div>
-          <CircularButton data-testid="next" icon={ArrowLeft} withBorder disabled={state.disableNext}
-            onClick={() => handleChange(Directions.NEXT)}/>
+          <ButtonExpander
+            withBorder
+            defaultIcon={ArrowLeft}
+            expandedIcon={Camera}
+            disabled={state.disableNext} onClick={() => handleChange(Directions.NEXT)}
+            isExpanded={tab === pages.length - 1}
+            label="Homepage"/>
         </div>
       </BottomNav>
     </Fragment>

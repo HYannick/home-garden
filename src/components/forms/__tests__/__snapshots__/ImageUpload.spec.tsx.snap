@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageUpload should render properly 1`] = `
+<div>
+  <div
+    class="css-7luewu-ImageUpload"
+  >
+    <label
+      class="css-xa6k9i"
+      for="puke"
+    />
+    <input
+      class="css-17ejumq"
+      id="puke"
+      type="file"
+    />
+  </div>
+</div>
+`;

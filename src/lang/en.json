@@ -25,7 +25,7 @@
     "errors": {
       "name": "Please enter a plant name.",
       "last_watering_date": "Please provide a watering date.",
-      "sensor_id": "last_watering_date",
+      "sensor_id": "Please provide the sensor ID",
       "watering_frequency": "Please provide a watering frequency."
     }
   }
