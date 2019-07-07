@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoistureSensorField should render the MoistureSensorField properly 1`] = `
+<div>
+  <div
+    class="css-wwcne1-MoistureSensorInput"
+  />
+  <div
+    class="css-1diq458"
+  >
+    <div
+      class="css-1r43qjs-MoistureSensorInput"
+    >
+      <label
+        class="css-npa6bc"
+        for="sensor_id"
+      />
+      <input
+        class="css-1gexmoh"
+        id="sensor_id"
+        name="sensor_id"
+        type="text"
+      />
+    </div>
+  </div>
+  <div
+    class="css-1diq458"
+  >
+    <label
+      class="css-npa6bc"
+      for="need_watering_frequency"
+    >
+      Do you want to set a watering frequency?
+    </label>
+    <label
+      class="css-qwug7p"
+      for="need_watering_frequency"
+    >
+      <input
+        type="checkbox"
+      />
+      <input
+        class="css-x6ytko"
+        id="need_watering_frequency"
+        name="need_watering_frequency"
+        type="checkbox"
+      />
+      <span
+        class="slider round css-843eyc"
+      />
+    </label>
+  </div>
+</div>
+`;

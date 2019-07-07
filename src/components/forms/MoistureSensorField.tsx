@@ -8,7 +8,7 @@ import InputField from './InputField';
 import Switch from './Switch';
 import InputRange from './InputRange';
 
-const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Function, values: PlantProps, errors: any, touched: any, t: Function }> = ({ setFieldValue, resetField, values, errors, touched, t }: any) => (
+const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Function, values: PlantProps, errors: any, touched?: any, t: Function }> = ({ setFieldValue, resetField, values, errors, touched, t }: any) => (
   <Fragment>
     <div css={(theme) => css`
         margin: 1rem 0 1.5rem;
@@ -42,7 +42,7 @@ const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Funct
     </FormCreate.Control>
     {
       values.need_watering_frequency && (
-        <FormCreate.Control>
+        <FormCreate.Control data-testid="need_watering_frequency">
           <div css={css`margin: 2rem 1rem`}>
             <Field
               type="range" name="watering_frequency"

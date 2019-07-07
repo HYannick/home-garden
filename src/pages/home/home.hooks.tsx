@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { UserInfosProps } from '../onboarding/onboarding.types';
+import { sortBy } from 'lodash';
 import { plantStore, userStore } from '../../api/plants.api';
+import { UserInfosProps } from '../onboarding/onboarding.types';
+import { getDaysLeft } from '../../core/utils/calc_dates';
 
 export const useGetUserInfos = () => {
   const [loading, setLoading] = useState(true);
@@ -32,15 +34,21 @@ export const useGetPlantList = (nbItems?: number) => {
     setLoading(true);
     const plantList: any = {};
     plantStore.iterate((value, key, iterationNumber) => {
-      if(nbItems && (iterationNumber > nbItems)) {
+      if (nbItems && (iterationNumber > nbItems)) {
         return;
       }
       plantList[key] = value;
     }).then(() => {
-      setPlants(Object.values(plantList));
+      const filteredPlantList =
+        sortBy(Object.values(plantList)
+          .map(((plant: any) => ({
+            ...plant,
+            days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency),
+          }))), ['days_left']);
+      setPlants(filteredPlantList);
       setLoading(false);
     });
-  }, []);
+  }, [nbItems]);
 
   return {
     loading,

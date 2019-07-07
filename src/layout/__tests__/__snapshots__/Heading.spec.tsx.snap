@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Heading should render properly 1`] = `
+<div>
+  <div
+    class="css-126uo2u"
+  >
+    <h1
+      class="css-21eb7x"
+    >
+      Your data
+    </h1>
+    <h6
+      class="css-og9iw5"
+    >
+      You have 2 lives left
+    </h6>
+  </div>
+</div>
+`;

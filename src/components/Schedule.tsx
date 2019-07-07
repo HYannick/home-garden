@@ -2,37 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css, jsx } from '@emotion/core';
+import Heading from '../layout/Heading';
 import Typography from './Typography';
-
-interface VariantType {
-  variant?: string
-}
-
-const Heading = styled('div')<VariantType>`
-  margin-top: 2rem;
-  & h1 {
-    font-size: 3rem;
-    color: ${({ theme }) => theme.palette.grey.dark};
-    position: relative;
-    &:before {
-      content: '';
-      position: absolute;
-      left: -1.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color:  ${({ variant, theme }) => theme.palette[variant || 'primary'].light};
-      border:  0.2rem solid ${({ variant, theme }) => theme.palette[variant || 'primary'].dark};
-      width: 0.5rem;
-      height: 0.5rem;
-      border-radius: 1rem;
-    }
-  }
-  & h6 {
-    font-size: 1.7rem;
-    color: ${({ theme }) => theme.palette.grey.light};
-    margin-bottom: 2rem;
-  }
-`;
 
 interface CardProps {
   key: string,
@@ -75,19 +46,14 @@ const Schedule: React.FC = () => {
   useEffect(() => {
 
   }, [plants]);
-
   return (
     <div css={css`
       padding-left: 3.5rem;
     `}>
-      <Heading variant="primary">
-        <Typography variant="title" weight="600" tag="h1" noMargin>Your Schedule</Typography>
-        <Typography variant="body" weight="400" tag="h6" noMargin><strong>2</strong> plants need your
-          attention</Typography>
-      </Heading>
+      <Heading variant="primary" title="Your schedule" subtitle="3 plants need your attention"/>
       <PlantWrapper>
         {
-          !plants.length ? (
+          !!plants.length ? (
             plants.map(({ imgUrl, id }: PlantProps) => (
               <Card key={id} imgUrl={imgUrl}/>
             ))

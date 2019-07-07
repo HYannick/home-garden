@@ -98,8 +98,7 @@ exports[`BottomNavBar should match snapshot on closed 1`] = `
     </div>
   </div>
   <div
-    class="css-i8f8kr"
-    title=""
+    class="css-ajruyc"
   />
 </div>
 `;
@@ -214,8 +213,7 @@ exports[`BottomNavBar should match snapshot on open 1`] = `
     </div>
   </div>
   <div
-    class="css-16yi6w5"
-    title=""
+    class="css-1obqsrn"
   />
 </div>
 `;

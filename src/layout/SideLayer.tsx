@@ -2,8 +2,9 @@
 import styled from '@emotion/styled';
 
 export const SideLayer = styled('div')`
-  position: fixed;
-  top:0;
+  position: absolute;
+  top: 1rem;
+  border-radius: 0 3rem 3rem 0;
   left:0;
   bottom:0;
   z-index: -1;

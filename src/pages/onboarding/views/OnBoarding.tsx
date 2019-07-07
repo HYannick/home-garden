@@ -12,7 +12,7 @@ import Tabs from '../../../components/Tabs';
 import { useOnBoardingHook } from '../onboarding.hooks';
 import { userStore } from '../../../api/plants.api';
 import ButtonExpander from '../../../components/ButtonExpander';
-import Camera from '../../../core/svg/Camera';
+import Home from '../../../core/svg/Home';
 import WelcomeTab from './tabs/WelcomeTab';
 import UsernameFormTab from './tabs/UsernameFormTab';
 import AvatarFormTab from './tabs/AvatarFormTab';
@@ -102,7 +102,7 @@ const OnBoarding: React.FC<RouteComponentProps<any>> = ({ history }) => {
           <ButtonExpander
             withBorder
             defaultIcon={ArrowLeft}
-            expandedIcon={Camera}
+            expandedIcon={Home}
             disabled={state.disableNext} onClick={() => handleChange(Directions.NEXT)}
             isExpanded={tab === pages.length - 1}
             label="Homepage"/>

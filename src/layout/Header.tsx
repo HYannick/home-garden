@@ -36,13 +36,14 @@ const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
       height: 8rem;
       display: flex;
       align-items: center;
+      margin: 2rem 2rem 0;
     `}>
       <div css={css`
         background: url('${cover}') center center no-repeat;
         background-size: cover;
         position: absolute;
         overflow: hidden;
-        border-radius: 0 0 4.5rem 4.5rem;
+        border-radius: 4.5rem;
         top: 0;
         left:0;
         bottom:0;

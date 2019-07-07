@@ -48,7 +48,7 @@ Card.Infos = styled('div')`
 `;
 
 // eslint-disable-next-line no-undef
-Card.Chip = styled('div')<{variant: string}>`
+Card.Chip = styled('div')<{ variant: string }>`
   display: flex;
   border: 0.4rem solid ${({ theme }) => theme.palette.light};
   background-color: ${({ theme, variant }) => theme.palette[variant || 'primary'].light};
@@ -68,9 +68,20 @@ Card.Chip = styled('div')<{variant: string}>`
   }
 `;
 
+const setVariant = (days_left: number) => {
+  let variant = 'primary';
+  if(days_left < 3) {
+    variant = 'warning';
+  }
+
+  if(days_left === 0) {
+    variant = 'danger';
+  }
+  return variant;
+};
+
 const PlantCard: React.FC<any> = ({ plant }) => {
 
-  const variant = 'primary';
   return (
     <Card to={`/plants/${plant.id}`}>
       <Card.Picture>
@@ -79,9 +90,9 @@ const PlantCard: React.FC<any> = ({ plant }) => {
       </Card.Picture>
       <Card.Infos>
         <p>{plant.name}</p>
-        <Card.Chip variant={variant}>
-          <span>Next Watering in {plant.days_left || 2} days</span>
-          <Drop />
+        <Card.Chip variant={setVariant(plant.days_left)}>
+          <span>Next Watering in {plant.days_left} days</span>
+          <Drop/>
         </Card.Chip>
       </Card.Infos>
     </Card>

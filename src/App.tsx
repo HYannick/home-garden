@@ -2,11 +2,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Global, jsx } from '@emotion/core';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import localForage from 'localforage';
 import { globalStyles } from './global-styles';
 import OnBoarding from './pages/onboarding/views/OnBoarding';
 import HomeScreen from './pages/home/Home';
-import BottomNavBar from './layout/BottomNavBar';
+import BottomNavBar from './layout/bottom-nav-bar/BottomNavBar';
 import PlantCreate from './pages/create/PlantCreate';
 import { userStore } from './api/plants.api';
 
