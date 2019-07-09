@@ -19,6 +19,7 @@ export const theme = {
     },
     grey: {
       light: '#D9D9D9',
+      medium: '#989898',
       dark: '#707070',
       darker: '#5F5F5F',
       darkest: '#4A4A4A',

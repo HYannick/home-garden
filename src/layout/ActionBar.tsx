@@ -11,7 +11,7 @@ interface ActionProps {
 }
 
 interface ActionBarProps extends RouteComponentProps {
-  title: string,
+  title?: string,
   actions?: Array<ActionProps>,
   children?: ReactNode
 }

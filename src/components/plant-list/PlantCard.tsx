@@ -68,7 +68,7 @@ Card.Chip = styled('div')<{ variant: string }>`
   }
 `;
 
-const setVariant = (days_left: number) => {
+export const setVariant = (days_left: number) => {
   let variant = 'primary';
   if(days_left < 3) {
     variant = 'warning';

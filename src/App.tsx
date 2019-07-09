@@ -8,6 +8,7 @@ import HomeScreen from './pages/home/Home';
 import BottomNavBar from './layout/bottom-nav-bar/BottomNavBar';
 import PlantCreate from './pages/create/PlantCreate';
 import { userStore } from './api/plants.api';
+import Plant from './pages/plant/Plant';
 
 export const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) => {
   const [hasUserInfos, setUserInfos] = useState(false);
@@ -58,6 +59,7 @@ const App: React.FC = () => {
         <Switch>
           <PrivateRoute path="/" exact component={HomeScreen}/>
           <PrivateRoute path="/create" exact component={PlantCreate}/>
+          <PrivateRoute path="/plants/:id" exact component={Plant}/>
           <Route path="/onboarding" exact component={OnBoarding}/>
         </Switch>
         <BottomNavBar/>

@@ -26,6 +26,29 @@ export const useGetUserInfos = () => {
   };
 };
 
+export const useGetPlant = (id: string) => {
+  const [loading, setLoading] = useState(true);
+  const [hasErrors, setError] = useState('');
+  const [plant, setPlant] = useState<any>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    plantStore.getItem(id).then((plant: any) => {
+      setPlant({...plant, days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency)});
+      setLoading(false);
+    }).catch(() => {
+      setError('Plant not found');
+      setLoading(false);
+    });
+  }, [id]);
+
+  return {
+    loading,
+    plant,
+    hasErrors
+  };
+};
+
 export const useGetPlantList = (nbItems?: number) => {
   const [loading, setLoading] = useState(true);
   const [plants, setPlants] = useState<any[]>([]);

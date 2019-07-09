@@ -1,8 +1,8 @@
 import { MouseEventHandler } from 'react';
 import styled from '@emotion/styled';
-import { Overlay } from '../Header';
 // @ts-ignore
 import plant from '../../core/svg/green-tea.svg';
+import { Overlay } from '../../components/Overlay';
 
 interface BottomNavBarProps {
   isOpen?: boolean

@@ -1,31 +1,15 @@
 /** @jsx jsx */
-import styled from '@emotion/styled';
 import React from 'react';
 import { css, jsx } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import Typography from '../components/Typography';
+import { Overlay } from '../components/Overlay';
 
 interface HeaderProps {
   username: string,
   cover?: string,
   avatarUrl?: string
 }
-
-interface OverlayProps {
-  color?: string,
-  opacity?: number
-}
-
-export const Overlay = styled('div')<OverlayProps>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  background-color: ${(props) => props.color};
-  opacity: ${(props) => props.opacity};
-`;
 
 const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
   const { t } = useTranslation();
@@ -36,14 +20,13 @@ const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
       height: 8rem;
       display: flex;
       align-items: center;
-      margin: 2rem 2rem 0;
     `}>
       <div css={css`
         background: url('${cover}') center center no-repeat;
         background-size: cover;
         position: absolute;
         overflow: hidden;
-        border-radius: 4.5rem;
+        border-radius: 0 0 4.5rem 4.5rem;
         top: 0;
         left:0;
         bottom:0;
