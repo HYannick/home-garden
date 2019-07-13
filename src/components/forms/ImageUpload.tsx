@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css, jsx } from '@emotion/core';
 import Camera from '../../core/svg/Camera';
@@ -87,6 +87,13 @@ const resizeImage = (fr: FileReader, options: resizeOptionsProps): Promise<strin
 const ImageUpload: React.FC<ImageUploadProps> = ({ field, className, onImageLoaded, source }) => {
   const [src, setSrc] = useState<string>(source || '');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if(field.value) setSrc(field.value);
+    return function cleanup() {
+      setSrc('')
+    }
+  }, [field.value]);
 
   const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
 

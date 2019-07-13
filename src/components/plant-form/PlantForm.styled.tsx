@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Form } from 'formik';
-import ImageUpload from '../../components/forms/ImageUpload';
+import ImageUpload from '../forms/ImageUpload';
 
 
 export const ImageCreate = styled(ImageUpload)`

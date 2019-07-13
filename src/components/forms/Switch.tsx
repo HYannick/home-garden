@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { jsx } from '@emotion/core';
 import { Label } from './Label';
@@ -66,15 +66,17 @@ const Slider = styled('span')`
   }
 `;
 
-const Switch: React.FC<SwitchProps> = ({ field, label, onChange }) => (
-  <Fragment>
-    <Label htmlFor={field.name}>{label}</Label>
-    <SwitchWrapper htmlFor={field.name}>
-      <input type="checkbox"/>
-      <HiddenInput id={field.name} name={field.name} type="checkbox" onChange={(e) => onChange(e.target.checked)}/>
-      <Slider className="slider round"/>
-    </SwitchWrapper>
-  </Fragment>
-);
+const Switch: React.FC<SwitchProps> = ({ field, label, onChange }) => {
+  return (
+    <Fragment>
+      <Label htmlFor={field.name}>{label}</Label>
+      <SwitchWrapper htmlFor={field.name}>
+        <input type="checkbox"/>
+        <HiddenInput id={field.name} name={field.name} type="checkbox" onChange={(e) => onChange(e.target.checked)}/>
+        <Slider className="slider round"/>
+      </SwitchWrapper>
+    </Fragment>
+  );
+}
 
 export default Switch;

@@ -133,6 +133,7 @@ export const MainWrapper = styled('div')<BottomNavBarProps>`
 export const AddWrapper = styled('div')<BottomNavBarProps>`
   position: relative;
   z-index: 1;
+  overflow: hidden;
   & svg path {
     fill: ${({ isOpen, theme }) => isOpen && theme.palette.danger.dark};
     transition: fill 0.3s , stroke 0.3s;

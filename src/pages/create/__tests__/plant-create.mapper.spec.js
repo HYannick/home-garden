@@ -1,4 +1,4 @@
-import { mapPlantData, mapPlantServerData } from './plant-create.mapper';
+import { mapPlantData, mapPlantServerData } from '../plant-create.mapper';
 
 const isUUID = (str) => (/^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i).test(str);
 describe('Plant mapper', () => {

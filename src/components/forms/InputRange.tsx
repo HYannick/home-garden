@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { jsx } from '@emotion/core';
 import { Range, getTrackBackground } from 'react-range';
@@ -85,6 +85,15 @@ const MinMax = styled('div')`
 
 const InputRange: React.FC<RangeProps> = ({ field, min, max, step, onChange }) => {
   const [values, setValues] = useState<number[]>([min]);
+
+  useEffect(() => {
+    if (field.value) {
+      setValues([field.value]);
+    }
+    return function cleanup() {
+      setValues([]);
+    };
+  }, [field.value]);
 
   const changeValues = (values: number[]) => {
     setValues(values);

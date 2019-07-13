@@ -28,5 +28,13 @@
       "sensor_id": "Please provide the sensor ID",
       "watering_frequency": "Please provide a watering frequency."
     }
+  },
+  "plant_details": {
+    "loading": "Loading ...",
+    "not_found": "Plant not found",
+    "next_watering": "Next watering in",
+    "days_label": "days",
+    "frequency": "Water every ",
+    "upcoming": "Data is coming ;)"
   }
 }

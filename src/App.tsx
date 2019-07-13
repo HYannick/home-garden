@@ -9,6 +9,7 @@ import BottomNavBar from './layout/bottom-nav-bar/BottomNavBar';
 import PlantCreate from './pages/create/PlantCreate';
 import { userStore } from './api/plants.api';
 import Plant from './pages/plant/Plant';
+import PlantEdit from './pages/edit/PlantEdit';
 
 export const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) => {
   const [hasUserInfos, setUserInfos] = useState(false);
@@ -60,6 +61,7 @@ const App: React.FC = () => {
           <PrivateRoute path="/" exact component={HomeScreen}/>
           <PrivateRoute path="/create" exact component={PlantCreate}/>
           <PrivateRoute path="/plants/:id" exact component={Plant}/>
+          <PrivateRoute path="/plants/:id/edit" exact component={PlantEdit}/>
           <Route path="/onboarding" exact component={OnBoarding}/>
         </Switch>
         <BottomNavBar/>

@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { Field } from 'formik';
 import { css, jsx } from '@emotion/core';
 import { PlantProps } from '../../pages/create/PlantCreate.types';
-import { FormCreate } from '../../pages/create/PlantCreate.styled';
+import { FormCreate } from '../plant-form/PlantForm.styled';
 import InputField from './InputField';
 import Switch from './Switch';
 import InputRange from './InputRange';

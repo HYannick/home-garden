@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlantList should render properly 1`] = `
+<div>
+  <div
+    class="css-ay8j8u-PlantList"
+  >
+    <div
+      class="css-1be9z1v"
+    >
+      <div>
+        <h1
+          class="css-21eb7x"
+        >
+          Your schedule
+        </h1>
+        <h6
+          class="css-og9iw5"
+        >
+          You are all set ! :D
+        </h6>
+      </div>
+      <div
+        class="css-1ytm51z"
+      />
+    </div>
+  </div>
+  <div
+    class="css-1ud10ph"
+  >
+    <div
+      class="css-1bsqms9"
+    />
+    <div
+      class="css-1bsqms9"
+    />
+    <div
+      class="css-1bsqms9"
+    />
+    <div
+      class="css-1bsqms9"
+    />
+  </div>
+</div>
+`;

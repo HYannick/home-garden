@@ -31,7 +31,7 @@ const Input = styled('input')<AlignmentProps>`
 const InputField: React.FC<FieldProps> = ({ field, label, alignment, type }) => (
   <Fragment>
     <Label htmlFor={field.name}>{label}</Label>
-    <Input id={field.name} name={field.name} type={type} onChange={field.onChange} alignment={alignment || ''}/>
+    <Input id={field.name} name={field.name} value={field.value} type={type} onChange={field.onChange} alignment={alignment || ''}/>
   </Fragment>
 );
 

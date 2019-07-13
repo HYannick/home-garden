@@ -11,4 +11,5 @@ export const SideLayer = styled('div')<VariantProps>`
   z-index: -1;
   width: 5rem;
   background-color: ${({ theme, variant }) => theme.palette[variant || 'warning'].light};
+  transition: background-color 0.3s;
 `;

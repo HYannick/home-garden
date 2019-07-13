@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image Fade Should match snapshot when using Image Fade 1`] = `
+<Styled(div)
+  placeholder="linear-gradient(102deg, #8fc6dc, #8fd6dc)"
+>
+  <Styled(img)
+    alt="pic"
+    fit={true}
+    imageCached={false}
+    imageLoaded={false}
+    onLoad={[Function]}
+    src="https://images.unsplash.com/photo-1498955472675-532cdee9d6b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2151&q=80"
+    transitionDuration={0.7}
+  />
+</Styled(div)>
+`;
+
+exports[`Image Fade Should match snapshot when using Image Fade with FitMode 1`] = `
+<Styled(div)
+  placeholder="linear-gradient(102deg, #8fc6dc, #8fd6dc)"
+>
+  <Styled(img)
+    alt="pic"
+    fit={true}
+    imageCached={false}
+    imageLoaded={false}
+    onLoad={[Function]}
+    src="https://images.unsplash.com/photo-1498955472675-532cdee9d6b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2151&q=80"
+    transitionDuration={0.7}
+  />
+</Styled(div)>
+`;

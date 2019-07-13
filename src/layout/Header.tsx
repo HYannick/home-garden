@@ -2,14 +2,28 @@
 import React from 'react';
 import { css, jsx } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import Typography from '../components/Typography';
 import { Overlay } from '../components/Overlay';
+import ImageFade from '../components/image-fade/ImageFade';
 
 interface HeaderProps {
   username: string,
   cover?: string,
   avatarUrl?: string
 }
+
+
+const Avatar = styled('div')`
+  border-radius: 2.5rem;
+  width: 8rem;
+  height: 8rem;
+  border: 0.5rem solid white;
+  position: absolute;
+  right: 1.5rem;
+  bottom: -4rem;
+  overflow: hidden;
+`;
 
 const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
   const { t } = useTranslation();
@@ -22,8 +36,6 @@ const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
       align-items: center;
     `}>
       <div css={css`
-        background: url('${cover}') center center no-repeat;
-        background-size: cover;
         position: absolute;
         overflow: hidden;
         border-radius: 0 0 4.5rem 4.5rem;
@@ -34,6 +46,7 @@ const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
         z-index: -1;
       `}>
         <Overlay color="#333" opacity={0.7}/>
+        <ImageFade src={cover} alt="cover" placeholder="#EFFFE2"/>
       </div>
       <div css={css`
         margin-left: 3.5rem;
@@ -51,17 +64,9 @@ const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
         </Typography>
       </div>
 
-      <div css={css`
-        background: url('${avatarUrl}') center center no-repeat;
-        background-size: cover;
-        border-radius: 2.5rem;
-        width: 8rem;
-        height: 8rem;
-        border: 0.5rem solid white;
-        position: absolute;
-        right: 1.5rem;
-        bottom: -4rem;
-      `}/>
+      <Avatar>
+        <ImageFade src={avatarUrl} alt="username" placeholder="#EFFFE2"/>
+      </Avatar>
     </div>
 
   );

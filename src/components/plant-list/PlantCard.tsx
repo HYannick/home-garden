@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Drop from '../../core/svg/Drop';
+import ImageFade from '../image-fade/ImageFade';
 
 const Card: any = styled(NavLink)`
   display: block;
@@ -85,7 +86,7 @@ const PlantCard: React.FC<any> = ({ plant }) => {
   return (
     <Card to={`/plants/${plant.id}`}>
       <Card.Picture>
-        <img src={plant.picture} alt={plant.name}/>
+        <ImageFade src={plant.picture} alt={plant.name} placeholder="#EFFFE2"/>
         <Card.Overlay/>
       </Card.Picture>
       <Card.Infos>

@@ -7,7 +7,7 @@ export const theme = {
     },
     primary: {
       light: '#EFFFE2',
-      dark: '#B4ED86',
+      dark: '#86b462',
     },
     warning: {
       light: '#FFF3E2',

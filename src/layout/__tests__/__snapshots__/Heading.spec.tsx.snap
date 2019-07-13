@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Heading should render controls 1`] = `
+<div>
+  <div
+    class="css-wrpblf"
+  >
+    <div>
+      <h1
+        class="css-21eb7x"
+      >
+        Your data
+      </h1>
+      <h6
+        class="css-og9iw5"
+      >
+        You have 2 lives left
+      </h6>
+    </div>
+    <div
+      class="css-1ytm51z"
+    >
+      <button
+        class="css-4tevuj"
+      >
+        <div>
+          Icon
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Heading should render properly 1`] = `
 <div>
   <div

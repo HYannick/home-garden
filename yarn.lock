@@ -8883,10 +8883,10 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
-react-range@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/react-range/-/react-range-1.0.7.tgz#a1e5a6dac626f396dee8f108407ae0d78f460af0"
-  integrity sha512-fDikZz/1qAFx16OpuktD63MxNJh8PnztrXcgX2Dy/41CkUqrTjBo1R7kAZTOxnWkIXEak2MMQMIpLMaqqaEDhQ==
+react-range@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-range/-/react-range-1.0.8.tgz#e8f62e07843af82cfda8c38243420cd3a26de761"
+  integrity sha512-6xY7+V5SoEg2YxsrQNlTHsr0q9t0mfaLAbce1NYZK/CBWuGLkarA4i3iUfuVlRzyAYvgCn0U16Ps6NSY37Q7MQ==
 
 react-router-dom@^5.0.1:
   version "5.0.1"
@@ -8999,6 +8999,11 @@ react-testing-library@latest:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-8.0.1.tgz#b3dd43bce3fa88423cf0a23292fb819023c227cc"
   integrity sha512-Gq4JC9r3prA4hYwo7afcbHHMFckO29+5Nrh2KblAEPuK/DWaU0bJE1vtpAgLhzhY9bBirmcgjjIHljHEwGAXKw==
+
+react-use-gesture@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-5.1.2.tgz#3a43526c1174e97b20f966b86b6fb3ecc83dddb0"
+  integrity sha512-qOvwlru1avX6dRPHNWWJ1U6qoZf5ri6WohoIz3J3n0ieRJRzsbD1AO/bCuUgRklf6uwHnKCGzkdCgq5ilv7yRQ==
 
 react@^16.8.6:
   version "16.8.6"

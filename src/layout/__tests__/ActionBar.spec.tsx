@@ -1,6 +1,6 @@
 import React from 'react';
 import 'jest-dom/extend-expect';
-import { cleanup } from '@testing-library/react';
+import { cleanup, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { renderWithTheme } from '../../theme-wrapper';
 import ActionBar from '../ActionBar';
@@ -20,7 +20,7 @@ describe('ActionBar', () => {
         <ActionBar title="New Species" actions={[{
           key: 1,
           icon: () => <div>Icon Edit</div>,
-          onClick: () => console.log('Edit Mode'),
+          onClick: jest.fn(),
         }]} {...routerProps}/>
       </Router>,
     );
@@ -37,15 +37,19 @@ describe('ActionBar', () => {
   });
 
   it('should render the actionBar properly with actions', () => {
+    const actions = [{
+      key: 1,
+      icon: () => <div>Icon Edit</div>,
+      onClick: jest.fn(),
+    }];
     const { getByText } = renderWithTheme(
       <Router>
-        <ActionBar title="New Species" actions={[{
-          key: 1,
-          icon: () => <div>Icon Edit</div>,
-          onClick: () => console.log('Edit Mode'),
-        }]} {...routerProps}/>
+        <ActionBar title="New Species" actions={actions} {...routerProps}/>
       </Router>,
     );
-    expect(getByText(/^Icon Edit/)).toHaveTextContent('Icon Edit');
+    const action = getByText(/^Icon Edit/);
+    expect(action).toHaveTextContent('Icon Edit');
+    fireEvent.click(action);
+    expect(actions[0].onClick).toHaveBeenCalledTimes(1);
   });
 });

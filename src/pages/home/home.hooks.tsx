@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { sortBy } from 'lodash';
-import { plantStore, userStore } from '../../api/plants.api';
+import { PlantsAPI, plantStore, userStore } from '../../api/plants.api';
 import { UserInfosProps } from '../onboarding/onboarding.types';
 import { getDaysLeft } from '../../core/utils/calc_dates';
 
@@ -26,32 +26,82 @@ export const useGetUserInfos = () => {
   };
 };
 
-export const useGetPlant = (id: string) => {
+export const useGetArticles = () => {
+  const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState<any>([]);
+  const [hasErrors, setError] = useState(false);
+  const source = 'invinciblehouseplants';
+
+  useEffect(() => {
+    let didCancel = false;
+    setLoading(true);
+    PlantsAPI.get(`/news?source=${source}`).then(({ data: articles }) => {
+      if (!didCancel) {
+        setArticles(articles);
+      }
+      setLoading(false);
+    }).catch(() => {
+      setError(true);
+      setLoading(false);
+    });
+    return function cleanup() {
+      didCancel = true;
+    };
+  }, [source]);
+
+  return {
+    loading,
+    articles,
+    hasErrors,
+  };
+};
+
+export const useGetPlant = (id: string, withData: boolean = false) => {
   const [loading, setLoading] = useState(true);
   const [hasErrors, setError] = useState('');
   const [plant, setPlant] = useState<any>(null);
+  const [plantData, setPlantData] = useState<any>(null);
+  const [daysLeft, setDaysLeft] = useState(0);
 
   useEffect(() => {
+    let didCancel = false;
     setLoading(true);
     plantStore.getItem(id).then((plant: any) => {
-      setPlant({...plant, days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency)});
+      if (!didCancel) {
+        setPlant(plant);
+        setDaysLeft(getDaysLeft(plant.last_watering_date, plant.watering_frequency));
+      }
       setLoading(false);
     }).catch(() => {
       setError('Plant not found');
       setLoading(false);
     });
+    if (withData) {
+      PlantsAPI.get(`/plant/${id}`).then((plantData: any) => {
+        if (!didCancel) {
+          setPlantData(plantData);
+        }
+      }).catch(e => console.log(e));
+    }
+    return function cleanup() {
+      didCancel = true;
+    };
   }, [id]);
 
   return {
     loading,
     plant,
-    hasErrors
+    plantData,
+    hasErrors,
+    daysLeft,
+    setDaysLeft,
   };
 };
 
 export const useGetPlantList = (nbItems?: number) => {
   const [loading, setLoading] = useState(true);
   const [plants, setPlants] = useState<any[]>([]);
+  const [warning, setWarning] = useState<number>(0);
 
   useEffect(() => {
     setLoading(true);
@@ -69,6 +119,7 @@ export const useGetPlantList = (nbItems?: number) => {
             days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency),
           }))), ['days_left']);
       setPlants(filteredPlantList);
+      setWarning(filteredPlantList.filter(plant => plant.days_left <= 2).length);
       setLoading(false);
     });
   }, [nbItems]);
@@ -76,5 +127,6 @@ export const useGetPlantList = (nbItems?: number) => {
   return {
     loading,
     plants,
+    warning,
   };
 };

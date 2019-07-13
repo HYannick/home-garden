@@ -28,10 +28,11 @@
     "react-dom": "^16.8.6",
     "react-i18next": "^10.11.2",
     "react-image-file-resizer": "^0.2.0",
-    "react-range": "^1.0.7",
+    "react-range": "^1.0.8",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-spring": "^8.0.25",
+    "react-use-gesture": "^5.1.2",
     "typescript": "3.5.2",
     "uuid": "^3.3.2",
     "yup": "latest"
