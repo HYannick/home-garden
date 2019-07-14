@@ -113,7 +113,6 @@ const Feed: React.FC = () => {
   });
 
 
-
   useEffect(() => {
     if (!loading && !hasErrors) {
       setArticle(articles[idx]);

@@ -30,7 +30,7 @@ const PlantCreate: React.FC = ({ history }: any) => {
   };
 
   const submitPlant = async (values: PlantProps, actions: any) => {
-    let payload = {};
+    let payload = {...values};
     if (!values.has_moisture_sensor) {
       actions.setValues({ ...values, need_watering_frequency: true });
       payload = { ...values, need_watering_frequency: true };
@@ -54,7 +54,7 @@ const PlantCreate: React.FC = ({ history }: any) => {
 
   return (
     <Fragment>
-      <ActionBar title={t('plant_create.form_title')}/>
+      <ActionBar title={t('plant_create_title')}/>
       <PlantForm onSubmit={submitPlant} initialValues={initialValues}/>
       <SideLayer/>
     </Fragment>

@@ -1,4 +1,5 @@
 export const mapPlantData = (values) => ({
+  id: values.id,
   name: values.name,
   picture: values.picture,
   last_watering_date: values.last_watering_date,

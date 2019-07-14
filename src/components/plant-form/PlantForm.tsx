@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React  from 'react';
+import React from 'react';
 import { Field, Formik } from 'formik';
 import { css, jsx } from '@emotion/core';
 import { Trans, useTranslation } from 'react-i18next';
@@ -13,13 +13,13 @@ import { Button } from '../Button';
 import { PlantProps } from '../../pages/create/PlantCreate.types';
 import { FormCreate, ImageCreate } from './PlantForm.styled';
 
-interface PlantFormProps{
+interface PlantFormProps {
   onSubmit: any,
   initialValues: PlantProps
 }
 
-const PlantForm: React.FC<PlantFormProps> = ({onSubmit, initialValues}) => {
-  const {t} = useTranslation();
+const PlantForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues }) => {
+  const { t } = useTranslation();
   return (
     <Formik
       validate={(values) => plantCreateValidation(values, t)}
@@ -28,7 +28,6 @@ const PlantForm: React.FC<PlantFormProps> = ({onSubmit, initialValues}) => {
       render={(props) => {
         const { errors, touched, isSubmitting, values, setFieldValue } = props;
         const resetField = (field: string) => setFieldValue(field, '');
-        console.log(values);
         return (
           <FormCreate>
             <Field
@@ -42,7 +41,7 @@ const PlantForm: React.FC<PlantFormProps> = ({onSubmit, initialValues}) => {
               </FormCreate.Title>
               <div css={css`flex:1; padding: 0 2.5rem 0 1rem; margin-top: 2rem;`}>
                 <FormCreate.Control>
-                  <Field type="text" name="name" component={InputField} label={t('plant_create.field_name')}/>
+                  <Field type="text" name="name" component={InputField} label={t('plant_form.field_name')}/>
                   {errors.name && touched.name && <FormCreate.ErrorField>{errors.name}</FormCreate.ErrorField>}
                 </FormCreate.Control>
                 <FormCreate.Control>
@@ -50,7 +49,7 @@ const PlantForm: React.FC<PlantFormProps> = ({onSubmit, initialValues}) => {
                     type="date"
                     name="last_watering_date"
                     component={DatePicker}
-                    label={t('plant_create.field_last_watering_date')}
+                    label={t('plant_form.field_last_watering_date')}
                     onDateSelected={(date: Date) => setFieldValue('last_watering_date', date)}/>
                   {errors.last_watering_date && touched.last_watering_date &&
                   <FormCreate.ErrorField>{errors.last_watering_date}</FormCreate.ErrorField>}
@@ -60,7 +59,7 @@ const PlantForm: React.FC<PlantFormProps> = ({onSubmit, initialValues}) => {
                     type="checkbox"
                     name="has_moisture_sensor"
                     component={Switch}
-                    label={t('plant_create.field_has_moisture_sensor')}
+                    label={t('plant_form.field_has_moisture_sensor')}
                     onChange={(has_moisture_sensor: boolean) => {
                       if (!has_moisture_sensor) resetField('sensor_id');
                       setFieldValue('has_moisture_sensor', has_moisture_sensor);
@@ -74,7 +73,7 @@ const PlantForm: React.FC<PlantFormProps> = ({onSubmit, initialValues}) => {
                       <Field
                         type="range"
                         name="watering_frequency"
-                        label={t('plant_create.field_watering_frequency')}
+                        label={t('plant_form.field_watering_frequency')}
                         component={InputRange} min={2} max={31} step={1}
                         onChange={(value: number) => setFieldValue('watering_frequency', value)}
                       />
@@ -83,7 +82,7 @@ const PlantForm: React.FC<PlantFormProps> = ({onSubmit, initialValues}) => {
                 }
                 <FormCreate.Control>
                   <FormCreate.Infos>
-                    <Trans i18nKey="plant_create.form_notice">
+                    <Trans i18nKey="plant_form.form_notice">
                       Theses data will be added to our database in order to fill it and let you have a better
                       experience with our app. If you want to participate, let us know by <strong>contacting
                       us</strong>!
@@ -91,10 +90,10 @@ const PlantForm: React.FC<PlantFormProps> = ({onSubmit, initialValues}) => {
                   </FormCreate.Infos>
                   <FormCreate.ButtonWrapper>
                     <Button variant="primary" type="submit" disabled={isSubmitting}>
-                      {t('plant_create.button.submit')}
+                      {t('plant_form.button.submit')}
                     </Button>
                     <Button variant="danger" type="reset" disabled={isSubmitting}>
-                      {t('plant_create.button.cancel')}
+                      {t('plant_form.button.cancel')}
                     </Button>
                   </FormCreate.ButtonWrapper>
                 </FormCreate.Control>

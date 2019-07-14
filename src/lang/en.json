@@ -10,8 +10,9 @@
     "greetings": "Greetings, {{username}}!\nDo you want to set an avatar?",
     "done": "We are all set.\nLet’s add some plant to your garden!"
   },
-  "plant_create": {
-    "form_title": "Plant Creation",
+  "plant_create_title": "Plant Creation",
+  "plant_edit_title": "Edit {{plant_name}}",
+  "plant_form": {
     "field_name": "What's it's name?",
     "field_last_watering_date": "When happened the last watering?",
     "field_has_moisture_sensor": "Have you got a moisture sensor?",

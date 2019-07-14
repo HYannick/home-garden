@@ -22,8 +22,7 @@ const StyledDayPicker = styled(DayPicker)`
 `;
 
 const DatePicker: React.FC<DateProps> = ({ field, label, onDateSelected }) => {
-  const [selectedDay, setSelectedDay] = useState<Date | undefined>(undefined);
-
+  const [selectedDay, setSelectedDay] = useState<Date | undefined>(new Date(field.value));
   const handleDateClick = (day: Date, { selected }: DayModifiers) => {
     if (selected) {
       setSelectedDay(undefined);

@@ -14,7 +14,7 @@ const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Funct
         margin: 1rem 0 1.5rem;
         color: ${theme.palette.grey.dark};
       `}>
-      {t('plant_create.sensor_notice')}
+      {t('plant_form.sensor_notice')}
     </div>
     <FormCreate.Control>
       <div css={css`
@@ -46,7 +46,7 @@ const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Funct
           <div css={css`margin: 2rem 1rem`}>
             <Field
               type="range" name="watering_frequency"
-              label={t('plant_create.field_watering_frequency')}
+              label={t('plant_form.field_watering_frequency')}
               component={InputRange} min={2} max={31} step={1}
               onChange={(value: number) => setFieldValue('watering_frequency', value)}
             />

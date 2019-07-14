@@ -21,27 +21,27 @@ const PlantEdit: React.FC = ({ history, match }: any) => {
   const { t } = useTranslation();
   const { loading, plant, hasErrors } = useGetPlant(match.params.id, false);
   const submitPlant = async (values: PlantProps, actions: any) => {
-    console.log('Submit...');
-    // let payload = {};
-    // if (!values.has_moisture_sensor) {
-    //   actions.setValues({ ...values, need_watering_frequency: true });
-    //   payload = { ...values, need_watering_frequency: true };
-    // }
-    // actions.setSubmitting(true);
-    // try {
-    //   /* TODO: should check the sensorId and connect, if there is one
-    //    * if not return an error on the sensor_id
-    //    */
-    //   // const { data: plant } = await PlantsAPI.post('/plants', getFormData(mapPlantData(values)));
-    //   // should reformat the image
-    //   const updated_plant_list = mapPlantData(payload);
-    //   await plantStore.setItem(updated_plant_list.id, updated_plant_list);
-    //   history.push('/');
-    //   actions.setSubmitting(false);
-    // } catch (e) {
-    //   // catch Error
-    //   actions.setSubmitting(false);
-    // }
+    let payload = {...values};
+    if (!values.has_moisture_sensor) {
+      actions.setValues({ ...values, need_watering_frequency: true });
+      payload = { ...values, need_watering_frequency: true };
+    }
+    const updated_plant_list = mapPlantData(payload);
+    actions.setSubmitting(true);
+    try {
+      /* TODO: should check the sensorId and connect, if there is one
+       * if not return an error on the sensor_id
+       */
+      // const { data: plant } = await PlantsAPI.post('/plants', getFormData(mapPlantData(values)));
+      // should reformat the image
+
+      await plantStore.setItem(plant.id, updated_plant_list);
+      history.push('/');
+      actions.setSubmitting(false);
+    } catch (e) {
+      // catch Error
+      actions.setSubmitting(false);
+    }
   };
   if (loading) {
     return <div>Loading ...</div>;
@@ -53,8 +53,12 @@ const PlantEdit: React.FC = ({ history, match }: any) => {
 
   return (
     <Fragment>
-      <ActionBar title={t('plant_create.form_title')}/>
-      <PlantForm onSubmit={submitPlant} initialValues={plant}/>
+      <ActionBar title={t('plant_edit_title', {plant_name: plant.name})}/>
+      <PlantForm onSubmit={submitPlant} initialValues={{
+        ...plant,
+        has_moisture_sensor: !!plant.sensor_id,
+        need_watering_frequency: false
+      }}/>
       <SideLayer/>
     </Fragment>
   );
