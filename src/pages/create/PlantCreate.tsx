@@ -55,7 +55,7 @@ const PlantCreate: React.FC = ({ history }: any) => {
   return (
     <Fragment>
       <ActionBar title={t('plant_create_title')}/>
-      <PlantForm onSubmit={submitPlant} initialValues={initialValues}/>
+      <PlantForm onSubmit={submitPlant} initialValues={initialValues} submitLabel={t('plant_form.button.submit')}/>
       <SideLayer/>
     </Fragment>
   );

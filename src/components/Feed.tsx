@@ -21,6 +21,11 @@ const Article = styled('a')`
 `;
 const MediaWrapper = styled('div')`
   position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  img {
+    border-radius: 2rem;
+  }
 `;
 const Caption = styled('div')`
   position: absolute;
@@ -42,11 +47,10 @@ const Caption = styled('div')`
 `;
 const FeedWrapper = styled('div')`
   position: relative;
-  margin-top: 5rem;
   padding: 0 2rem;
 `;
 const Padding = styled('div')`
-  padding: 0 0 0 1rem;
+  padding: 0 0 0 2rem;
 `;
 const FeedContent = styled('div')`
   position: relative;
@@ -106,7 +110,7 @@ const Feed: React.FC = () => {
     leave: { opacity: 0 },
   });
 
-  const articleTransition = useTransition(article, article => article.id, {
+  const articleTransition = useTransition(article, article => article && article.id, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
@@ -156,7 +160,7 @@ const Feed: React.FC = () => {
               </animated.div>;
             }
 
-            if (hasErrors) {
+            if (hasErrors || !articles.length) {
               return <animated.div style={props} key={key}><Placeholder variant="warning" stopAnimate>No Feed
                 :(</Placeholder>
               </animated.div>;

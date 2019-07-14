@@ -30,22 +30,22 @@ export const useGetArticles = () => {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState<any>([]);
   const [hasErrors, setError] = useState(false);
-  const source = 'invinciblehouseplants';
+  const source = 'vertbobo';
 
   useEffect(() => {
-    let didCancel = false;
+    let isSubscribed = true;
     setLoading(true);
     PlantsAPI.get(`/news?source=${source}`).then(({ data: articles }) => {
-      if (!didCancel) {
+      if (isSubscribed) {
         setArticles(articles);
+        setLoading(false);
       }
-      setLoading(false);
     }).catch(() => {
       setError(true);
       setLoading(false);
     });
     return function cleanup() {
-      didCancel = true;
+      isSubscribed = false;
     };
   }, [source]);
 
@@ -86,7 +86,7 @@ export const useGetPlant = (id: string, withData: boolean = false) => {
     return function cleanup() {
       didCancel = true;
     };
-  }, [id]);
+  }, [id, withData]);
 
   return {
     loading,
@@ -95,6 +95,41 @@ export const useGetPlant = (id: string, withData: boolean = false) => {
     hasErrors,
     daysLeft,
     setDaysLeft,
+  };
+};
+
+export const useGetNeedyPlantsList = (nbItems?: number) => {
+  const [loading, setLoading] = useState(true);
+  const [plants, setPlants] = useState<any[]>([]);
+  const [warning, setWarning] = useState<number>(0);
+
+  useEffect(() => {
+    setLoading(true);
+    const plantList: any = {};
+    plantStore.iterate((value, key, iterationNumber) => {
+      if (nbItems && (iterationNumber > nbItems)) {
+        return;
+      }
+      plantList[key] = value;
+    }).then(() => {
+      const filteredPlantList =
+        sortBy(Object.values(plantList)
+          .map(((plant: any) => ({
+            ...plant,
+            days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency),
+          }))), ['days_left']);
+
+      const needyPlants = filteredPlantList.filter(plant => plant.days_left <= 2);
+      setPlants(needyPlants);
+      setWarning(needyPlants.length);
+      setLoading(false);
+    });
+  }, [nbItems]);
+
+  return {
+    loading,
+    plants,
+    warning,
   };
 };
 
@@ -119,7 +154,8 @@ export const useGetPlantList = (nbItems?: number) => {
             days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency),
           }))), ['days_left']);
       setPlants(filteredPlantList);
-      setWarning(filteredPlantList.filter(plant => plant.days_left <= 2).length);
+      const needyPlants = filteredPlantList.filter(plant => plant.days_left <= 2);
+      setWarning(needyPlants.length);
       setLoading(false);
     });
   }, [nbItems]);

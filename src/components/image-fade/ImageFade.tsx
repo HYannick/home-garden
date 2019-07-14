@@ -12,7 +12,7 @@ const Container = styled('div')<ContainerProps>`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  backgroundSize: cover;
+  background-size: cover;
   background-color: ${({ placeholder }) => placeholder};
 `;
 

@@ -69,7 +69,7 @@ export const BottomNavBar: React.FC<RouteComponentProps> = ({ location }) => {
         </div>
         <OptionsWrapper>
           <ul>
-            <li><NavLink to="/create">Take a photo</NavLink></li>
+            <li><NavLink to="/create">Add your plant</NavLink></li>
             <li><Divider/></li>
             <li><NavLink to="/search">Search in library</NavLink></li>
           </ul>

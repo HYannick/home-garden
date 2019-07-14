@@ -40,7 +40,7 @@ FormCreate.Title = styled('div')`
   position: relative;
   & > p {
     position: absolute;
-    top: 25rem;
+    top: 15rem;
     left: 30%;
     width: 20rem;
     margin: 0;

@@ -15,10 +15,11 @@ import { FormCreate, ImageCreate } from './PlantForm.styled';
 
 interface PlantFormProps {
   onSubmit: any,
-  initialValues: PlantProps
+  initialValues: PlantProps,
+  submitLabel: string
 }
 
-const PlantForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues }) => {
+const PlantForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues, submitLabel }) => {
   const { t } = useTranslation();
   return (
     <Formik
@@ -90,7 +91,7 @@ const PlantForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues }) => {
                   </FormCreate.Infos>
                   <FormCreate.ButtonWrapper>
                     <Button variant="primary" type="submit" disabled={isSubmitting}>
-                      {t('plant_form.button.submit')}
+                      {submitLabel}
                     </Button>
                     <Button variant="danger" type="reset" disabled={isSubmitting}>
                       {t('plant_form.button.cancel')}

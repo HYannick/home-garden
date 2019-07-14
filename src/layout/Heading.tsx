@@ -11,7 +11,6 @@ const HeadingWrapper = styled('div')<VariantType>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
   & h1 {
     font-size: 3rem;
     color: ${({ theme }) => theme.palette.grey.dark};

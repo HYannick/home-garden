@@ -65,7 +65,7 @@ const PlantList: React.FC = () => {
       <div css={css`
           padding: 2rem 3.5rem 0;
       `}>
-        <Heading variant="warning" title="Your schedule" subtitle={renderMessage(t, warning)}/>
+        <Heading variant="warning" title="Your plants" subtitle={renderMessage(t, warning)}/>
       </div>
       <List>
         {plantsLoading ? (

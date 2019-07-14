@@ -21,6 +21,7 @@
     "sensor_notice": "Enter the soil moisture sensor ID.\nYou can get it after it initialization.",
     "button": {
       "submit": "Create",
+      "editSubmit": "Update",
       "cancel": "Cancel"
     },
     "errors": {

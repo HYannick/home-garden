@@ -8,6 +8,7 @@ import Header from '../../layout/Header';
 import PlantList from '../../components/plant-list/PlantList';
 import Feed from '../../components/Feed';
 import { useGetUserInfos } from './home.hooks';
+import Schedule from '../../components/Schedule';
 
 
 const sampleCover = 'https://images.unsplash.com/photo-1455793067932-146d5b4a694f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=300&q=80';
@@ -26,8 +27,9 @@ const HomeScreen: React.FC = () => {
   return (
     <Overflow>
       <Header avatarUrl={userInfos.avatar || defaultAvatar} username={userInfos.username} cover={sampleCover}/>
-      <PlantList/>
+      <Schedule />
       <Feed/>
+      <PlantList/>
       <Spacer/>
     </Overflow>
   );

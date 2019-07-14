@@ -54,7 +54,7 @@ const PlantEdit: React.FC = ({ history, match }: any) => {
   return (
     <Fragment>
       <ActionBar title={t('plant_edit_title', {plant_name: plant.name})}/>
-      <PlantForm onSubmit={submitPlant} initialValues={{
+      <PlantForm onSubmit={submitPlant} submitLabel={t('plant_form.button.editSubmit')}  initialValues={{
         ...plant,
         has_moisture_sensor: !!plant.sensor_id,
         need_watering_frequency: false
