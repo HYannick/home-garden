@@ -36,7 +36,7 @@ import { StatsTypes } from './Plant.types';
 import PlantStats from './components/PlantStats';
 
 const PlantData = ({ t, plant, daysLeft }: any) => {
-  if (!plant) {
+  if (!plant || (plant && !plant.is_validated)) {
     return (
       <PlaceHolder>
         <DataProcessing/>
