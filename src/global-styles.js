@@ -5,7 +5,7 @@ export const globalStyles = css`
    font-size: 62.5%;
   }
   body {
-   font-size: 1.4rem;
+   font-size: 1.4rem; 
   }
   * {
     box-sizing: border-box;

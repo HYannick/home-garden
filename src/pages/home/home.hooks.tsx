@@ -26,37 +26,63 @@ export const useGetUserInfos = () => {
   };
 };
 
-export const useGetArticles = () => {
-  const [loading, setLoading] = useState(true);
-  const [articles, setArticles] = useState<any>([]);
-  const [hasErrors, setError] = useState(false);
-  const source = 'vertbobo';
+export const useGetPlantsCount = () => {
+  const [loading, setLoading] = useState(false);
+  const [counters, setCounters] = useState({
+    danger: 0,
+    warning: 0,
+    healthy: 0,
+    total: 0,
+  });
 
   useEffect(() => {
-    let isSubscribed = true;
     setLoading(true);
-    PlantsAPI.get(`/news?source=${source}`).then(({ data: articles }) => {
-      if (isSubscribed) {
-        setArticles(articles);
+    plantStore.length().then((total) => setCounters((prevCounters) => ({ ...prevCounters, total })));
+    const plantList: any = {};
+    plantStore.iterate((value, key) => {
+      plantList[key] = value;
+    })
+      .then(() => {
+        const filteredPlantList =
+          sortBy(Object.values(plantList)
+            .map(((plant: any) => ({
+              ...plant,
+              days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency),
+            }))), ['days_left']);
+
+        const counting = filteredPlantList.reduce((prev, curr: any) => {
+          if (curr.days_left <= 0) {
+            return { ...prev, danger: prev.danger + 1 };
+          }
+
+          if (curr.days_left <= 2) {
+            return { ...prev, warning: prev.warning + 1 };
+          }
+
+          if (curr.days_left > 2) {
+            return { ...prev, healthy: prev.healthy + 1 };
+          }
+          return prev;
+        }, {
+          danger: 0,
+          warning: 0,
+          healthy: 0,
+        });
+        setCounters((prevCounters) => ({ ...prevCounters, ...counting }));
         setLoading(false);
-      }
-    }).catch(() => {
-      setError(true);
-      setLoading(false);
-    });
-    return function cleanup() {
-      isSubscribed = false;
-    };
-  }, [source]);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
 
   return {
     loading,
-    articles,
-    hasErrors,
+    counters,
   };
 };
 
-export const useGetPlant = (id: string, withData: boolean = false) => {
+export const useGetPlant = (id: string) => {
   const [loading, setLoading] = useState(true);
   const [hasErrors, setError] = useState('');
   const [plant, setPlant] = useState<any>(null);
@@ -76,17 +102,24 @@ export const useGetPlant = (id: string, withData: boolean = false) => {
       setError('Plant not found');
       setLoading(false);
     });
-    if (withData) {
-      PlantsAPI.get(`/plant/${id}`).then((plantData: any) => {
-        if (!didCancel) {
-          setPlantData(plantData);
-        }
-      }).catch(e => console.log(e));
-    }
     return function cleanup() {
       didCancel = true;
     };
-  }, [id, withData]);
+  }, [id]);
+
+  useEffect(() => {
+    let didCancel = false;
+    if(plant) {
+      PlantsAPI.get(`/plants/${plant.DBPlantID}`).then(({data: plantData}: any) => {
+        if (!didCancel) {
+          setPlantData(plantData);
+        }
+        return function cleanup() {
+          didCancel = true;
+        };
+      }).catch(e => console.log(e));
+    }
+  }, [plant]);
 
   return {
     loading,
@@ -95,74 +128,5 @@ export const useGetPlant = (id: string, withData: boolean = false) => {
     hasErrors,
     daysLeft,
     setDaysLeft,
-  };
-};
-
-export const useGetNeedyPlantsList = (nbItems?: number) => {
-  const [loading, setLoading] = useState(true);
-  const [plants, setPlants] = useState<any[]>([]);
-  const [warning, setWarning] = useState<number>(0);
-
-  useEffect(() => {
-    setLoading(true);
-    const plantList: any = {};
-    plantStore.iterate((value, key, iterationNumber) => {
-      if (nbItems && (iterationNumber > nbItems)) {
-        return;
-      }
-      plantList[key] = value;
-    }).then(() => {
-      const filteredPlantList =
-        sortBy(Object.values(plantList)
-          .map(((plant: any) => ({
-            ...plant,
-            days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency),
-          }))), ['days_left']);
-
-      const needyPlants = filteredPlantList.filter(plant => plant.days_left <= 2);
-      setPlants(needyPlants);
-      setWarning(needyPlants.length);
-      setLoading(false);
-    });
-  }, [nbItems]);
-
-  return {
-    loading,
-    plants,
-    warning,
-  };
-};
-
-export const useGetPlantList = (nbItems?: number) => {
-  const [loading, setLoading] = useState(true);
-  const [plants, setPlants] = useState<any[]>([]);
-  const [warning, setWarning] = useState<number>(0);
-
-  useEffect(() => {
-    setLoading(true);
-    const plantList: any = {};
-    plantStore.iterate((value, key, iterationNumber) => {
-      if (nbItems && (iterationNumber > nbItems)) {
-        return;
-      }
-      plantList[key] = value;
-    }).then(() => {
-      const filteredPlantList =
-        sortBy(Object.values(plantList)
-          .map(((plant: any) => ({
-            ...plant,
-            days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency),
-          }))), ['days_left']);
-      setPlants(filteredPlantList);
-      const needyPlants = filteredPlantList.filter(plant => plant.days_left <= 2);
-      setWarning(needyPlants.length);
-      setLoading(false);
-    });
-  }, [nbItems]);
-
-  return {
-    loading,
-    plants,
-    warning,
   };
 };

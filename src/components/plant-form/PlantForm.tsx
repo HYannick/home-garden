@@ -42,8 +42,7 @@ const PlantForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues, submitLa
               </FormCreate.Title>
               <div css={css`flex:1; padding: 0 2.5rem 0 1rem; margin-top: 2rem;`}>
                 <FormCreate.Control>
-                  <Field type="text" name="name" component={InputField} label={t('plant_form.field_name')}/>
-                  {errors.name && touched.name && <FormCreate.ErrorField>{errors.name}</FormCreate.ErrorField>}
+                  <Field type="text" name="custom_name" component={InputField} label={t('plant_form.field_name')}/>
                 </FormCreate.Control>
                 <FormCreate.Control>
                   <Field

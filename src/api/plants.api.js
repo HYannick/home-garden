@@ -2,7 +2,7 @@ import axios from 'axios';
 import localForage from 'localforage';
 
 export const PlantsAPI = axios.create({
-  baseURL: 'http://127.0.0.1:5000/api',
+  baseURL: process.env.NODE_ENV === 'production' ? 'https://py-plant.herokuapp.com/api' : 'http://127.0.0.1:5000/api',
   timeout: 10000,
 });
 

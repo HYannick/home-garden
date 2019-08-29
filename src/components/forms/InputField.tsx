@@ -18,7 +18,7 @@ interface AlignmentProps {
 }
 
 const Input = styled('input')<AlignmentProps>`
-  border: 0.3rem solid ${({ theme }) => theme.palette.grey.dark};
+  border: 0.3rem solid ${({ theme }) => theme.palette.grey.light};
   outline: ${({ theme }) => theme.palette.grey.light};
   padding: 1rem 2rem;
   text-align: ${({ alignment }) => alignment || 'left'};

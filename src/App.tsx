@@ -10,6 +10,23 @@ import PlantCreate from './pages/create/PlantCreate';
 import { userStore } from './api/plants.api';
 import Plant from './pages/plant/Plant';
 import PlantEdit from './pages/edit/PlantEdit';
+import SearchList from './pages/search-list/SearchList';
+import Profile from './pages/profile/Profile';
+import PlantsList from './pages/plant-list/PlantsList';
+import PlantInfosCreate from './pages/plant-infos-create/PlantInfosCreate';
+
+
+export const CreateRoute: React.FC<any> = (props) => {
+  const { location: { state } } = props;
+  if (!state || (state && !state.plantInfos)) {
+    return <Redirect to={{
+      pathname: '/plant-infos-create',
+      state: { from: props.location },
+    }}/>;
+  }
+  return <PrivateRoute {...props} />;
+};
+
 
 export const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) => {
   const [hasUserInfos, setUserInfos] = useState(false);
@@ -59,7 +76,11 @@ const App: React.FC = () => {
       <Router>
         <Switch>
           <PrivateRoute path="/" exact component={HomeScreen}/>
-          <PrivateRoute path="/create" exact component={PlantCreate}/>
+          <CreateRoute path="/create" exact component={PlantCreate}/>
+          <PrivateRoute path="/plant-infos-create" exact component={PlantInfosCreate}/>
+          <PrivateRoute path="/search" exact component={SearchList}/>
+          <PrivateRoute path="/plants" exact component={PlantsList}/>
+          <PrivateRoute path="/profile" exact component={Profile}/>
           <PrivateRoute path="/plants/:id" exact component={Plant}/>
           <PrivateRoute path="/plants/:id/edit" exact component={PlantEdit}/>
           <Route path="/onboarding" exact component={OnBoarding}/>

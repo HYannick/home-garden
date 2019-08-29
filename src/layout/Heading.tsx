@@ -37,6 +37,7 @@ const HeadingWrapper = styled('div')<VariantType>`
 
 interface ControlsProps {
   key: number,
+  disabled: boolean,
   icon: React.FC<{ fill?: string, stroke?: string }>,
   onClick: MouseEventHandler
 }
@@ -68,6 +69,17 @@ const Control = styled('button')`
   outline: ${({ theme }) => theme.palette.primary.light};
   position: relative;
   transition: 0.1s;
+  &:disabled {
+    background-color: ${({ theme }) => theme.palette.grey.light};
+    > svg path {
+      fill: ${({ theme }) => theme.palette.grey.dark};
+      stroke: ${({ theme }) => theme.palette.grey.dark};
+      stroke-width: 5;
+    }
+    &:after {
+      box-shadow: 0 0.6rem 0 0 ${({ theme }) => theme.palette.grey.dark};
+    }
+  }
   &:active {
     transform: translateY(0.6rem);
     &:after {
@@ -106,8 +118,8 @@ const Heading: React.FC<HeadingProps> = ({ title, subtitle, variant = 'primary',
         <Typography variant="body" weight="400" tag="h6" noMargin>{subtitle}</Typography>
       </div>
       <Controls>
-        {controls && controls.map(({ key, icon: Icon, onClick }) => (
-          <Control key={key} onClick={onClick}>
+        {controls && controls.map(({ key, icon: Icon, onClick, disabled }) => (
+          <Control key={key} onClick={onClick} disabled={disabled}>
             <Icon/>
           </Control>
         ))}

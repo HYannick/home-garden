@@ -1,9 +1,6 @@
-const plantCreateValidation = ({ name, last_watering_date, has_moisture_sensor, sensor_id, watering_frequency, need_watering_frequency }, t) => {
+const plantCreateValidation = ({ last_watering_date, has_moisture_sensor, sensor_id, watering_frequency, need_watering_frequency }, t) => {
   const errors = {};
 
-  if (!name) {
-    errors.name = t('plant_form.errors.name');
-  }
   if (!last_watering_date) {
     errors.last_watering_date = t('plant_form.errors.last_watering_date');
   }

@@ -84,6 +84,13 @@ export const NavWrapper = styled('div')`
         stroke: ${({ theme }) => theme.palette.primary.dark};
       }
     }
+    &.no-stroke {
+      & svg path {
+        fill: ${({ theme }) => theme.palette.primary.dark};
+        stroke: none;
+        transition: fill 0.3s , stroke 0.3s;
+      }
+    }
     & svg path {
       fill: ${({ theme }) => theme.palette.primary.dark};
       stroke: ${({ theme }) => theme.palette.primary.dark};

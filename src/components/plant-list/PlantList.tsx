@@ -2,15 +2,13 @@
 import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
 import { css, jsx } from '@emotion/core';
-import { useGetPlantList } from '../../pages/home/home.hooks';
+import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 import Heading from '../../layout/Heading';
 import { pulse } from '../../core/utils/animations';
+import List from '../forms/List';
 import PlantCard from './PlantCard';
-import { useTranslation } from 'react-i18next';
-
-const List = styled('div')`
-  padding: 2rem 2rem;
-`;
+import { useGetPlantList } from './PlantList.hooks';
 
 interface SkeletonProps {
   nbRows: number
@@ -51,31 +49,45 @@ const Skeleton: React.FC<SkeletonProps> = ({ nbRows }) => {
   );
 };
 
-export const renderMessage = (t: any, warning: number) => {
-  if (warning >= 2) return `${warning} plants need your attention`;
-  if (warning === 1) return `${warning} plant need your attention`;
-  return 'You are all set ! :D';
-};
+const Spacer = styled('div')`
+  padding: 0 2rem;
+`;
+
+const ViewMore = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 2rem 3rem;
+  color: ${({ theme }) => theme.palette.primary.dark};
+  margin: 2rem;
+  border-radius: 1rem 1rem 5rem 5rem;
+  font-size: 1.6rem;
+  border: 0.2rem solid ${({ theme }) => theme.palette.primary.dark};
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.dark};
+    color: ${({ theme }) => theme.palette.primary.light};
+  } 
+`;
 
 const PlantList: React.FC = () => {
-  const { loading: plantsLoading, plants, warning } = useGetPlantList();
-  const {t} = useTranslation();
+  const { loading: plantsLoading, plants, warning } = useGetPlantList({onlyHealthy: false, range: [0, 4]});
+  const { t } = useTranslation();
+
   return (
     <Fragment>
       <div css={css`
           padding: 2rem 3.5rem 0;
       `}>
-        <Heading variant="warning" title="Your plants" subtitle={renderMessage(t, warning)}/>
+        <Heading
+          variant="warning" title="Your Plants"
+          subtitle={warning !== 0 ? t('needy_plants.needy', { count: warning }) : t('needy_plants.all_set')}/>
       </div>
-      <List>
-        {plantsLoading ? (
-          <Skeleton data-testid="skeleton" nbRows={4}/>
-        ) : (
-          plants.map(plant => (
-            <PlantCard key={plant.id} plant={plant}/>
-          ))
-        )}
-      </List>
+      <List items={plants} card={(props: any) => <PlantCard {...props} path={`/plants/${props.plant.id}`} />}/>
+      {plantsLoading && <Spacer><Skeleton nbRows={3}/></Spacer>}
+      <ViewMore to="/plants">View all plants</ViewMore>
     </Fragment>
   );
 };

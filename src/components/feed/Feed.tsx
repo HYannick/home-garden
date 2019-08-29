@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { useTransition, animated } from 'react-spring';
-import { useGetArticles } from '../pages/home/home.hooks';
-import ArrowRight from '../core/svg/ArrowRight';
-import { Directions } from '../pages/onboarding/onboarding.types';
-import Heading from '../layout/Heading';
-import ArrowLeft from '../core/svg/ArrowLeft';
-import { VariantProps } from '../interfaces';
-import { pulse } from '../core/utils/animations';
-import { Overlay } from './Overlay';
-import ImageFade from './image-fade/ImageFade';
+import ArrowRight from '../../core/svg/ArrowRight';
+import { Directions } from '../../pages/onboarding/onboarding.types';
+import Heading from '../../layout/Heading';
+import ArrowLeft from '../../core/svg/ArrowLeft';
+import { VariantProps } from '../../interfaces';
+import { pulse } from '../../core/utils/animations';
+import { Overlay } from '../Overlay';
+import ImageFade from '../image-fade/ImageFade';
+import { useGetArticles } from './Feed.hooks';
 
 
 const Article = styled('a')`
@@ -138,11 +138,13 @@ const Feed: React.FC = () => {
     {
       key: 1,
       icon: ArrowRight,
+      disabled: !(idx > 0),
       onClick: () => handleChange(Directions.PREV),
     },
     {
       key: 2,
       icon: ArrowLeft,
+      disabled: !(idx < articles.length - 1),
       onClick: () => handleChange(Directions.NEXT),
     },
   ];
@@ -150,7 +152,7 @@ const Feed: React.FC = () => {
   return (
     <FeedWrapper>
       <Padding>
-        <Heading variant="primary" title="Your Feed" subtitle="Amazing tips and advices!" controls={feedControls}/>
+        <Heading variant="primary" title="What's up today?" subtitle="Get Amazing tips and advices!" controls={feedControls}/>
       </Padding>
       <FeedContent>
         {

@@ -6,7 +6,7 @@ import Drop from '../../core/svg/Drop';
 import Add from '../../core/svg/Add';
 import Profile from '../../core/svg/Profile';
 import {
-  AddWrapper,
+  // AddWrapper,
   Divider,
   IconWrapper,
   Infos,
@@ -21,7 +21,7 @@ export const BottomNavBar: React.FC<RouteComponentProps> = ({ location }) => {
   const [isOpen, expand] = useState(false);
 
   const hide = () => expand(false);
-  const toggle = () => expand(!isOpen);
+  // const toggle = () => expand(!isOpen);
 
   useEffect(() => {
     hide();
@@ -55,11 +55,16 @@ export const BottomNavBar: React.FC<RouteComponentProps> = ({ location }) => {
                 <Drop stroke={iconDefaultColor} fill="none"/>
               </IconWrapper>
             </NavLink>
-            <AddWrapper isOpen={isOpen}>
-              <IconWrapper data-testid="add" onClick={toggle} isOpen={isOpen}>
+            <NavLink to="/search" exact activeClassName="nav__link--active" className="nav__link no-stroke">
+              <IconWrapper data-testid="add">
                 <Add fill={iconDefaultColor}/>
               </IconWrapper>
-            </AddWrapper>
+            </NavLink>
+            {/* <AddWrapper isOpen={isOpen}> */}
+            {/*  <IconWrapper data-testid="add" onClick={toggle} isOpen={isOpen}> */}
+            {/*    <Add fill={iconDefaultColor}/> */}
+            {/*  </IconWrapper> */}
+            {/* </AddWrapper> */}
             <NavLink to="/profile" exact activeClassName="nav__link--active" className="nav__link">
               <IconWrapper>
                 <Profile fill={iconDefaultColor} stroke={iconDefaultColor}/>

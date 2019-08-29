@@ -1,5 +1,6 @@
 export interface PlantProps {
   name: string,
+  custom_name: string,
   picture: File | null,
   last_watering_date: string,
   has_moisture_sensor: boolean,

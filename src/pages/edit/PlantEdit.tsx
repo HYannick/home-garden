@@ -19,7 +19,7 @@ import { PlantProps } from './PlantEdit.types';
 
 const PlantEdit: React.FC = ({ history, match }: any) => {
   const { t } = useTranslation();
-  const { loading, plant, hasErrors } = useGetPlant(match.params.id, false);
+  const { loading, plant, hasErrors } = useGetPlant(match.params.id);
   const submitPlant = async (values: PlantProps, actions: any) => {
     let payload = {...values};
     if (!values.has_moisture_sensor) {
@@ -54,12 +54,12 @@ const PlantEdit: React.FC = ({ history, match }: any) => {
   return (
     <Fragment>
       <ActionBar title={t('plant_edit_title', {plant_name: plant.name})}/>
-      <PlantForm onSubmit={submitPlant} submitLabel={t('plant_form.button.editSubmit')}  initialValues={{
+      <PlantForm onSubmit={submitPlant} submitLabel={t('plant_form.button.edit_submit')}  initialValues={{
         ...plant,
         has_moisture_sensor: !!plant.sensor_id,
         need_watering_frequency: false
       }}/>
-      <SideLayer/>
+      <SideLayer fullHeight/>
     </Fragment>
   );
 };

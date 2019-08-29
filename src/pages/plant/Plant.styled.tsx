@@ -119,11 +119,54 @@ export const Frequency = styled('span')`
   font-size: 2rem;
   color: ${({ theme }) => theme.palette.grey.medium};
 `;
-export const PlantInfos = styled('div')``;
-export const Description = styled('div')``;
-export const GeneralStats = styled('div')``;
-export const MoistureSensorStats = styled('div')``;
-export const Advices = styled('div')``;
+export const PlantInfos: any = styled('div')`
+  padding: 0 3rem 0 6rem;
+  position: relative;
+`;
+export const Label = styled('div')<VariantProps>`
+  font-size: 2rem;
+  color: ${({ theme, variant }) => theme.palette[variant || 'primary'].dark};
+  margin-bottom: 1rem;
+  font-weight: bold;
+  display: block;
+  position: absolute;
+  transform: rotate(-90deg);
+  top: 8rem;
+  left: -1.6rem;
+`;
+export const DropWrapper = styled('div')`
+  svg {
+    width: 2rem;
+    height: 2rem;
+    path {
+      stroke-width: 1.5;
+    }
+  }
+`;
+
+PlantInfos.Names = styled('div')`
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    h6 {
+      font-weight: bold;
+      font-size: 1.6rem;
+      margin: 0;
+    }
+    p {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+  }
+`;
+PlantInfos.Description = styled('p')`
+  margin: 0;
+  font-size: 1.6rem;
+  text-align: justify;
+`;
+
 export const PlaceHolder = styled('div')`
   margin: 6rem 2rem 0rem 6rem;
   text-align: center;
@@ -139,4 +182,28 @@ export const PlaceHolder = styled('div')`
     margin: 0;
     color: ${({ theme }) => theme.palette.grey.light}
   }
+`;
+
+export const PlantTips: any = styled('div')`
+  position: relative;
+  background-color: ${({ theme }) => theme.palette.primary.light};
+  border: 0.1rem solid ${({ theme }) => theme.palette.primary.dark};
+  border-left: none;
+  border-radius: 0 3rem 3rem 0;
+  margin-top: 8rem;
+  margin-right: 6rem;
+  padding: 2rem 3rem;
+  p {
+    font-size: 1.6rem;
+    color: ${({ theme }) => theme.palette.primary.dark};
+    text-align: justify;
+  }
+`;
+
+PlantTips.Label = styled('div')`
+  position: absolute;
+  top: -3.8rem;
+  right: 2rem;
+  font-size: 2.5rem;
+  color: ${({ theme }) => theme.palette.primary.dark};
 `;

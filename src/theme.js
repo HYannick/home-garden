@@ -3,10 +3,11 @@ export const theme = {
     light: '#FFFFFF',
     blue: {
       light: '#D6FCFF',
-      dark: '#90EAFF',
+      dark: '#4f8393',
     },
     primary: {
       light: '#EFFFE2',
+      medium: '#B4ED86',
       dark: '#86b462',
     },
     warning: {

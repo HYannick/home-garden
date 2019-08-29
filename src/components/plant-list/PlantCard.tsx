@@ -10,11 +10,11 @@ const Card: any = styled(NavLink)`
   margin-bottom: 4rem;
 `;
 
-Card.Picture = styled('div')`
+Card.Picture = styled('div')<{ hasSearchCard: boolean }>`
   position: relative;
   border-radius: 2rem;
   overflow: hidden;
-  height: 12rem;
+  height: ${({ hasSearchCard }) => hasSearchCard ? '8rem' : '12rem'};
   > img {
     width: 100%;
     height: 100%;
@@ -71,33 +71,40 @@ Card.Chip = styled('div')<{ variant: string }>`
 
 export const setVariant = (days_left: number) => {
   let variant = 'primary';
-  if(days_left < 3) {
+  if (days_left < 3) {
     variant = 'warning';
   }
 
-  if(days_left === 0) {
+  if (days_left === 0) {
     variant = 'danger';
   }
   return variant;
 };
 
-const PlantCard: React.FC<any> = ({ plant }) => {
-
-  return (
-    <Card to={`/plants/${plant.id}`}>
-      <Card.Picture>
-        <ImageFade src={plant.picture} alt={plant.name} placeholder="#EFFFE2"/>
-        <Card.Overlay/>
-      </Card.Picture>
-      <Card.Infos>
-        <p>{plant.name}</p>
-        <Card.Chip variant={setVariant(plant.days_left)}>
-          <span>Next Watering in {plant.days_left} days</span>
-          <Drop/>
-        </Card.Chip>
-      </Card.Infos>
-    </Card>
-  );
-};
+const PlantCard: React.FC<any> = ({ plant, hasSearchCard = false, path }) => (
+  <Card to={path}>
+    <Card.Picture hasSearchCard={hasSearchCard}>
+      <ImageFade src={plant.picture} alt={plant.name} placeholder="#EFFFE2"/>
+      <Card.Overlay/>
+    </Card.Picture>
+    {
+      !hasSearchCard ? (
+        <Card.Infos>
+          <p>{plant.name}</p>
+          <Card.Chip variant={setVariant(plant.days_left)}>
+            <span>Next Watering in {plant.days_left} days</span>
+            <Drop/>
+          </Card.Chip>
+        </Card.Infos>
+      ) : (
+        <Card.Infos>
+          <Card.Chip variant="primary">
+            <span>{plant.name}</span>
+          </Card.Chip>
+        </Card.Infos>
+      )
+    }
+  </Card>
+);
 
 export default PlantCard;

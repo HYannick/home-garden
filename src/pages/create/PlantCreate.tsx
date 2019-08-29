@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router';
 import ActionBar from '../../layout/ActionBar';
 import { SideLayer } from '../../layout/SideLayer';
-import { plantStore } from '../../api/plants.api';
+import { PlantsAPI, plantStore } from '../../api/plants.api';
 import PlantForm from '../../components/plant-form/PlantForm';
 import { mapPlantData } from './plant-create.mapper';
 import { PlantProps } from './PlantCreate.types';
@@ -16,11 +16,13 @@ import { PlantProps } from './PlantCreate.types';
 //   return formData;
 // };
 
-const PlantCreate: React.FC = ({ history }: any) => {
+const PlantCreate: React.FC = ({ history, location }: any) => {
   const { t } = useTranslation();
+  const { state: {plantInfos} } = location;
 
   const initialValues: PlantProps = {
-    name: '',
+    name: plantInfos.name,
+    custom_name: '',
     picture: null,
     last_watering_date: '',
     has_moisture_sensor: false,
@@ -30,7 +32,7 @@ const PlantCreate: React.FC = ({ history }: any) => {
   };
 
   const submitPlant = async (values: PlantProps, actions: any) => {
-    let payload = {...values};
+    let payload = { ...values };
     if (!values.has_moisture_sensor) {
       actions.setValues({ ...values, need_watering_frequency: true });
       payload = { ...values, need_watering_frequency: true };
@@ -42,7 +44,8 @@ const PlantCreate: React.FC = ({ history }: any) => {
        */
       // const { data: plant } = await PlantsAPI.post('/plants', getFormData(mapPlantData(values)));
       // should reformat the image
-      const updated_plant_list = mapPlantData(payload);
+      const { data: DBPlant } = await PlantsAPI.post('/plants', plantInfos);
+      const updated_plant_list = mapPlantData(payload, DBPlant.plantId);
       await plantStore.setItem(updated_plant_list.id, updated_plant_list);
       history.push('/');
       actions.setSubmitting(false);

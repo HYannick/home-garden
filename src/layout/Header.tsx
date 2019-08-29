@@ -34,6 +34,7 @@ const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
       height: 8rem;
       display: flex;
       align-items: center;
+      margin-bottom: 5rem;
     `}>
       <div css={css`
         position: absolute;

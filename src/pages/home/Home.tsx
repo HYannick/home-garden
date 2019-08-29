@@ -6,15 +6,15 @@ import styled from '@emotion/styled';
 import defaultAvatar from '../../static/default-avatar.jpeg';
 import Header from '../../layout/Header';
 import PlantList from '../../components/plant-list/PlantList';
-import Feed from '../../components/Feed';
+import Feed from '../../components/feed/Feed';
+import Schedule from '../../components/schedule/Schedule';
 import { useGetUserInfos } from './home.hooks';
-import Schedule from '../../components/Schedule';
 
 
 const sampleCover = 'https://images.unsplash.com/photo-1455793067932-146d5b4a694f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=300&q=80';
 const Overflow = styled('div')`
   overflow-y: scroll;
-  height: 99vh; 
+  height: 100vh; 
 `;
 const Spacer = styled('div')`
   height: 10rem;

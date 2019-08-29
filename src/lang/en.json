@@ -3,6 +3,15 @@
   "header": {
     "hi": "Hi"
   },
+  "needy_plants": {
+    "needy": "{{count}} plant need your attention",
+    "needy_plural": "{{count}} plants need your attention",
+    "all_set": "You are all set ! :D"
+  },
+  "schedule": {
+    "loading": "Loading...",
+    "all_set": "All your plants are safe !"
+  },
   "onboarding": {
     "welcome": "Welcome to your new watering manager.\nI am PyHerb and I will help you to take care of your plants!",
     "introduction": "For starters\nhow can I call you?",
@@ -13,7 +22,7 @@
   "plant_create_title": "Plant Creation",
   "plant_edit_title": "Edit {{plant_name}}",
   "plant_form": {
-    "field_name": "What's it's name?",
+    "field_name": "What's it's custom name?",
     "field_last_watering_date": "When happened the last watering?",
     "field_has_moisture_sensor": "Have you got a moisture sensor?",
     "field_watering_frequency": "Do you want to set a watering frequency?",
@@ -21,7 +30,7 @@
     "sensor_notice": "Enter the soil moisture sensor ID.\nYou can get it after it initialization.",
     "button": {
       "submit": "Create",
-      "editSubmit": "Update",
+      "edit_submit": "Update",
       "cancel": "Cancel"
     },
     "errors": {
@@ -29,6 +38,33 @@
       "last_watering_date": "Please provide a watering date.",
       "sensor_id": "Please provide the sensor ID",
       "watering_frequency": "Please provide a watering frequency."
+    }
+  },
+  "plant_infos_form": {
+    "helper_text": "Fill the plants informations.\nYou don’t need to fill everything, we will complete and review your submission :)",
+    "field_name": "Name",
+    "field_latin_name": "Latin name",
+    "field_family": "Family",
+    "field_exposure": "Exposure",
+    "field_temperature": "Temperature",
+    "field_watering": "Watering",
+    "field_soil": "Soil type",
+    "field_soil_helper": "What kind of soil does it need?",
+    "field_plant_tips": "Plant tips",
+    "field_plant_tips_helper": "Some tips to share? :p",
+    "field_level_label": "What level does it need?",
+    "level_select": {
+      "low": "A little",
+      "medium": "Average",
+      "high": "A lot"
+    },
+    "field_tips_label": "Some tips about it?",
+    "button": {
+      "submit": "Submit",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "name": "Please enter a plant name."
     }
   },
   "plant_details": {
