@@ -53,7 +53,7 @@ const PlantCreate: React.FC = ({ history, location }: any) => {
        */
       // const { data: plant } = await PlantsAPI.post('/plants', getFormData(mapPlantData(values)));
       // should reformat the image
-      const updated_plant: any = getUpdatedPlant(payload, plantInfos);
+      const updated_plant: any = await getUpdatedPlant(payload, plantInfos);
       await plantStore.setItem(updated_plant.id, updated_plant);
       history.push('/');
       actions.setSubmitting(false);
