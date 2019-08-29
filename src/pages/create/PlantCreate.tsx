@@ -18,7 +18,7 @@ import { PlantProps } from './PlantCreate.types';
 
 const PlantCreate: React.FC = ({ history, location }: any) => {
   const { t } = useTranslation();
-  const { state: {plantInfos} } = location;
+  const { state: { plantInfos } } = location;
 
   const initialValues: PlantProps = {
     name: plantInfos.name,
@@ -30,6 +30,15 @@ const PlantCreate: React.FC = ({ history, location }: any) => {
     watering_frequency: 2,
     need_watering_frequency: false,
   };
+
+  const getUpdatedPlant = async (payload: any, plantInfos: any) => {
+    if (!plantInfos.id) {
+      const { data: DBPlant } = await PlantsAPI.post('/plants', plantInfos);
+      return mapPlantData(payload, DBPlant.plantId);
+    }
+    return mapPlantData(payload, plantInfos.id);
+  };
+
 
   const submitPlant = async (values: PlantProps, actions: any) => {
     let payload = { ...values };
@@ -44,9 +53,8 @@ const PlantCreate: React.FC = ({ history, location }: any) => {
        */
       // const { data: plant } = await PlantsAPI.post('/plants', getFormData(mapPlantData(values)));
       // should reformat the image
-      const { data: DBPlant } = await PlantsAPI.post('/plants', plantInfos);
-      const updated_plant_list = mapPlantData(payload, DBPlant.plantId);
-      await plantStore.setItem(updated_plant_list.id, updated_plant_list);
+      const updated_plant: any = getUpdatedPlant(payload, plantInfos);
+      await plantStore.setItem(updated_plant.id, updated_plant);
       history.push('/');
       actions.setSubmitting(false);
     } catch (e) {
