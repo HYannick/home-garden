@@ -3,7 +3,7 @@ export enum LevelData {
   MEDIUM = 'MEDIUM',
   HIGH = 'HIGH',
 }
-export interface PlantinfosProps {
+export interface PlantInfosProps {
   name: string,
   latin_name: string,
   family: string,

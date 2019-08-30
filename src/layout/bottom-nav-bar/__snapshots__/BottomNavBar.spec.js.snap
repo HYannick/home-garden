@@ -7,7 +7,7 @@ exports[`BottomNavBar should match snapshot on closed 1`] = `
   >
     <div>
       <div
-        class="css-drx1bz"
+        class="css-17u0esb"
       >
         <a
           aria-current="page"
@@ -32,8 +32,9 @@ exports[`BottomNavBar should match snapshot on closed 1`] = `
             </svg>
           </div>
         </a>
-        <div
-          class="css-o0luf0"
+        <a
+          class="nav__link no-stroke"
+          href="/search"
         >
           <div
             class="css-1xi8t4l"
@@ -49,7 +50,7 @@ exports[`BottomNavBar should match snapshot on closed 1`] = `
               />
             </svg>
           </div>
-        </div>
+        </a>
         <a
           class="nav__link"
           href="/profile"
@@ -79,7 +80,7 @@ exports[`BottomNavBar should match snapshot on closed 1`] = `
           <a
             href="/create"
           >
-            Take a photo
+            Add your plant
           </a>
         </li>
         <li>
@@ -106,27 +107,14 @@ exports[`BottomNavBar should match snapshot on closed 1`] = `
 exports[`BottomNavBar should match snapshot on open 1`] = `
 <div>
   <div
-    class="css-1lamfzg"
+    class="css-lrv8g5"
   >
     <div>
       <div
-        class="css-1hqf3h3"
-      >
-        <h2>
-          Want to make the family grow?
-        </h2>
-        <p>
-          Take a photo of your plant
-          <br />
-          or search it in our database
-        </p>
-      </div>
-      <div
-        class="css-drx1bz"
+        class="css-17u0esb"
       >
         <a
-          aria-current="page"
-          class="nav__link nav__link--active"
+          class="nav__link"
           href="/"
         >
           <div
@@ -147,11 +135,13 @@ exports[`BottomNavBar should match snapshot on open 1`] = `
             </svg>
           </div>
         </a>
-        <div
-          class="css-qr370g"
+        <a
+          aria-current="page"
+          class="nav__link no-stroke nav__link--active"
+          href="/search"
         >
           <div
-            class="css-989axa"
+            class="css-1xi8t4l"
             data-testid="add"
           >
             <svg
@@ -164,7 +154,7 @@ exports[`BottomNavBar should match snapshot on open 1`] = `
               />
             </svg>
           </div>
-        </div>
+        </a>
         <a
           class="nav__link"
           href="/profile"
@@ -194,7 +184,7 @@ exports[`BottomNavBar should match snapshot on open 1`] = `
           <a
             href="/create"
           >
-            Take a photo
+            Add your plant
           </a>
         </li>
         <li>
@@ -204,6 +194,8 @@ exports[`BottomNavBar should match snapshot on open 1`] = `
         </li>
         <li>
           <a
+            aria-current="page"
+            class="active"
             href="/search"
           >
             Search in library
@@ -213,7 +205,7 @@ exports[`BottomNavBar should match snapshot on open 1`] = `
     </div>
   </div>
   <div
-    class="css-1obqsrn"
+    class="css-ajruyc"
   />
 </div>
 `;

@@ -71,6 +71,7 @@
     "@types/lodash": "^4.14.134",
     "@types/react-router-dom": "^4.3.4",
     "@types/recharts": "^1.1.20",
+    "@types/uuid": "^3.4.5",
     "@types/yup": "^0.26.20",
     "babel-plugin-root-import": "^6.2.0",
     "eslint-config-airbnb": "^17.1.1",

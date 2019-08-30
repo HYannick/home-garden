@@ -30,7 +30,8 @@ describe('Heading', () => {
       controls: [{
         key: 1,
         icon: () => <div>Icon</div>,
-        onClick: jest.fn()
+        onClick: jest.fn(),
+        disabled: false
       }]
     };
     const { getByText } = renderWithTheme(
@@ -48,7 +49,8 @@ describe('Heading', () => {
       controls: [{
         key: 1,
         icon: () => <div>Icon</div>,
-        onClick: jest.fn()
+        onClick: jest.fn(),
+        disabled: false
       }]
     };
     const { container } = renderWithTheme(

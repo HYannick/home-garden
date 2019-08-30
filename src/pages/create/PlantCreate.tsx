@@ -7,14 +7,9 @@ import ActionBar from '../../layout/ActionBar';
 import { SideLayer } from '../../layout/SideLayer';
 import { PlantsAPI, plantStore } from '../../api/plants.api';
 import PlantForm from '../../components/plant-form/PlantForm';
-import { mapPlantData } from './plant-create.mapper';
-import { PlantProps } from './PlantCreate.types';
 
-// const getFormData = (values: any) => {
-//   const formData = new FormData();
-//   Object.keys(values).forEach(key => formData.append(key, values[key]));
-//   return formData;
-// };
+import { PlantProps } from './PlantCreate.types';
+import { mapPlantData } from './plant-create.mapper';
 
 const PlantCreate: React.FC = ({ history, location }: any) => {
   const { t } = useTranslation();

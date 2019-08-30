@@ -6,18 +6,12 @@ import { withRouter } from 'react-router';
 import ActionBar from '../../layout/ActionBar';
 import { SideLayer } from '../../layout/SideLayer';
 import PlantInfosForm from '../../components/plant-infos-form/PlantInfosForm';
-import { LevelData, PlantinfosProps } from './PlantInfosCreate.types';
-
-// const getFormData = (values: any) => {
-//   const formData = new FormData();
-//   Object.keys(values).forEach(key => formData.append(key, values[key]));
-//   return formData;
-// };
+import { LevelData, PlantInfosProps } from './PlantInfosCreate.types';
 
 const PlantInfosCreate: React.FC = ({ history }: any) => {
   const { t } = useTranslation();
 
-  const initialValues: PlantinfosProps = {
+  const initialValues: PlantInfosProps = {
     name: '',
     latin_name: '',
     family: '',
@@ -32,7 +26,7 @@ const PlantInfosCreate: React.FC = ({ history }: any) => {
     tips: ''
   };
 
-  const goToCreateForm = (values: PlantinfosProps) => history.push({pathname: '/create', state: {plantInfos: values}});
+  const goToCreateForm = (values: PlantInfosProps) => history.push({pathname: '/create', state: {plantInfos: values}});
 
   return (
     <Fragment>

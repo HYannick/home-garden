@@ -3,7 +3,7 @@
 exports[`Heading should render controls 1`] = `
 <div>
   <div
-    class="css-wrpblf"
+    class="css-30uqkx"
   >
     <div>
       <h1
@@ -21,7 +21,7 @@ exports[`Heading should render controls 1`] = `
       class="css-1ytm51z"
     >
       <button
-        class="css-4tevuj"
+        class="css-1b1pyeo"
       >
         <div>
           Icon
@@ -35,18 +35,23 @@ exports[`Heading should render controls 1`] = `
 exports[`Heading should render properly 1`] = `
 <div>
   <div
-    class="css-126uo2u"
+    class="css-30uqkx"
   >
-    <h1
-      class="css-21eb7x"
-    >
-      Your data
-    </h1>
-    <h6
-      class="css-og9iw5"
-    >
-      You have 2 lives left
-    </h6>
+    <div>
+      <h1
+        class="css-21eb7x"
+      >
+        Your data
+      </h1>
+      <h6
+        class="css-og9iw5"
+      >
+        You have 2 lives left
+      </h6>
+    </div>
+    <div
+      class="css-1ytm51z"
+    />
   </div>
 </div>
 `;

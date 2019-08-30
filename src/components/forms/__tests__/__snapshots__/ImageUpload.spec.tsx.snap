@@ -6,11 +6,11 @@ exports[`ImageUpload should render properly 1`] = `
     class="css-7luewu-ImageUpload"
   >
     <label
-      class="css-1ybb98q"
+      class="css-j7s6en"
       for="puke"
     >
       <div
-        class="css-13otuew"
+        class="css-y3dm6m"
       >
         <svg
           viewBox="0 0 515.667 515.667"

@@ -12,15 +12,6 @@ describe('BottomNavBar', () => {
     match: jest.fn(),
     history: {},
   };
-
-  it('should open navbar', () => {
-    const { getByTestId, getByText } = renderWithTheme(
-      <Router><BottomNavBar {...props}/></Router>,
-    );
-    const button = getByTestId('add');
-    fireEvent.click(button);
-    expect(getByText(/^Want to make the family grow/)).toHaveTextContent('Want to make the family grow');
-  });
   it('should match snapshot on closed', () => {
     const { container } = renderWithTheme(
       <Router><BottomNavBar {...props}/></Router>,

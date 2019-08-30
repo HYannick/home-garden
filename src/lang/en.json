@@ -8,6 +8,12 @@
     "needy_plural": "{{count}} plants need your attention",
     "all_set": "You are all set ! :D"
   },
+  "search": {
+    "title": "Look for your plant here"
+  },
+  "profile_page": {
+    "loading": "Getting data ..."
+  },
   "schedule": {
     "loading": "Loading...",
     "all_set": "All your plants are safe !"

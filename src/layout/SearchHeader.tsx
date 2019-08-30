@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import React from 'react';
 import { css, jsx } from '@emotion/core';
-import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { Formik } from 'formik';
 import { Overlay } from '../components/Overlay';
 import ImageFade from '../components/image-fade/ImageFade';
-import ActionBar from './ActionBar';
 import SearchIcon from '../core/svg/Search';
+import ActionBar from './ActionBar';
+import { useTranslation } from 'react-i18next';
 
 interface HeaderProps {
   onSubmit: (value: string) => void,
@@ -83,6 +83,7 @@ const Form = styled('form')`
 `;
 
 const SearchHeader: React.FC<HeaderProps> = ({ onSubmit, cover }) => {
+  const { t } = useTranslation();
   return (
     <div css={css`
       position: relative;
@@ -116,12 +117,12 @@ const SearchHeader: React.FC<HeaderProps> = ({ onSubmit, cover }) => {
           }}
           render={props => (
             <Form onSubmit={props.handleSubmit}>
-              <label htmlFor="search">Look for your plant here</label>
+              <label htmlFor="search">{t('search.title')}</label>
               <SearchControl>
                 <input
                   type="search"
                   autoComplete="off"
-
+                  id="search"
                   placeholder="Type a plant name"
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}

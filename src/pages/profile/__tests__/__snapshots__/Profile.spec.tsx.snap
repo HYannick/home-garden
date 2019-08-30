@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Page should render loading text properly 1`] = `
+<div>
+  <div>
+    profile_page.loading
+  </div>
+</div>
+`;
+
+exports[`Profile Page should render properly 1`] = `
+<div>
+  <div>
+    <div
+      class="css-11xigr1"
+    >
+      <div
+        class="css-17x3cbt"
+      >
+        <a
+          aria-current="page"
+          class="active"
+          href="/"
+        >
+          <svg
+            viewBox="0 0 23.225 21.762"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12.342 19.647L2.115 10.881m0 0l10.227-8.766m-8.617 9.032h18"
+              fill="#4A4A4A"
+              stroke="#4A4A4A"
+              stroke-linecap="round"
+              stroke-width="3"
+            />
+          </svg>
+        </a>
+      </div>
+      <div
+        class="css-196st0l"
+      >
+        <span
+          class="css-zrqali"
+        >
+          About you
+        </span>
+      </div>
+      <div
+        class="css-1oteowz"
+      />
+    </div>
+    <div
+      class="css-1ue9cr"
+    >
+      <div
+        class="css-1eyi4r2"
+      >
+        <div
+          class="css-1b98xtx"
+          data-testid="avatar"
+        >
+          <div
+            class="css-vid29i"
+            placeholder="#fff"
+          >
+            <img
+              alt="avatar"
+              class="css-10dr8mc"
+              src="cute-kitten.jpg"
+            />
+          </div>
+        </div>
+        <div
+          class="css-3xb32z"
+          data-testid="username"
+        >
+          <h2>
+            Mathilde
+          </h2>
+        </div>
+      </div>
+      <div
+        class="css-0"
+      >
+        <div
+          class="css-2w6ofm"
+        >
+          <div>
+            <div
+              class="recharts-wrapper"
+              style="position: relative; cursor: default; width: 200px; height: 200px;"
+            >
+              <svg
+                class="recharts-surface"
+                height="200"
+                version="1.1"
+                viewBox="0 0 200 200"
+                width="200"
+              >
+                <defs>
+                  <clippath
+                    id="recharts1-clip"
+                  >
+                    <rect
+                      height="190"
+                      width="190"
+                      x="5"
+                      y="5"
+                    />
+                  </clippath>
+                </defs>
+              </svg>
+            </div>
+            <div
+              class="css-tuxdev"
+              data-testid="total_plants"
+            >
+              <h4>
+                undefined
+              </h4>
+              <span>
+                Plants
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-syznh7"
+          data-testid="counters"
+        />
+        <a
+          class="css-hmofew"
+          href="/plants"
+        >
+          View plants
+        </a>
+      </div>
+      <h4
+        class="css-hrp93d"
+      />
+    </div>
+  </div>
+</div>
+`;

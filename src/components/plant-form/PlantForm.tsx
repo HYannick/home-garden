@@ -10,12 +10,11 @@ import Switch from '../forms/Switch';
 import MoistureSensorInput from '../forms/MoistureSensorField';
 import InputRange from '../forms/InputRange';
 import { Button } from '../Button';
-import { PlantProps } from '../../pages/create/PlantCreate.types';
 import { FormCreate, ImageCreate } from './PlantForm.styled';
 
 interface PlantFormProps {
   onSubmit: any,
-  initialValues: PlantProps,
+  initialValues: any,
   submitLabel: string
 }
 

@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchHeader should render properly 1`] = `
+<div>
+  <div
+    class="css-ob4x19-SearchHeader"
+  >
+    <div
+      class="css-5tnmxt-SearchHeader"
+    >
+      <div
+        class="css-ilwsms"
+        color="#333"
+        opacity="0.7"
+      />
+      <div
+        class="css-prjb17"
+        placeholder="#EFFFE2"
+      >
+        <img
+          alt="cover"
+          class="css-10dr8mc"
+          src="kitten.jpg"
+        />
+      </div>
+    </div>
+    <div
+      class="css-1fzrr71"
+    >
+      <div
+        class="css-11xigr1"
+      >
+        <div
+          class="css-17x3cbt"
+        >
+          <a
+            aria-current="page"
+            class="active"
+            href="/"
+          >
+            <svg
+              viewBox="0 0 23.225 21.762"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.342 19.647L2.115 10.881m0 0l10.227-8.766m-8.617 9.032h18"
+                fill="#4A4A4A"
+                stroke="#4A4A4A"
+                stroke-linecap="round"
+                stroke-width="3"
+              />
+            </svg>
+          </a>
+        </div>
+        <div
+          class="css-196st0l"
+        >
+          <span
+            class="css-zrqali"
+          />
+        </div>
+        <div
+          class="css-1oteowz"
+        />
+      </div>
+    </div>
+    <div
+      class="css-1of5vee"
+    >
+      <form
+        class="css-cssveg"
+      >
+        <label
+          for="search"
+        >
+          search.title
+        </label>
+        <div
+          class="css-cssveg"
+        >
+          <input
+            autocomplete="off"
+            id="search"
+            name="query"
+            placeholder="Type a plant name"
+            type="search"
+            value=""
+          />
+          <button
+            class="css-36uvdm"
+            type="submit"
+          >
+            <svg
+              viewBox="0 0 23.837 23.837"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 14l8.335 8.335zM1.5 8.792a7.293 7.293 0 1 1 7.292 7.293A7.292 7.292 0 0 1 1.5 8.792z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+              />
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;

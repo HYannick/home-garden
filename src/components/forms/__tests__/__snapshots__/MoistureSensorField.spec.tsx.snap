@@ -16,10 +16,11 @@ exports[`MoistureSensorField should render the MoistureSensorField properly 1`] 
         for="sensor_id"
       />
       <input
-        class="css-1gexmoh"
+        class="css-n9sopd"
         id="sensor_id"
         name="sensor_id"
         type="text"
+        value=""
       />
     </div>
   </div>

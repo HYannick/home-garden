@@ -9,10 +9,11 @@ exports[`InputField should render properly 1`] = `
     Should I puke?
   </label>
   <input
-    class="css-7ufkhq"
+    class="css-1qxlqm1"
     id="puke"
     name="puke"
     type="text"
+    value=""
   />
 </div>
 `;

@@ -7,14 +7,14 @@ import styled from '@emotion/styled';
 import plantInfosCreateValidation from '../../pages/plant-infos-create/plant-infos-create.validation';
 import InputField from '../forms/InputField';
 import { Button } from '../Button';
-import { LevelData, PlantinfosProps } from '../../pages/plant-infos-create/PlantInfosCreate.types';
+import { LevelData, PlantInfosProps } from '../../pages/plant-infos-create/PlantInfosCreate.types';
 import TextAreaField from '../forms/TextAreaField';
 import SelectField from '../forms/SelectField';
 import { FormCreate } from './PlantInfosForm.styled';
 
 interface PlantFormProps {
   onSubmit: any,
-  initialValues: PlantinfosProps,
+  initialValues: PlantInfosProps,
   submitLabel: string
 }
 
