@@ -84,7 +84,7 @@ export const useGetPlantsCount = () => {
 
 export const useGetPlant = (id: string) => {
   const [loading, setLoading] = useState(true);
-  const [hasErrors, setError] = useState(null);
+  const [hasErrors, setError] = useState<any>(null);
   const [plant, setPlant] = useState<any>(null);
   const [plantData, setPlantData] = useState<any>(null);
   const [daysLeft, setDaysLeft] = useState(0);
@@ -99,7 +99,7 @@ export const useGetPlant = (id: string) => {
       }
       setLoading(false);
     }).catch(() => {
-      setError('Plant not found');
+      setError({message: 'Plant not found'});
       setLoading(false);
     });
     return function cleanup() {
@@ -117,7 +117,7 @@ export const useGetPlant = (id: string) => {
         return function cleanup() {
           didCancel = true;
         };
-      }).catch(e => setError({message: e}));
+      }).catch(() => setError({message: 'Unable to fetch data'}));
     }
   }, [plant]);
 
