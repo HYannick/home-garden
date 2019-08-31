@@ -15,26 +15,20 @@ exports[`Profile Page should render properly 1`] = `
       class="css-11xigr1"
     >
       <div
-        class="css-17x3cbt"
+        class="css-10wldv8"
       >
-        <a
-          aria-current="page"
-          class="active"
-          href="/"
+        <svg
+          viewBox="0 0 23.225 21.762"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            viewBox="0 0 23.225 21.762"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.342 19.647L2.115 10.881m0 0l10.227-8.766m-8.617 9.032h18"
-              fill="#4A4A4A"
-              stroke="#4A4A4A"
-              stroke-linecap="round"
-              stroke-width="3"
-            />
-          </svg>
-        </a>
+          <path
+            d="M12.342 19.647L2.115 10.881m0 0l10.227-8.766m-8.617 9.032h18"
+            fill="#4A4A4A"
+            stroke="#4A4A4A"
+            stroke-linecap="round"
+            stroke-width="3"
+          />
+        </svg>
       </div>
       <div
         class="css-196st0l"
@@ -46,7 +40,7 @@ exports[`Profile Page should render properly 1`] = `
         </span>
       </div>
       <div
-        class="css-1oteowz"
+        class="css-ov1ktg"
       />
     </div>
     <div

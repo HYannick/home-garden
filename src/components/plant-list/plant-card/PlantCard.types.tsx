@@ -1,4 +1,5 @@
 export interface PlantProps {
+  id: string,
   name: string,
   custom_name: string,
   picture: File | null,
@@ -9,5 +10,6 @@ export interface PlantCardTypes {
   t: Function,
   plant: PlantProps,
   asSearchCard: boolean,
-  path: string
+  path: string,
+  onDelete: Function
 }

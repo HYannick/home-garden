@@ -84,7 +84,7 @@ export const useGetPlantsCount = () => {
 
 export const useGetPlant = (id: string) => {
   const [loading, setLoading] = useState(true);
-  const [hasErrors, setError] = useState('');
+  const [hasErrors, setError] = useState(null);
   const [plant, setPlant] = useState<any>(null);
   const [plantData, setPlantData] = useState<any>(null);
   const [daysLeft, setDaysLeft] = useState(0);
@@ -117,7 +117,7 @@ export const useGetPlant = (id: string) => {
         return function cleanup() {
           didCancel = true;
         };
-      }).catch(e => console.log(e));
+      }).catch(e => setError({message: e}));
     }
   }, [plant]);
 

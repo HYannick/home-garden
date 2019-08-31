@@ -26,7 +26,8 @@ const SearchListView: React.FC<SearchListTypes> = ({ loading, plants, setSearch,
           {t('search_list.tip')}
         </AddPlant.Tip>
         <AddPlant.Button>
-          <Add/>
+          <div><Add/></div>
+          <span>Create a plant</span>
         </AddPlant.Button>
       </AddPlant>
       <BottomSpacer/>

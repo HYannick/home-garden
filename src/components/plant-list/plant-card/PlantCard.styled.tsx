@@ -5,6 +5,11 @@ import { VariantProps } from '../../../interfaces';
 export const Card: any = styled(NavLink)`
   display: block;
   position: relative;
+
+`;
+
+export const CardWrapper = styled('div')`
+  position: relative;
   margin-bottom: 4rem;
 `;
 
@@ -66,3 +71,22 @@ Card.Chip = styled('div')<VariantProps>`
     }
   }
 `;
+
+Card.DeleteButton = styled('button')`
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: ${({ theme }) => theme.palette.light};
+  > svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    path {
+      fill: ${({ theme }) => theme.palette.light};
+    }
+  }
+`;
+

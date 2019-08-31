@@ -1,18 +1,18 @@
 import React, { MouseEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import ArrowBack from '../core/svg/ArrowBack';
 import Typography from '../components/Typography';
 
-interface ActionProps {
+export interface ActionProps {
   key: number,
   icon: React.FC<{ fill?: string, stroke?: string }>,
-  onClick: MouseEventHandler
+  onClick: MouseEventHandler,
 }
 
-interface ActionBarProps extends RouteComponentProps {
+export interface ActionBarProps extends RouteComponentProps {
   title?: string,
-  actions?: Array<ActionProps>,
+  actions?: ActionProps[],
   children?: ReactNode
 }
 
@@ -28,6 +28,7 @@ const BackButton = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   svg {
     width: 2rem;
     height: 2rem;
@@ -40,33 +41,51 @@ const Title = styled('div')`
 `;
 
 const Actions = styled('div')`
-  
+  display: flex;
 `;
 
 const Action = styled('button')`
-  width: 2rem;
-  height: 2rem;
+  width: 4rem;
+  height: 4rem;
   cursor: pointer;
-  border: none;
   background: transparent;
   padding: 0;
   outline: ${({ theme }) => theme.palette.light};
   margin-left: 1.5rem;
+  border: none;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: 0.1s;
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    path {
+      fill: ${({ theme }) => theme.palette.grey.darker};
+      stroke:  ${({ theme }) => theme.palette.grey.darker};
+      stroke-width: 0.5;
+    } 
+  }
 `;
 
-const ActionBar: React.FC<ActionBarProps> = ({ title, actions }) => {
+const ActionBar: React.FC<ActionBarProps> = ({ history, title, actions }) => {
+  const goBack = () => {
+    history.goBack();
+  };
   return (
     <ActionWrapper>
-      <BackButton>
-        <NavLink to="/"><ArrowBack/></NavLink>
+      <BackButton onClick={goBack}>
+        <ArrowBack/>
       </BackButton>
       <Title>
         <Typography noMargin variant="title" weight="800">{title}</Typography>
       </Title>
       <Actions>
-        {actions && actions.map(({ key, icon: Icon, onClick }: ActionProps) => (
+        {actions && actions.map(({ key, icon: Icon, onClick}: ActionProps) => (
           <Action key={key} onClick={onClick}>
-            <Icon fill="#4A4A4A"/>
+            <Icon/>
           </Action>
         ))}
       </Actions>

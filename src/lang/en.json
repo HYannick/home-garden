@@ -3,6 +3,12 @@
   "header": {
     "hi": "Hi"
   },
+  "modals": {
+    "plant_removal": {
+      "title": "Are you sure?",
+      "subtitle": "Do you really want to delete this plant ? This action is not reversible."
+    }
+  },
   "needy_plants": {
     "needy": "{{count}} plant need your attention",
     "needy_plural": "{{count}} plants need your attention",

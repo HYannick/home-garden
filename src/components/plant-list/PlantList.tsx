@@ -34,7 +34,10 @@ const ViewMore = styled(NavLink)`
 `;
 
 const PlantList: React.FC = () => {
-  const { loading: plantsLoading, plants, warning } = useGetPlantList({onlyHealthy: false, range: [0, 4]});
+  const { loading: plantsLoading, plants, warning } = useGetPlantList({
+    onlyHealthy: false,
+    range: [0, 4],
+  });
   const { t } = useTranslation();
 
   return (
@@ -46,7 +49,9 @@ const PlantList: React.FC = () => {
           variant="warning" title="Your Plants"
           subtitle={warning !== 0 ? t('needy_plants.needy', { count: warning }) : t('needy_plants.all_set')}/>
       </div>
-      <List items={plants} card={(props: any) => <PlantCard {...props} t={t} path={`/plants/${props.plant.id}`} />}/>
+      <List
+        items={plants}
+        card={(props: any) => <PlantCard {...props} t={t} path={`/plants/${props.plant.id}`}/>}/>
       {plantsLoading && <Spacer><Skeleton nbRows={3}/></Spacer>}
       <ViewMore to="/plants">View all plants</ViewMore>
     </Fragment>

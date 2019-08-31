@@ -2,55 +2,59 @@
 
 exports[`PlantCard should render properly 1`] = `
 <div>
-  <a
-    class="css-j7wjt2"
-    href="/"
+  <div
+    class="css-13cuk55"
   >
-    <div
-      class="css-gzgj0r"
+    <a
+      class="css-xtgc45"
+      href="/"
     >
       <div
-        class="css-prjb17"
-        placeholder="#EFFFE2"
+        class="css-gzgj0r"
       >
-        <img
-          alt="Dracaena"
-          class="css-10dr8mc"
+        <div
+          class="css-prjb17"
+          placeholder="#EFFFE2"
+        >
+          <img
+            alt="Dracaena"
+            class="css-10dr8mc"
+          />
+        </div>
+        js
+        <div
+          class="css-go7c08"
         />
       </div>
-      js
       <div
-        class="css-go7c08"
-      />
-    </div>
-    <div
-      class="css-1egqyip"
-      data-testid="default-card"
-    >
-      <p>
-        Draky
-      </p>
-      <div
-        class="css-1xu7jxi"
+        class="css-1egqyip"
+        data-testid="default-card"
       >
-        <span>
-          plant_card.days_left
-        </span>
-        <svg
-          viewBox="0 0 14.214 17"
-          xmlns="http://www.w3.org/2000/svg"
+        <p>
+          Draky
+        </p>
+        <div
+          class="css-1xu7jxi"
         >
-          <path
-            d="M6.944 1s6.27 6.2 6.27 9.329A5.9 5.9 0 0 1 7.107 16 5.9 5.9 0 0 1 1 10.329C1 7.193 6.944 1 6.944 1z"
-            fill="#707070"
-            stroke="#707070"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-          />
-        </svg>
+          <span>
+            plant_card.days_left
+          </span>
+          <svg
+            viewBox="0 0 14.214 17"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.944 1s6.27 6.2 6.27 9.329A5.9 5.9 0 0 1 7.107 16 5.9 5.9 0 0 1 1 10.329C1 7.193 6.944 1 6.944 1z"
+              fill="#707070"
+              stroke="#707070"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
+  </div>
 </div>
 `;

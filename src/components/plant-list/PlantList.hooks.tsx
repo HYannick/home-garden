@@ -46,12 +46,27 @@ export const useGetPlantList = ({ range, onlyHealthy = false }: PlantListProps) 
     dispatch({ type: PlantListActionType.SET_SEARCH, query });
   };
 
+  const removePlant = async (id: string) => {
+    dispatch({ type: PlantListActionType.SET_LOADING, loading: true });
+    try {
+      await plantStore.removeItem(id);
+      await plantStore.removeItem('undefined'); // remove trash items
+      dispatch({ type: PlantListActionType.SET_PLANTS, plants: plants.filter((plant: any) => plant.id !== id) });
+      dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
+    } catch (e) {
+      dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
+    }
+  };
+
   useEffect(() => {
     const storeList: any = {};
     if (searchQuery) {
       dispatch({ type: PlantListActionType.SET_LOADING, loading: true });
       plantStore.iterate((value: any, key) => {
-        if (value.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+        if (
+          value.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          value.custom_name.toLowerCase().includes(searchQuery.toLowerCase())
+        ) {
           storeList[key] = value;
         }
       }).then(() => {
@@ -120,5 +135,6 @@ export const useGetPlantList = ({ range, onlyHealthy = false }: PlantListProps) 
     warning,
     isFetching,
     setSearch,
+    removePlant,
   };
 };
