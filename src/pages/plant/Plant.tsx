@@ -14,7 +14,7 @@ import PlantView from './Plant.view';
 const Plant: React.FC = ({ history, match }: any) => {
   const { setModalOpen, modalOpen } = useModal();
   const { t } = useTranslation();
-  const { loading, plant, hasErrors, plantData, daysLeft, setDaysLeft } = useGetPlant(match.params.id);
+  const { loading, plant, hasErrors, hasDBErrors, plantData, daysLeft, setDaysLeft } = useGetPlant(match.params.id);
   const { number } = useSpring({ number: daysLeft });
 
   const waterPlant = async () => {
@@ -51,6 +51,7 @@ const Plant: React.FC = ({ history, match }: any) => {
     loading,
     plant,
     hasErrors,
+    hasDBErrors,
     plantData,
     daysLeft,
     setDaysLeft,

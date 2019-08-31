@@ -15,7 +15,7 @@ const PlantEdit: React.FC = ({ history, match }: any) => {
   const { t } = useTranslation();
   const { loading, plant, hasErrors } = useGetPlant(match.params.id);
   const submitPlant = async (values: PlantProps, actions: any) => {
-    let payload = {...values};
+    let payload = { ...values };
     if (!values.has_moisture_sensor) {
       actions.setValues({ ...values, need_watering_frequency: true });
       payload = { ...values, need_watering_frequency: true };
@@ -29,8 +29,8 @@ const PlantEdit: React.FC = ({ history, match }: any) => {
       // const { data: plant } = await PlantsAPI.post('/plants', getFormData(mapPlantData(values)));
       // should reformat the image
 
-      await plantStore.setItem(plant.id, updated_plant_list);
-      history.push('/');
+      const { id } = await plantStore.setItem(plant.id, updated_plant_list);
+      history.push(`/plants/${id}`);
       actions.setSubmitting(false);
     } catch (e) {
       // catch Error
@@ -47,11 +47,11 @@ const PlantEdit: React.FC = ({ history, match }: any) => {
 
   return (
     <Fragment>
-      <ActionBar title={t('plant_edit_title', {plant_name: plant.name})}/>
-      <PlantForm onSubmit={submitPlant} submitLabel={t('plant_form.button.edit_submit')}  initialValues={{
+      <ActionBar title={t('plant_edit_title', { plant_name: plant.name })}/>
+      <PlantForm onSubmit={submitPlant} submitLabel={t('plant_form.button.edit_submit')} initialValues={{
         ...plant,
         has_moisture_sensor: !!plant.sensor_id,
-        need_watering_frequency: false
+        need_watering_frequency: false,
       }}/>
       <SideLayer fullHeight/>
     </Fragment>

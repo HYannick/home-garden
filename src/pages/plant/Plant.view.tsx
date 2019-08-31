@@ -15,6 +15,7 @@ import Soil from '../../core/svg/Soil';
 import { setVariant } from '../../core/utils/set_variant';
 import ConfirmModal from '../../components/modal/templates/ConfirmModal';
 import Modal from '../../components/modal/Modal';
+import NoConnectionIcon from '../../core/svg/NoConnection';
 import {
   Frequency,
   Hero,
@@ -31,7 +32,16 @@ import {
 import { StatsTypes } from './Plant.types';
 import PlantStats from './components/PlantStats';
 
-const PlantData = ({ t, plant, daysLeft }: any) => {
+const PlantData = ({ t, plant, daysLeft, hasDBErrors }: any) => {
+  if (hasDBErrors) {
+    return (
+      <PlaceHolder>
+        <NoConnectionIcon/>
+        <h2>{t('plant_details.noConnexion')}</h2>
+        <p>{t('plant_details.noConnexionDetails')}</p>
+      </PlaceHolder>
+    );
+  }
   if (!plant || (plant && !plant.is_validated)) {
     return (
       <PlaceHolder>
@@ -101,7 +111,7 @@ const PlantData = ({ t, plant, daysLeft }: any) => {
 };
 
 const PlantView: React.FC<any> = (props) => {
-  const { t, loading, plant, hasErrors, plantData, daysLeft, number, actions, waterPlant, modalOpen, setModalOpen, deletePlant } = props;
+  const { t, loading, plant, hasErrors, plantData, daysLeft, number, actions, waterPlant, modalOpen, setModalOpen, deletePlant, hasDBErrors } = props;
   if (loading) {
     return <div>{t('plant_details.loading')}</div>;
   }
@@ -149,7 +159,7 @@ const PlantView: React.FC<any> = (props) => {
           </Frequency>
         </WateringStatus>
       </Hero>
-      <PlantData plant={plantData} t={t} daysLeft={daysLeft}/>
+      <PlantData plant={plantData} t={t} daysLeft={daysLeft} hasDBErrors={hasDBErrors}/>
       <div css={css`
         height: 4rem;
       `}/>

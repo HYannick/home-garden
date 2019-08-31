@@ -97,6 +97,8 @@
     "next_watering": "Next watering in",
     "days_label": "days",
     "frequency": "Water every ",
-    "upcoming": "Data is coming ;)"
+    "upcoming": "Data is coming ;)",
+    "noConnexion": "Unable to fetch data :(",
+    "noConnexionDetails": "Please check your connexion."
   }
 }

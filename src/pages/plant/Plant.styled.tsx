@@ -182,6 +182,9 @@ export const PlaceHolder = styled('div')`
     margin: 0;
     color: ${({ theme }) => theme.palette.grey.light}
   }
+  > p {
+    color: ${({ theme }) => theme.palette.grey.dark}
+  }
 `;
 
 export const PlantTips: any = styled('div')`
