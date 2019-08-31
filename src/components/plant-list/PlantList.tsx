@@ -5,49 +5,10 @@ import { css, jsx } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import Heading from '../../layout/Heading';
-import { pulse } from '../../core/utils/animations';
 import List from '../List';
+import Skeleton from '../Skeleton';
 import PlantCard from './plant-card/PlantCard';
 import { useGetPlantList } from './PlantList.hooks';
-
-interface SkeletonProps {
-  nbRows: number
-}
-
-const Skeleton: React.FC<SkeletonProps> = ({ nbRows }) => {
-  const SkeletonCard = styled('div')`
-  border-radius: 2rem;
-  background-color: ${({ theme }) => theme.palette.grey.light};
-  width: 100%;  
-  position: relative;
-  height: 12rem;
-  margin-bottom: 4rem;
-  animation: ${pulse} 1.2s ease-in-out infinite alternate;
-  &:after {
-    content: '';
-    position: absolute;
-    max-width: 15rem;
-    width: 100%;
-    height: 3rem;
-    bottom: -2rem;
-    border-radius: 5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: ${({ theme }) => theme.palette.grey.light};
-    border: 0.5rem solid  ${({ theme }) => theme.palette.light};
-    animation: ${pulse} 1.1s ease-in-out infinite alternate;
-  }
-`;
-
-  return (
-    <Fragment>
-      {
-        // eslint-disable-next-line react/no-array-index-key
-        [...Array(nbRows)].map((_, i) => <SkeletonCard key={i}/>)
-      }
-    </Fragment>
-  );
-};
 
 const Spacer = styled('div')`
   padding: 0 2rem;
