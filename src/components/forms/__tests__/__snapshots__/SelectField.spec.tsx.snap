@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectField should render properly 1`] = `
+<div>
+  <label
+    class="css-npa6bc"
+    for="puke"
+  >
+    Should I puke?
+  </label>
+  <div
+    class="css-19or460"
+  >
+    <select
+      id="puke"
+      name="puke"
+    >
+      <option
+        selected=""
+        value="LOW"
+      >
+        low
+      </option>
+      <option
+        value="MEDIUM"
+      >
+        medium
+      </option>
+      <option
+        value="HIGH"
+      >
+        high
+      </option>
+    </select>
+    <div
+      class="css-gw542d"
+    >
+      <svg
+        viewBox="0 0 10 4"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5.625 3.5a1 1 0 0 1-1.25 0L2.226 1.781A1 1 0 0 1 2.851 0h4.3a1 1 0 0 1 .625 1.781z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

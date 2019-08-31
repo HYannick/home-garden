@@ -64,11 +64,16 @@ const PlantForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues, submitLa
                       setFieldValue('has_moisture_sensor', has_moisture_sensor);
                     }}
                   />
-                  {values.has_moisture_sensor && (<MoistureSensorInput {...props} resetField={resetField} t={t}/>)}
+                  {values.has_moisture_sensor && (
+                    <MoistureSensorInput
+                      testId="moisture-sensor-input"
+                      {...props} resetField={resetField}
+                      t={t}/>
+                  )}
                 </FormCreate.Control>
                 {
                   !values.has_moisture_sensor && (
-                    <FormCreate.Control>
+                    <FormCreate.Control data-testid="watering-frequency-input">
                       <Field
                         type="range"
                         name="watering_frequency"
@@ -88,7 +93,7 @@ const PlantForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues, submitLa
                     </Trans>
                   </FormCreate.Infos>
                   <FormCreate.ButtonWrapper>
-                    <Button variant="primary" type="submit" disabled={isSubmitting}>
+                    <Button variant="primary" type="submit" data-testid="submit" disabled={isSubmitting}>
                       {submitLabel}
                     </Button>
                     <Button variant="danger" type="reset" disabled={isSubmitting}>

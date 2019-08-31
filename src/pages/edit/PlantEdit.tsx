@@ -11,12 +11,6 @@ import { useGetPlant } from '../home/home.hooks';
 import { mapPlantData } from './plant-edit.mapper';
 import { PlantProps } from './PlantEdit.types';
 
-// const getFormData = (values: any) => {
-//   const formData = new FormData();
-//   Object.keys(values).forEach(key => formData.append(key, values[key]));
-//   return formData;
-// };
-
 const PlantEdit: React.FC = ({ history, match }: any) => {
   const { t } = useTranslation();
   const { loading, plant, hasErrors } = useGetPlant(match.params.id);

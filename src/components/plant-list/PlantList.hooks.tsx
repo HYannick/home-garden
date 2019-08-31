@@ -7,7 +7,7 @@ import { getDaysLeft } from '../../core/utils/calc_dates';
 interface PlantListProps {
   range?: number[],
   onlyHealthy?: boolean
-};
+}
 
 export const useGetDBPlantList = () => {
   const [{ loading, warning, plants, searchQuery }, dispatch] = useReducer(plantListReducer, initialState);
@@ -23,8 +23,7 @@ export const useGetDBPlantList = () => {
       dispatch({ type: PlantListActionType.SET_PLANTS, plants });
       setIsFetching(false);
       dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
-    }).catch((e) => {
-      console.log(e);
+    }).catch(() => {
       setIsFetching(false);
       dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
     });
@@ -112,6 +111,7 @@ export const useGetPlantList = ({ range, onlyHealthy = false }: PlantListProps) 
       }
       dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
     });
+    // eslint-disable-next-line
   }, [isFetching, onlyHealthy]);
 
   return {

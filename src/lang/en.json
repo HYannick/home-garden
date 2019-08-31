@@ -8,6 +8,15 @@
     "needy_plural": "{{count}} plants need your attention",
     "all_set": "You are all set ! :D"
   },
+  "feed": {
+    "no_feed": "No Feed :("
+  },
+  "plant_card": {
+    "days_left": "Next Watering in {{days_left}} days"
+  },
+  "search_list": {
+    "tip": "Can't find it?\nFill it's info!"
+  },
   "search": {
     "title": "Look for your plant here"
   },

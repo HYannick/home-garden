@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { Fragment } from 'react';
+import React  from 'react';
 import { Field } from 'formik';
 import { css, jsx } from '@emotion/core';
 import { PlantProps } from '../../pages/create/PlantCreate.types';
@@ -8,8 +8,8 @@ import InputField from './InputField';
 import Switch from './Switch';
 import InputRange from './InputRange';
 
-const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Function, values: PlantProps, errors: any, touched?: any, t: Function }> = ({ setFieldValue, resetField, values, errors, touched, t }: any) => (
-  <Fragment>
+const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Function, values: PlantProps, errors: any, touched?: any, t: Function, testId: string }> = ({ setFieldValue, resetField, values, errors, touched, t, testId }: any) => (
+  <div data-testid={testId}>
     <div css={(theme) => css`
         margin: 1rem 0 1.5rem;
         color: ${theme.palette.grey.dark};
@@ -56,7 +56,7 @@ const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Funct
         </FormCreate.Control>
       )
     }
-  </Fragment>
+  </div>
 );
 
 export default MoistureSensorInput;

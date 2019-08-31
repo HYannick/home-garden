@@ -18,8 +18,9 @@ describe('MoistureSensorField', () => {
       sensor_id: '',
       watering_frequency: 2,
       need_watering_frequency: false,
-      custom_name: ''
+      custom_name: '',
     },
+    testId: 'test',
     errors: {},
     t: jest.fn(),
   };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTransition } from 'react-spring';
+import { useTranslation } from 'react-i18next';
 import ArrowRight from '../../core/svg/ArrowRight';
 import { Directions } from '../../pages/onboarding/onboarding.types';
 import ArrowLeft from '../../core/svg/ArrowLeft';
@@ -8,6 +9,7 @@ import { ArticleProps } from './Feed.types';
 import FeedView, { FeedViewProps } from './Feed.view';
 
 const Feed: React.FC = (props) => {
+  const { t } = useTranslation();
   const { loading, articles, hasErrors } = useGetArticles();
   const [idx, setIdx] = useState(0);
   const [article, setArticle] = useState<ArticleProps>({
@@ -64,6 +66,7 @@ const Feed: React.FC = (props) => {
 
   const viewProps: FeedViewProps = {
     ...props,
+    t,
     fadeTransition,
     articleTransition,
     feedControls,

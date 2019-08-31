@@ -10,7 +10,6 @@ import Edit from '../../core/svg/Edit';
 import { SideLayer } from '../../layout/SideLayer';
 import { Overlay } from '../../components/Overlay';
 import Drop from '../../core/svg/Drop';
-import { setVariant } from '../../components/plant-list/PlantCard';
 import DataProcessing from '../../core/svg/DataProcessing';
 import { plantStore } from '../../api/plants.api';
 import { getDaysLeft } from '../../core/utils/calc_dates';
@@ -19,6 +18,7 @@ import { Divider } from '../../layout/bottom-nav-bar/BottomNavBar.styled';
 import Exposure from '../../core/svg/Exposure';
 import Temperature from '../../core/svg/Temperature';
 import Soil from '../../core/svg/Soil';
+import { setVariant } from '../../core/utils/set_variant';
 import {
   Frequency,
   Hero,

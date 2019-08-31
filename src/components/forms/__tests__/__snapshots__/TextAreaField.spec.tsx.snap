@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextAreaField should render properly 1`] = `
+<div>
+  <label
+    class="css-npa6bc"
+    for="puke"
+  >
+    Should I puke?
+  </label>
+  <textarea
+    class="css-vygrie"
+    id="puke"
+    name="puke"
+  />
+</div>
+`;

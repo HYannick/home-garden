@@ -16,6 +16,7 @@ exports[`Switch should render properly 1`] = `
       type="checkbox"
     />
     <input
+      checked=""
       class="css-x6ytko"
       id="puke"
       name="puke"

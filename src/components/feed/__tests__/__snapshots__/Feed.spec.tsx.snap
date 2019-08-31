@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlantList should render properly 1`] = `
+<div>
+  <div
+    class="css-1pca6wa"
+  >
+    <div
+      class="css-1u8bncc"
+    >
+      <div
+        class="css-30uqkx"
+      >
+        <div>
+          <h1
+            class="css-21eb7x"
+          >
+            What's up today?
+          </h1>
+          <h6
+            class="css-og9iw5"
+          >
+            Get Amazing tips and advices!
+          </h6>
+        </div>
+        <div
+          class="css-1ytm51z"
+        >
+          <button
+            class="css-1b1pyeo"
+          >
+            <div>
+              Right
+            </div>
+          </button>
+          <button
+            class="css-1b1pyeo"
+          >
+            <div>
+              Left
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-kps18y"
+    />
+  </div>
+</div>
+`;

@@ -7,7 +7,7 @@ export const useGetNeedyPlantsList = (nbItems?: number) => {
   const [loading, setLoading] = useState(true);
   const [plants, setPlants] = useState<any[]>([]);
   const [warning, setWarning] = useState<number>(0);
-  const [hasErrors, setErrors] = useState(null);
+  const [hasErrors, setErrors] = useState(false);
 
   useEffect(() => {
     setLoading(true);

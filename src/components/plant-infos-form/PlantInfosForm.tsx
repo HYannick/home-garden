@@ -29,7 +29,7 @@ export const Spacer = styled('div')`
   height: 2rem;
 `;
 
-const AreaField: React.FC<{ label: string, levelName: string, descriptionName: string }> = ({ label, levelName, descriptionName }) => {
+export const AreaField: React.FC<{ label: string, levelName: string, descriptionName: string }> = ({ label, levelName, descriptionName }) => {
   const { t } = useTranslation();
 
   const selectors = [
