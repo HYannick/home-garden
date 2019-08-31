@@ -8,6 +8,8 @@ import SearchHeader from '../../layout/SearchHeader';
 import Skeleton from '../../components/Skeleton';
 import Modal from '../../components/modal/Modal';
 import ConfirmModal from '../../components/modal/templates/ConfirmModal';
+import { AddPlant } from '../search-list/SearchList.styled';
+import Add from '../../core/svg/Add';
 
 const Padding = styled('div')`
   padding: 0 2rem;
@@ -70,6 +72,15 @@ const PlantsListView: React.FC<PlantsListProps> = (props) => {
             {...props} t={t} path={`/plants/${props.plant.id}`}/>
         )}/>
       {loading && <Padding><Skeleton nbRows={3}/></Padding>}
+      <AddPlant to="/search">
+        <AddPlant.Tip>
+          {t('plant_list.tip')}
+        </AddPlant.Tip>
+        <AddPlant.Button>
+          <div><Add/></div>
+          <span>Create a plant</span>
+        </AddPlant.Button>
+      </AddPlant>
       <BottomSpacer/>
     </Fragment>
   );

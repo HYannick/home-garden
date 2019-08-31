@@ -20,6 +20,9 @@
   "plant_card": {
     "days_left": "Next Watering in {{days_left}} days"
   },
+  "plant_list": {
+    "tip": "Want to add a plant?"
+  },
   "search_list": {
     "tip": "Can't find it?\nFill it's info!"
   },

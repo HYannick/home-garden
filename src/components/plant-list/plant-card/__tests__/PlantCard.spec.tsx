@@ -11,11 +11,13 @@ describe('PlantCard', () => {
   const defaultProps: PlantCardTypes = {
     t: jest.fn().mockImplementation(() => 'plant_card.days_left'),
     plant: {
+      id: 'pat',
       name: 'Dracaena',
       custom_name: 'Draky',
       picture: null,
       days_left: 10,
     },
+    onDelete: jest.fn(),
     asSearchCard: false,
     path: '',
   };
