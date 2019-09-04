@@ -69,6 +69,7 @@
     "field_name": "Name",
     "field_latin_name": "Latin name",
     "field_family": "Family",
+    "field_description": "Description",
     "field_exposure": "Exposure",
     "field_temperature": "Temperature",
     "field_watering": "Watering",

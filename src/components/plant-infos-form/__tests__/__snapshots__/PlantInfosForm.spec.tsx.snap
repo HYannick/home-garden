@@ -80,6 +80,24 @@ exports[`PlantInfosForm should render properly 1`] = `
           <span
             class="css-1cblmog"
           >
+            plant_infos_form.field_description
+          </span>
+          <label
+            class="css-npa6bc"
+            for="description"
+          />
+          <textarea
+            class="css-vygrie"
+            id="description"
+            name="description"
+          />
+        </div>
+        <div
+          class="css-1diq458"
+        >
+          <span
+            class="css-1cblmog"
+          >
             plant_infos_form.field_exposure
           </span>
           <span>

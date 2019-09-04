@@ -2,6 +2,8 @@ import React from 'react';
 import {
   PieChart, Pie, Cell,
 } from 'recharts';
+// @ts-ignore
+import defaultAvatar from '../../static/default-avatar.jpeg';
 import ImageFade from '../../components/image-fade/ImageFade';
 import ActionBar from '../../layout/ActionBar';
 import { minTwoDigits } from '../../core/utils/min_two_digits';
@@ -32,7 +34,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ t,userLoading, userInfos, cou
       <Padding>
         <ProfileHeader>
           <Avatar data-testid="avatar">
-            <ImageFade src={userInfos.avatar} alt="avatar"/>
+            <ImageFade src={userInfos.avatar || defaultAvatar} alt="avatar"/>
           </Avatar>
           <Username data-testid="username">
             <h2>{userInfos.username}</h2>

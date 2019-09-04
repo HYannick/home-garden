@@ -92,6 +92,10 @@ const PlantInfosForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues, sub
                 <FormCreate.Control>
                   <Field type="text" name="family" component={InputField} label={t('plant_infos_form.field_family')}/>
                 </FormCreate.Control>
+                <FormCreate.Control>
+                  <Label>{t('plant_infos_form.field_description')}</Label>
+                  <Field name="description" component={TextAreaField}/>
+                </FormCreate.Control>
                 <AreaField
                   label={t('plant_infos_form.field_exposure')}
                   levelName="exposure_level"

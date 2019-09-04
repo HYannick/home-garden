@@ -3,6 +3,7 @@ import React from 'react';
 import { css, jsx } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 import Typography from '../components/Typography';
 import { Overlay } from '../components/Overlay';
 import ImageFade from '../components/image-fade/ImageFade';
@@ -14,11 +15,11 @@ interface HeaderProps {
 }
 
 
-const Avatar = styled('div')`
+const Avatar = styled(NavLink)`
   border-radius: 2.5rem;
   width: 8rem;
   height: 8rem;
-  border: 0.5rem solid white;
+  border: 0.5rem solid ${({theme}) => theme.palette.light};
   position: absolute;
   right: 1.5rem;
   bottom: -4rem;
@@ -65,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ username, cover, avatarUrl }) => {
         </Typography>
       </div>
 
-      <Avatar>
+      <Avatar to="/profile">
         <ImageFade src={avatarUrl} alt="username" placeholder="#EFFFE2"/>
       </Avatar>
     </div>
