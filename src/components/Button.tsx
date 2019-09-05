@@ -19,7 +19,7 @@ export const Button = styled('button')<ButtonProps>`
   &:disabled {
     background-color:  ${({ theme }) => theme.palette.grey.light};
     color: ${({ theme }) => theme.palette.grey.dark};
-    border: 0.2rem solid ${({ theme }) => theme.palette.grey.dark};
+    border: 0.1rem solid ${({ theme }) => theme.palette.grey.dark};
   }
   &:active {
     transform: translateY(0.6rem);

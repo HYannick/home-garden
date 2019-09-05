@@ -68,6 +68,16 @@ export const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) =
   />;
 };
 
+function NoMatch({ location }: any) {
+  return (
+    <div>
+      <h3>
+        No match for <code>{location.pathname}</code>
+      </h3>
+    </div>
+  );
+}
+
 
 const App: React.FC = () => {
   return (
@@ -84,6 +94,7 @@ const App: React.FC = () => {
           <PrivateRoute path="/plants/:id" exact component={Plant}/>
           <PrivateRoute path="/plants/:id/edit" exact component={PlantEdit}/>
           <Route path="/onboarding" exact component={OnBoarding}/>
+          <Route component={NoMatch} />
         </Switch>
         <BottomNavBar/>
       </Router>

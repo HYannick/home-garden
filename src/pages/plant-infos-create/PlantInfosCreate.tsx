@@ -8,9 +8,9 @@ import { SideLayer } from '../../layout/SideLayer';
 import PlantInfosForm from '../../components/plant-infos-form/PlantInfosForm';
 import { LevelData, PlantInfosProps } from './PlantInfosCreate.types';
 
-const PlantInfosCreate: React.FC = ({ history }: any) => {
+const PlantInfosCreate: React.FC = ({ history, location }: any) => {
   const { t } = useTranslation();
-
+  const { state } = location;
   const initialValues: PlantInfosProps = {
     name: '',
     latin_name: '',
@@ -23,14 +23,14 @@ const PlantInfosCreate: React.FC = ({ history }: any) => {
     watering_level: LevelData.LOW,
     watering_description: '',
     soil_type: '',
-    tips: ''
+    tips: '',
+    ...state && state.previousValues
   };
-
   const goToCreateForm = (values: PlantInfosProps) => history.push({pathname: '/create', state: {plantInfos: values}});
 
   return (
     <Fragment>
-      <ActionBar title={t('plant_create_title')}/>
+      <ActionBar title={t('plant_create_title')} path="/search"/>
       <PlantInfosForm onSubmit={goToCreateForm} initialValues={initialValues} submitLabel={t('plant_form.button.submit')}/>
       <SideLayer fullHeight/>
     </Fragment>

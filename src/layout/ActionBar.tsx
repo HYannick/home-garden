@@ -13,7 +13,9 @@ export interface ActionProps {
 export interface ActionBarProps extends RouteComponentProps {
   title?: string,
   actions?: ActionProps[],
-  children?: ReactNode
+  children?: ReactNode,
+  path?: any,
+  goBack?: boolean
 }
 
 const ActionWrapper = styled('div')`
@@ -70,20 +72,24 @@ const Action = styled('button')`
   }
 `;
 
-const ActionBar: React.FC<ActionBarProps> = ({ history, title, actions }) => {
-  const goBack = () => {
-    history.goBack();
+const ActionBar: React.FC<ActionBarProps> = ({ history, goBack, path = '/', title, actions }) => {
+  const redirect = () => {
+    if (goBack) {
+      return history.goBack();
+    }
+    return history.push(path);
   };
+
   return (
     <ActionWrapper>
-      <BackButton onClick={goBack}>
+      <BackButton onClick={redirect}>
         <ArrowBack/>
       </BackButton>
       <Title>
         <Typography noMargin variant="title" weight="800">{title}</Typography>
       </Title>
       <Actions>
-        {actions && actions.map(({ key, icon: Icon, onClick}: ActionProps) => (
+        {actions && actions.map(({ key, icon: Icon, onClick }: ActionProps) => (
           <Action key={key} onClick={onClick}>
             <Icon/>
           </Action>

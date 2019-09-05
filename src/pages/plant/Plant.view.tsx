@@ -134,7 +134,7 @@ const PlantView: React.FC<any> = (props) => {
           />
         )}
       />
-      <ActionBar actions={actions}/>
+      <ActionBar actions={actions} path="/plants"/>
       <Name variant={setVariant(daysLeft)}>{plant.custom_name || plant.name}</Name>
       <Hero>
         <Picture>

@@ -13,7 +13,7 @@ import { mapPlantData } from './plant-create.mapper';
 
 const PlantCreate: React.FC = ({ history, location }: any) => {
   const { t } = useTranslation();
-  const { state: { plantInfos } } = location;
+  const { state: { plantInfos, withoutCreation } } = location;
 
   const initialValues: PlantProps = {
     name: plantInfos.name,
@@ -49,8 +49,8 @@ const PlantCreate: React.FC = ({ history, location }: any) => {
       // const { data: plant } = await PlantsAPI.post('/plants', getFormData(mapPlantData(values)));
       // should reformat the image
       const updated_plant: any = await getUpdatedPlant(payload, plantInfos);
-      const {id} = await plantStore.setItem(updated_plant.id, updated_plant);
-      history.push(`/plants/${id}`);
+      await plantStore.setItem(updated_plant.id, updated_plant);
+      history.push('/plants');
       actions.setSubmitting(false);
     } catch (e) {
       // catch Error
@@ -60,7 +60,10 @@ const PlantCreate: React.FC = ({ history, location }: any) => {
 
   return (
     <Fragment>
-      <ActionBar title={t('plant_create_title')}/>
+      <ActionBar title={t('plant_create_title')} path={{
+        pathname: withoutCreation ? '/search' : '/plant-infos-create',
+        state: { previousValues: plantInfos },
+      }}/>
       <PlantForm onSubmit={submitPlant} initialValues={initialValues} submitLabel={t('plant_form.button.submit')}/>
       <SideLayer/>
     </Fragment>

@@ -123,7 +123,7 @@ exports[`Profile Page should render properly 1`] = `
           data-testid="counters"
         />
         <a
-          class="css-hmofew"
+          class="css-1c7or4"
           href="/plants"
         >
           View plants

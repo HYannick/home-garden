@@ -18,7 +18,7 @@ const SearchListView: React.FC<SearchListTypes> = ({ loading, plants, setSearch,
         asSearchCard
         path={{
           pathname: '/create',
-          state: { plantInfos: props.plant },
+          state: { plantInfos: props.plant, withoutCreation: true },
         }}/>}/>
       {loading && <Padding><Skeleton nbRows={3}/></Padding>}
       <AddPlant to="/plant-infos-create">

@@ -2,6 +2,7 @@
 
 exports[`Header should render properly 1`] = `
 <div>
+   
   <div
     class="css-1a9pc2l-Header"
   >
@@ -31,7 +32,7 @@ exports[`Header should render properly 1`] = `
         color="white"
       >
          
-        Mon Sep 02 2019
+        Thu Sep 05 2019
       </p>
       <p
         class="css-1nsadt8"
@@ -47,8 +48,9 @@ exports[`Header should render properly 1`] = `
         </span>
       </p>
     </div>
-    <div
-      class="css-o959b0"
+    <a
+      class="css-1w28esw"
+      href="/profile"
     >
       <div
         class="css-prjb17"
@@ -59,7 +61,8 @@ exports[`Header should render properly 1`] = `
           class="css-10dr8mc"
         />
       </div>
-    </div>
+    </a>
   </div>
+   
 </div>
 `;

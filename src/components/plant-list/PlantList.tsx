@@ -24,7 +24,7 @@ const ViewMore = styled(NavLink)`
   margin: 2rem;
   border-radius: 1rem 1rem 5rem 5rem;
   font-size: 1.6rem;
-  border: 0.2rem solid ${({ theme }) => theme.palette.primary.dark};
+  border: 0.1rem solid ${({ theme }) => theme.palette.primary.dark};
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   &:hover {

@@ -21,7 +21,7 @@ const ModalContent: any = styled('div')`
   padding: 2rem;
   background: white;
   border-radius: 2rem;
-  border: 0.2rem solid ${({ theme }) => theme.palette.grey.light};
+  border: 0.1rem solid ${({ theme }) => theme.palette.grey.light};
 `;
 
 ModalContent.Title = styled('h2')`
@@ -37,7 +37,7 @@ ModalContent.SubTitle = styled('p')`
 ModalContent.Button = styled('button')<VariantProps>`
   background-color:  ${({ variant, theme }) => theme.palette[variant || 'primary'].light};
   color: ${({ variant, theme }) => theme.palette[variant || 'primary'].dark};
-  border: 0.2rem solid ${({ variant, theme }) => theme.palette[variant || 'primary'].dark};
+  border: 0.1rem solid ${({ variant, theme }) => theme.palette[variant || 'primary'].dark};
   border-radius: 3rem;
   padding: 1rem 3rem;
   width: 15rem;

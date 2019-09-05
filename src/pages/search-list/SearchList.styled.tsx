@@ -21,7 +21,7 @@ AddPlant.Button = styled('div')`
   justify-content: center;
   background-color: ${({ theme }) => theme.palette.primary.light};
   border-radius: 6rem;
-  border: 0.2rem solid ${({ theme }) => theme.palette.primary.dark};
+  border: 0.1rem solid ${({ theme }) => theme.palette.primary.dark};
   padding: 1.5rem 2rem;
   > span {
     font-size: 2rem;

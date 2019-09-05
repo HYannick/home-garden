@@ -89,7 +89,7 @@ export const ViewAll = styled(NavLink)`
   margin: 1rem auto 0;
   align-items: center;
   justify-content: center;
-  border: 0.2rem solid ${({ theme }) => theme.palette.primary.dark};
+  border: 0.1rem solid ${({ theme }) => theme.palette.primary.dark};
   border-radius: 2rem 2rem 4rem 4rem;
   color: ${({ theme }) => theme.palette.primary.dark};
   padding: 1rem 1.5rem;

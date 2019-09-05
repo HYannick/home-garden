@@ -1,6 +1,7 @@
 import React from 'react';
 import 'jest-dom/extend-expect';
 import { cleanup } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { renderWithTheme } from '../../theme-wrapper';
 import Header from '../Header';
 
@@ -12,13 +13,13 @@ describe('Header', () => {
   };
   it('should render properly', () => {
     const { container } = renderWithTheme(
-      <Header {...props}/>,
+      <Router> <Header {...props}/> </Router>,
     );
     expect(container).toMatchSnapshot();
   });
   it('should render the right username', () => {
     const { getByText } = renderWithTheme(
-      <Header {...props}/>,
+      <Router> <Header {...props}/></Router>,
     );
     expect(getByText(/^Alita/)).toHaveTextContent('Alita');
   });

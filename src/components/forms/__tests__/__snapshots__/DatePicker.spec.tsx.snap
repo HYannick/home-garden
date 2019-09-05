@@ -149,37 +149,37 @@ exports[`DatePicker should render properly 1`] = `
                 aria-disabled="false"
                 aria-label="Mon Sep 02 2019"
                 aria-selected="false"
-                class="DayPicker-Day DayPicker-Day--today"
+                class="DayPicker-Day"
                 role="gridcell"
                 tabindex="-1"
               >
                 2
               </div>
               <div
-                aria-disabled="true"
+                aria-disabled="false"
                 aria-label="Tue Sep 03 2019"
                 aria-selected="false"
-                class="DayPicker-Day DayPicker-Day--disabled"
+                class="DayPicker-Day"
                 role="gridcell"
                 tabindex="-1"
               >
                 3
               </div>
               <div
-                aria-disabled="true"
+                aria-disabled="false"
                 aria-label="Wed Sep 04 2019"
                 aria-selected="false"
-                class="DayPicker-Day DayPicker-Day--disabled"
+                class="DayPicker-Day"
                 role="gridcell"
                 tabindex="-1"
               >
                 4
               </div>
               <div
-                aria-disabled="true"
+                aria-disabled="false"
                 aria-label="Thu Sep 05 2019"
                 aria-selected="false"
-                class="DayPicker-Day DayPicker-Day--disabled"
+                class="DayPicker-Day DayPicker-Day--today"
                 role="gridcell"
                 tabindex="-1"
               >

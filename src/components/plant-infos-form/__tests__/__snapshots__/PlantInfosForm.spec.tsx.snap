@@ -342,13 +342,13 @@ exports[`PlantInfosForm should render properly 1`] = `
             class="css-115f2m6"
           >
             <button
-              class="css-1r4gcaj"
+              class="css-139qh1f"
               type="submit"
             >
               Create
             </button>
             <button
-              class="css-116s2bk"
+              class="css-1r4xqxr"
               type="reset"
             >
               plant_form.button.cancel
