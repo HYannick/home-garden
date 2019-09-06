@@ -88,9 +88,12 @@ Card.Chip = styled('div')<VariantProps>`
 
 export const PlantWrapper = styled('div')`
   overflow-x: scroll;
-  padding: 0rem 0 2rem;
+  height: 10rem;
+  position: relative;
   > div {
     display: flex;
+    position: absolute;
+    width: 100%;
   }
 `;
 
@@ -103,6 +106,7 @@ export const PlaceHolder = styled('div')`
   padding: 2rem;
   font-size: 2rem;
   font-weight: 600;
+  height: 10rem;
   margin: 0 2rem;
   background-color: ${({ theme }) => theme.palette.primary.light};
   border-radius: 3rem;

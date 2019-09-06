@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react';
 import { css, jsx } from '@emotion/core';
+import { animated, useTransition } from 'react-spring';
 import Heading from '../../layout/Heading';
 import Drop from '../../core/svg/Drop';
 import HappyCactus from '../../core/svg/HappyCactus';
@@ -12,7 +13,11 @@ import { PlantProp, ScheduleProps } from './Schedule.types';
 
 
 const ScheduleView: React.FC<ScheduleProps> = ({ t, loading, plants, warning, hasErrors }) => {
-
+  const transition = useTransition(loading, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  });
   const renderPlaceholderContent = () => {
     if (hasErrors) {
       return <span>{t('schedule.errors')}</span>;
@@ -26,14 +31,6 @@ const ScheduleView: React.FC<ScheduleProps> = ({ t, loading, plants, warning, ha
   };
 
   const renderData = () => {
-    if (loading) {
-      return [...Array(5)].map((_, i) => (
-        <SkeletonCard key={i}>
-          <SkeletonCard.Chip/>
-        </SkeletonCard>
-      ));
-    }
-
     if (plants.length) {
       return plants.map(({ picture, name, id, days_left }: PlantProp) => (
         <Card key={id} to={`/plants/${id}`}>
@@ -60,9 +57,25 @@ const ScheduleView: React.FC<ScheduleProps> = ({ t, loading, plants, warning, ha
           subtitle={warning !== 0 ? t('needy_plants.needy', { count: warning }) : t('needy_plants.all_set')}/>
       </div>
       <PlantWrapper>
-        <div>
-          {renderData()}
-        </div>
+        {
+          transition.map(({ item, key, props }) => (
+            item ? (
+              <animated.div key={key} style={props} >
+                {
+                  [...Array(5)].map((_, i) => (
+                    <SkeletonCard key={i}>
+                      <SkeletonCard.Chip/>
+                    </SkeletonCard>
+                  ))
+                }
+              </animated.div>
+            ) : (
+              <animated.div key={key} style={props}>
+                {renderData()}
+              </animated.div>
+            )
+          ))
+        }
       </PlantWrapper>
     </div>
   );

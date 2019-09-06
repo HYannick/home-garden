@@ -1,8 +1,9 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import { sortBy, isEmpty } from 'lodash';
-import plantListReducer, { initialState, PlantListActionType } from '../../pages/home/home.reducer';
+import plantListReducer, { initialState} from '../../pages/home/home.reducer';
 import { PlantsAPI, plantStore } from '../../api/plants.api';
 import { getDaysLeft } from '../../core/utils/calc_dates';
+import { PlantListActionType } from '../../pages/home/plantListActionType';
 
 interface PlantListProps {
   range?: number[],
@@ -11,7 +12,6 @@ interface PlantListProps {
 
 export const useGetDBPlantList = () => {
   const [{ loading, warning, plants, searchQuery }, dispatch] = useReducer(plantListReducer, initialState);
-  const [isFetching, setIsFetching] = useState(true);
 
   const setSearch = (query: string) => {
     dispatch({ type: PlantListActionType.SET_SEARCH, query });
@@ -21,10 +21,8 @@ export const useGetDBPlantList = () => {
     dispatch({ type: PlantListActionType.SET_LOADING, loading: true });
     PlantsAPI.get(`/plants?search=${searchQuery}`).then(({ data: plants }) => {
       dispatch({ type: PlantListActionType.SET_PLANTS, plants });
-      setIsFetching(false);
       dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
     }).catch(() => {
-      setIsFetching(false);
       dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
     });
   }, [searchQuery]);
@@ -33,14 +31,12 @@ export const useGetDBPlantList = () => {
     loading,
     plants,
     warning,
-    isFetching,
     setSearch,
   };
 };
 
 export const useGetPlantList = ({ range, onlyHealthy = false }: PlantListProps) => {
   const [{ loading, warning, plants, searchQuery }, dispatch] = useReducer(plantListReducer, initialState);
-  const [isFetching, setIsFetching] = useState(true);
 
   const setSearch = (query: string) => {
     dispatch({ type: PlantListActionType.SET_SEARCH, query });
@@ -77,17 +73,6 @@ export const useGetPlantList = ({ range, onlyHealthy = false }: PlantListProps) 
         dispatch({ type: PlantListActionType.SET_PLANTS, plants: filteredPlantList });
         dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
       });
-    } else {
-      plantStore.iterate((value: any, key) => {
-        storeList[key] = value;
-      }).then(() => {
-        const filteredPlantList = sortBy(Object.values(storeList).map(((plant: any) => ({
-          ...plant,
-          days_left: getDaysLeft(plant.last_watering_date, plant.watering_frequency),
-        }))), ['days_left']);
-        dispatch({ type: PlantListActionType.SET_PLANTS, plants: filteredPlantList });
-        dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
-      });
     }
   }, [searchQuery]);
 
@@ -107,7 +92,6 @@ export const useGetPlantList = ({ range, onlyHealthy = false }: PlantListProps) 
       }
     }).then(() => {
       if (isEmpty(storeList)) {
-        setIsFetching(false);
         dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
         return;
       }
@@ -127,13 +111,12 @@ export const useGetPlantList = ({ range, onlyHealthy = false }: PlantListProps) 
       dispatch({ type: PlantListActionType.SET_LOADING, loading: false });
     });
     // eslint-disable-next-line
-  }, [isFetching, onlyHealthy]);
+  }, [onlyHealthy]);
 
   return {
     loading,
     plants,
     warning,
-    isFetching,
     setSearch,
     removePlant,
   };

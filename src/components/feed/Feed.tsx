@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useTransition } from 'react-spring';
+import React, { useEffect, useRef, useState } from 'react';
+import { useChain, useTransition } from 'react-spring';
 import { useTranslation } from 'react-i18next';
 import ArrowRight from '../../core/svg/ArrowRight';
 import { Directions } from '../../pages/onboarding/onboarding.types';
@@ -19,18 +19,22 @@ const Feed: React.FC = (props) => {
     title: '',
     source: '',
   });
-
-  const fadeTransition = useTransition(loading, null, {
+  const fadeTransitionRef: any = useRef();
+  const fadeTransition = useTransition(loading, null,{
+    ref: fadeTransitionRef,
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
+  const articleTransitionRef: any = useRef();
   const articleTransition = useTransition(article, article => article && article.id, {
+    ref: articleTransitionRef,
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
 
+  useChain([fadeTransitionRef, articleTransitionRef]);
 
   useEffect(() => {
     if (!loading && !hasErrors) {

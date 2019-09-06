@@ -27,9 +27,11 @@ exports[`Schedule should render cards 1`] = `
       </div>
     </div>
     <div
-      class="css-1u76lic"
+      class="css-1vmgg2b"
     >
-      <div>
+      <div
+        style="opacity: 0;"
+      >
         <a
           class="css-11coidr"
           href="/plants/d-1-9321"
@@ -99,9 +101,11 @@ exports[`Schedule should render loading message 1`] = `
       </div>
     </div>
     <div
-      class="css-1u76lic"
+      class="css-1vmgg2b"
     >
-      <div>
+      <div
+        style="opacity: 0;"
+      >
         <div
           class="css-r6836y"
         >
@@ -170,11 +174,13 @@ exports[`Schedule should render properly 1`] = `
       </div>
     </div>
     <div
-      class="css-1u76lic"
+      class="css-1vmgg2b"
     >
-      <div>
+      <div
+        style="opacity: 0;"
+      >
         <div
-          class="css-t3kvvv"
+          class="css-jne341"
         >
           <svg
             viewBox="0 0 512.001 512.001"
