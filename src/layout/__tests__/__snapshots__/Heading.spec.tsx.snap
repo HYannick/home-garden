@@ -49,9 +49,6 @@ exports[`Heading should render properly 1`] = `
         You have 2 lives left
       </h6>
     </div>
-    <div
-      class="css-1ytm51z"
-    />
   </div>
 </div>
 `;

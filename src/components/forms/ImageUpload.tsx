@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css, jsx } from '@emotion/core';
 import Camera from '../../core/svg/Camera';
+import { useTranslation } from 'react-i18next';
 
 
 const resizeOpts = {
@@ -93,6 +94,7 @@ const resizeImage = (fr: FileReader, options: resizeOptionsProps): Promise<strin
 });
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ field, className, onImageLoaded, source }) => {
+  const {t} = useTranslation();
   const [src, setSrc] = useState<string>(source || '');
   const [loading, setLoading] = useState(false);
 
@@ -132,13 +134,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ field, className, onImageLoad
         {
           loading ? (
             <Loader>
-              <span>Loading ...</span>
+              <span>{t('components.image_upload.loading')}</span>
             </Loader>
           ) : (
             !src && (
               <Tip>
                 <Camera/>
-                <span>Provide a photo here</span>
+                <span>{t('components.image_upload.label')}</span>
               </Tip>
             )
           )

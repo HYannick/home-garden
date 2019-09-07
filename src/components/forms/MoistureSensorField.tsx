@@ -33,7 +33,7 @@ const MoistureSensorInput: React.FC<{ setFieldValue: Function, resetField: Funct
         type="checkbox"
         name="need_watering_frequency"
         component={Switch}
-        label="Do you want to set a watering frequency?"
+        label={t('components.moisture_sensor_field.watering_frequency')}
         onChange={(need_watering_frequency: boolean) => {
           if (!need_watering_frequency) resetField('watering_frequency');
           setFieldValue('need_watering_frequency', need_watering_frequency);

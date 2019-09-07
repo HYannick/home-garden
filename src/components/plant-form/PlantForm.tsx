@@ -37,7 +37,7 @@ const PlantForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues, submitLa
               onImageLoaded={(imgData: { src: string, url: string }) => setFieldValue('picture', imgData.src)}/>
             <FormCreate.Wrapper>
               <FormCreate.Title>
-                <p>Plant infos</p>
+                <p>{t('plant_form.title')}</p>
               </FormCreate.Title>
               <div css={css`flex:1; padding: 0 2.5rem 0 1rem; margin-top: 2rem;`}>
                 <FormCreate.Control>

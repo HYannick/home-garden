@@ -4,10 +4,10 @@ exports[`Header should render properly 1`] = `
 <div>
    
   <div
-    class="css-1a9pc2l-Header"
+    class="css-1kd88xp"
   >
     <div
-      class="css-b2f7vh-Header"
+      class="css-f3ykrc"
     >
       <div
         class="css-ilwsms"
@@ -25,20 +25,19 @@ exports[`Header should render properly 1`] = `
       </div>
     </div>
     <div
-      class="css-gki4ed-Header"
+      class="css-1lnlhzr-HeaderView"
     >
       <p
         class="css-1fhp3d6"
         color="white"
       >
          
-        Sat Sep 07 2019
+        now
       </p>
       <p
         class="css-1nsadt8"
         color="white"
       >
-        header.hi
         , 
         <span
           class="css-atu78c"

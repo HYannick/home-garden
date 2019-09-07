@@ -31,7 +31,7 @@ const PlantInfosCreate: React.FC = ({ history, location }: any) => {
   return (
     <Fragment>
       <ActionBar title={t('plant_create_title')} path="/search"/>
-      <PlantInfosForm onSubmit={goToCreateForm} initialValues={initialValues} submitLabel={t('plant_form.button.submit')}/>
+      <PlantInfosForm onSubmit={goToCreateForm} initialValues={initialValues} submitLabel={t('plant_infos_form.button.submit')}/>
       <SideLayer fullHeight/>
     </Fragment>
   );

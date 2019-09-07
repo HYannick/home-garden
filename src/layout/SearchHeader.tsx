@@ -3,11 +3,11 @@ import React from 'react';
 import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import { Overlay } from '../components/Overlay';
 import ImageFade from '../components/image-fade/ImageFade';
 import SearchIcon from '../core/svg/Search';
 import ActionBar from './ActionBar';
-import { useTranslation } from 'react-i18next';
 
 interface HeaderProps {
   onSubmit: (value: string) => void,
@@ -123,7 +123,7 @@ const SearchHeader: React.FC<HeaderProps> = ({ onSubmit, cover }) => {
                   type="search"
                   autoComplete="off"
                   id="search"
-                  placeholder="Type a plant name"
+                  placeholder={t('search.placeholder')}
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                   value={props.values.query}

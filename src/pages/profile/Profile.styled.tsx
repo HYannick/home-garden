@@ -49,10 +49,6 @@ Counters.Block = styled('div')<VariantProps>`
   }
 `;
 
-export const Spacer = styled('h4')`
-  height: 10rem;
-`;
-
 export const Padding = styled('div')`
   padding: 0 2rem;
 `;

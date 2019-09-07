@@ -12,7 +12,7 @@ exports[`PlantList should render properly 1`] = `
         <h1
           class="css-21eb7x"
         >
-          Your Plants
+          plant_list.title
         </h1>
         <h6
           class="css-og9iw5"
@@ -20,9 +20,6 @@ exports[`PlantList should render properly 1`] = `
           needy_plants.all_set
         </h6>
       </div>
-      <div
-        class="css-1ytm51z"
-      />
     </div>
   </div>
   <div
@@ -42,7 +39,7 @@ exports[`PlantList should render properly 1`] = `
     class="css-zj8opf"
     href="/plants"
   >
-    View all plants
+    plant_list.view_all
   </a>
 </div>
 `;

@@ -117,13 +117,17 @@ const Heading: React.FC<HeadingProps> = ({ title, subtitle, variant = 'primary',
         <Typography variant="title" weight="600" tag="h1" noMargin>{title}</Typography>
         <Typography variant="body" weight="400" tag="h6" noMargin>{subtitle}</Typography>
       </div>
-      <Controls>
-        {controls && controls.map(({ key, icon: Icon, onClick, disabled }) => (
-          <Control key={key} onClick={onClick} disabled={disabled}>
-            <Icon/>
-          </Control>
-        ))}
-      </Controls>
+      {
+        controls && (
+          <Controls>
+            {controls.map(({ key, icon: Icon, onClick, disabled }) => (
+              <Control key={key} onClick={onClick} disabled={disabled}>
+                <Icon/>
+              </Control>
+            ))}
+          </Controls>
+        )
+      }
     </HeadingWrapper>
   );
 };

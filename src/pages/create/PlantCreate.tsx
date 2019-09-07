@@ -31,7 +31,7 @@ const PlantCreate: React.FC = ({ history, location }: any) => {
       const { data: DBPlant } = await PlantsAPI.post('/plants', plantInfos);
       return mapPlantData(payload, DBPlant.plantId);
     }
-    return mapPlantData(payload, plantInfos.id);
+    return mapPlantData(payload, plantInfos.id, plantInfos.picture);
   };
 
 

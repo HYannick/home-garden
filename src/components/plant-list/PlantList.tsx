@@ -41,14 +41,14 @@ const PlantList: React.FC = () => {
           padding: 2rem 3.5rem 0;
       `}>
         <Heading
-          variant="warning" title="Your Plants"
+          variant="warning" title={t('plant_list.title')}
           subtitle={warning !== 0 ? t('needy_plants.needy', { count: warning }) : t('needy_plants.all_set')}/>
       </div>
       <List
         items={plants}
         loading={plantsLoading}
         card={(props: any) => <PlantCard {...props} t={t} path={`/plants/${props.plant.id}`}/>}/>
-      <ViewMore to="/plants">View all plants</ViewMore>
+      <ViewMore to="/plants">{t('plant_list.view_all')}</ViewMore>
     </Fragment>
   );
 };

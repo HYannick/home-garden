@@ -53,7 +53,7 @@ const ScheduleView: React.FC<ScheduleProps> = ({ t, loading, plants, warning, ha
         padding-left: 3.5rem;
       `}>
         <Heading
-          variant="primary" title="Your schedule"
+          variant="primary" title={t('schedule.title')}
           subtitle={warning !== 0 ? t('needy_plants.needy', { count: warning }) : t('needy_plants.all_set')}/>
       </div>
       <PlantWrapper>

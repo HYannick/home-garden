@@ -21,7 +21,7 @@ const FeedView: React.FC<FeedViewProps> = (props) => {
     <FeedWrapper>
       <Padding>
         <Heading
-          variant="primary" title="What's up today?" subtitle="Get Amazing tips and advices!"
+          variant="primary" title={t('feed.title')} subtitle={t('feed.subtitle')}
           controls={feedControls}/>
       </Padding>
       <FeedContent>

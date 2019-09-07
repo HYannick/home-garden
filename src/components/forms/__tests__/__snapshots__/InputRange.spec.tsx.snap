@@ -6,11 +6,7 @@ exports[`InputRange should render properly 1`] = `
     class="css-he3bhv"
     for="puke"
   >
-    What will your 
-    <strong>
-      watering frequency
-    </strong>
-     be?
+    components.frequency.label
   </label>
   <div
     class="css-18uljbk"
@@ -52,7 +48,7 @@ exports[`InputRange should render properly 1`] = `
     <span
       class="css-1ia2zn2"
     >
-      in days
+      components.frequency.in_days
     </span>
   </div>
 </div>

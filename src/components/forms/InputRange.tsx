@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { jsx } from '@emotion/core';
 import { Range, getTrackBackground } from 'react-range';
+import { useTranslation } from 'react-i18next';
 
 interface RangeProps {
   field?: any,
@@ -84,6 +85,7 @@ const MinMax = styled('div')`
 `;
 
 const InputRange: React.FC<RangeProps> = ({ field, min, max, step, onChange }) => {
+  const {t} = useTranslation();
   const [values, setValues] = useState<number[]>([min]);
 
   useEffect(() => {
@@ -102,7 +104,7 @@ const InputRange: React.FC<RangeProps> = ({ field, min, max, step, onChange }) =
 
   return (
     <Fragment>
-      <FrequencyLabel htmlFor={field.name}>What will your <strong>watering frequency</strong> be?</FrequencyLabel>
+      <FrequencyLabel htmlFor={field.name}>{t('components.frequency.label')}</FrequencyLabel>
       <RangeWrapper>
         <Range
           values={values}
@@ -125,7 +127,7 @@ const InputRange: React.FC<RangeProps> = ({ field, min, max, step, onChange }) =
           <span>{min}</span>
           <span>{max}</span>
         </MinMax>
-        <Tips>in days</Tips>
+        <Tips>{t('components.frequency.in_days')}</Tips>
       </RangeWrapper>
     </Fragment>
   );

@@ -9,10 +9,10 @@ exports[`PlantInfosForm should render properly 1`] = `
       class="css-ov1ktg"
     >
       <div
-        class="css-rkdae6"
+        class="css-r6tsss"
       >
         <p>
-          Plant infos
+          plant_infos_form.title
         </p>
       </div>
       <div
@@ -168,7 +168,7 @@ exports[`PlantInfosForm should render properly 1`] = `
             plant_infos_form.field_temperature
           </span>
           <span>
-            plant_infos_form.field_level_label
+            plant_infos_form.field_temperature_description
           </span>
           <label
             class="css-npa6bc"

@@ -15,7 +15,7 @@ const PlantCard: React.FC<PlantCardTypes> = ({ t, plant, asSearchCard = false, p
     }
     <Card to={path}>
       <Card.Picture asSearchCard={asSearchCard}>
-        <ImageFade src={plant.picture} alt={plant.name} placeholder="#EFFFE2"/>js
+        <ImageFade src={plant.picture} alt={plant.name} placeholder="#EFFFE2"/>
         <Card.Overlay/>
       </Card.Picture>
       {
@@ -23,7 +23,7 @@ const PlantCard: React.FC<PlantCardTypes> = ({ t, plant, asSearchCard = false, p
           <Card.Infos data-testid="default-card">
             <p>{plant.custom_name || plant.name}</p>
             <Card.Chip variant={setVariant(plant.days_left)}>
-              <span>{t('plant_card.days_left', { days_left: plant.days_left })}</span>
+              <span>{t('plant_card.days_left', { count: plant.days_left })}</span>
               <Drop/>
             </Card.Chip>
           </Card.Infos>

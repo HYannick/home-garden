@@ -11,5 +11,5 @@ export interface PlantProps {
 
 export interface MappedPlantProps extends PlantProps{
   id?: string,
-  DBPlantID: string,
+  DBPlantID: string
 }

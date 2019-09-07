@@ -1,3 +1,159 @@
 {
-  "welcome": "Bienvenu cher Utilisateur"
+  "languages": {
+    "title": "Langue",
+    "helper": "Selectionnez la langue de l'application.",
+    "note": "/!\\ L'application a un publique principalement Français. Les informations sur les plantes seront donc en Français pour le moment :)."
+  },
+  "welcome": "Bienvenue {{user}}",
+  "loading": "Chargement...",
+  "header": {
+    "hi": "Bonjour"
+  },
+  "list": {
+    "add_button_label": "Ajouter une plante"
+  },
+  "modals": {
+    "plant_removal": {
+      "title": "Êtes-tu sûr(e) ?",
+      "subtitle": "Veux tu vraiment supprimer cette plante ? Cette action est irréversible."
+    }
+  },
+  "needy_plants": {
+    "needy": "{{count}} plante a besoin de ton attention",
+    "needy_plural": "{{count}} plantes ont besoin de ton attention",
+    "all_set": "Tout est OK ! :D"
+  },
+  "components": {
+    "frequency": {
+      "label": "Quelle sera la fréquence d'arrosage ?",
+      "in_days": "en jours"
+    },
+    "image_upload": {
+      "label": "Prends une photo !",
+      "loading": "Chargement ..."
+    },
+    "moisture_sensor_field": {
+      "watering_frequency": "Veux-tu configurer une fréquence d'arrosage ?"
+    }
+  },
+  "feed": {
+    "title": "L'actu",
+    "subtitle": "Astuces et conseils à volonté !",
+    "no_feed": "Aucune actualité :("
+  },
+  "plant_card": {
+    "days_left": "Prochain arrosage dans {{count}} jour",
+    "days_left_plural": "Prochain arrosage dans {{count}} jours"
+  },
+  "plant_list": {
+    "title": "Tes plantes",
+    "tip": "Besoin d'ajouter une plante ?",
+    "view_all": "Voir toutes les plantes"
+  },
+  "search_list": {
+    "tip": "Tu ne la trouves pas ?\nCrée une fiche!"
+  },
+  "search": {
+    "title": "Cherche ta plante ici",
+    "placeholder": "Entre le nom de ta plante"
+  },
+  "profile_page": {
+    "title": "Profil",
+    "loading": "Récupération de données ...",
+    "plant_label_plural": "Plantes",
+    "plant_label": "Plante",
+    "legend": {
+      "healthy": "Bien arrosée",
+      "warning": "A surveiller",
+      "needy": "A arroser"
+    }
+  },
+  "schedule": {
+    "title": "Ton calendrier",
+    "loading": "Chargement...",
+    "all_set": "Toutes tes plantes sont en sécurité !"
+  },
+  "onboarding": {
+    "welcome": "Bienvenue dans ton gestionnaire d'arrosage. Je suis Mizu et je vais t'aider à prendre soin de tes plantes.",
+    "introduction": "Pour commencer, comment t'appelles-tu ?",
+    "skip": "Tu peux passer cette étape ;)",
+    "greetings": "Enchanté, {{username}}!\nVeux tu un avatar ?",
+    "done": "On est tout bon.\n Ajoutons des plantes à ton jardin !"
+  },
+  "plant_create_title": "Création d'une plante",
+  "plant_edit_title": "Edition de {{plant_name}}",
+  "plant_form": {
+    "title": "Informations principales",
+    "field_name": "Comment veux-tu l'appeler ?",
+    "field_last_watering_date": "A quand remonte ton dernier arrosage ?",
+    "field_has_moisture_sensor": "As-tu un capteur d'humidité ?",
+    "field_watering_frequency": "Veux-tu configurer une fréquence d'arrosage ?",
+    "form_notice": "Ces données seront ajoutées à notre base de donnée afin de l'améliorer et de t'apporter une meilleure expérience d'utilisation de notre application. Si tu veux participer, n'hésite pas à nous contacter !",
+    "sensor_notice": "Entrer l'ID du capteur.\n Tu peux le trouver après son initialisation.",
+    "button": {
+      "submit": "Créer",
+      "edit_submit": "Mettre à jour",
+      "cancel": "Annuler"
+    },
+    "errors": {
+      "name": "Un nom est requis.",
+      "last_watering_date": "Une date d'arrosage est requise.",
+      "sensor_id": "Un identifiant est requis.",
+      "watering_frequency": "Une fréquence d'arrosage est requise."
+    }
+  },
+  "plant_infos_form": {
+    "title": "Informations principales",
+    "helper_text": "Remplis les informations de la plante.\n Tu n'as pas besoin de tout remplir. Une fois soumise, nous allons compléter/corriger ou simplement valider les informations que tu nous as données :)",
+    "field_name": "Nom",
+    "field_latin_name": "Nom latin",
+    "field_family": "Famille",
+    "field_description": "Description",
+    "field_exposure": "Exposition",
+    "field_temperature": "Résistance au froid",
+    "field_temperature_description": "De quel niveau de température as-t-elle besoin ?",
+    "field_watering": "Arrosage",
+    "field_soil": "Type de terreau",
+    "field_soil_helper": "De quel type de terreau elle a besoin ?",
+    "field_plant_tips": "Astuces",
+    "field_plant_tips_helper": "Quelques astuces à partager :p ?",
+    "field_level_label": "De quel niveau as-t-elle besoin ?",
+    "level_select": {
+      "low": "Un peu",
+      "medium": "Moyen",
+      "high": "Beaucoup"
+    },
+    "field_tips_label": "Quelques astuces à ce propos ?",
+    "button": {
+      "submit": "Suivant",
+      "cancel": "Annuler"
+    },
+    "errors": {
+      "name": "Le nom est requis."
+    }
+  },
+  "plant_details": {
+    "loading": "Chargement ...",
+    "not_found": "Aucune plante trouvée",
+    "next_watering": "A arroser dans",
+    "days_label": "J",
+    "days_label_plural": "J",
+    "frequency": "Arroser tous les ",
+    "upcoming": "Les infos arrivent ;)",
+    "noConnexion": "Impossible de récupérer les infos :(",
+    "noConnexionDetails": "Peut être un soucis de connexion ?",
+    "description": {
+      "label": "Description",
+      "name": "Nom",
+      "latin_name": "Nom latin",
+      "family": "Famille"
+    },
+    "tips_label": "Quelques astuces",
+    "stats": {
+      "exposure_title": "Exposition",
+      "temperature_title": "Température",
+      "watering_title": "Arrosage",
+      "soil_title": "Terreau"
+    }
+  }
 }

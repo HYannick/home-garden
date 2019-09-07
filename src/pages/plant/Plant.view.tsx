@@ -54,14 +54,14 @@ const PlantData = ({ t, plant, daysLeft, hasDBErrors }: any) => {
   const stats: StatsTypes[] = [
     {
       icon: Exposure,
-      title: 'Exposure',
+      title: t('plant_details.stats.exposure_title'),
       level: plant.exposure_level,
       description: plant.exposure_description,
       color: '#EDAE86',
     },
     {
       icon: Temperature,
-      title: 'Temperature',
+      title: t('plant_details.stats.temperature_title'),
       level: plant.temperature_level,
       description: plant.temperature_description,
       color: '#44B7D1',
@@ -72,14 +72,14 @@ const PlantData = ({ t, plant, daysLeft, hasDBErrors }: any) => {
           <Drop fill="none"/>
         </DropWrapper>
       ),
-      title: 'Watering',
+      title: t('plant_details.stats.watering_title'),
       level: plant.watering_level,
       description: plant.watering_description,
       color: '#90EAFF',
     },
     {
       icon: Soil,
-      title: 'Soil type',
+      title: t('plant_details.stats.soil_title'),
       description: plant.soil_type,
     },
   ];
@@ -87,14 +87,14 @@ const PlantData = ({ t, plant, daysLeft, hasDBErrors }: any) => {
   return (
     <div>
       <PlantInfos>
-        <Label variant={setVariant(daysLeft)}><span>Description</span></Label>
+        <Label variant={setVariant(daysLeft)}><span>{t('plant_details.description.label')}</span></Label>
         <PlantInfos.Names>
           <div>
-            <h6>Latin Name</h6>
+            <h6>{t('plant_details.description.latin_name')}</h6>
             <p>{plant.latin_name}</p>
           </div>
           <div>
-            <h6>Family</h6>
+            <h6>{t('plant_details.description.family')}</h6>
             <p>{plant.family}</p>
           </div>
         </PlantInfos.Names>
@@ -103,7 +103,7 @@ const PlantData = ({ t, plant, daysLeft, hasDBErrors }: any) => {
       </PlantInfos>
       <PlantStats stats={stats}/>
       <PlantTips>
-        <PlantTips.Label>Some Tips</PlantTips.Label>
+        <PlantTips.Label>{t('plant_details.tips_label')}</PlantTips.Label>
         <p>{plant.tips}</p>
       </PlantTips>
     </div>
@@ -138,8 +138,8 @@ const PlantView: React.FC<any> = (props) => {
       <Name variant={setVariant(daysLeft)}>{plant.custom_name || plant.name}</Name>
       <Hero>
         <Picture>
-          <Overlay color="#000" opacity={0.25}/>
-          <ImageFade src={plant.picture} alt={plant.name} placeholder="#EFFFE2"/>
+          <Overlay color="#000" opacity={0.5}/>
+          <ImageFade src={plant.picture || (plantData && plantData.picture) } alt={plant.name} placeholder="#EFFFE2"/>
         </Picture>
         <WateringStatus>
           <Infos>
@@ -147,7 +147,7 @@ const PlantView: React.FC<any> = (props) => {
             <h2>
               <animated.span
                 style={{ marginRight: '0.5rem' }}>{number.interpolate((n: any) => n.toFixed())}</animated.span>
-              {t('plant_details.days_label')}
+              {t('plant_details.days_label', {count: daysLeft})}
             </h2>
           </Infos>
           <Button variant={setVariant(daysLeft)}>

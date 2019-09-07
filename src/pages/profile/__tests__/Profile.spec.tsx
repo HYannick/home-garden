@@ -82,8 +82,8 @@ describe('Profile Page', () => {
       <Router><ProfileView {...props} /></Router>,
     );
 
-    expect(getByTestId('counters')).toHaveTextContent('03Healthy');
-    expect(getByTestId('counters')).toHaveTextContent('10Dead');
+    expect(getByTestId('counters')).toHaveTextContent('03');
+    expect(getByTestId('counters')).toHaveTextContent('10');
   });
 
   it('should display total amount of plants', () => {

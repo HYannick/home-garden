@@ -35,7 +35,7 @@ exports[`PlanForm should render properly 1`] = `
             />
           </svg>
           <span>
-            Provide a photo here
+            components.image_upload.label
           </span>
         </div>
       </label>
@@ -49,10 +49,10 @@ exports[`PlanForm should render properly 1`] = `
       class="css-ov1ktg"
     >
       <div
-        class="css-u7rvqb"
+        class="css-r6tsss"
       >
         <p>
-          Plant infos
+          plant_form.title
         </p>
       </div>
       <div
@@ -593,11 +593,7 @@ exports[`PlanForm should render properly 1`] = `
             class="css-he3bhv"
             for="watering_frequency"
           >
-            What will your 
-            <strong>
-              watering frequency
-            </strong>
-             be?
+            components.frequency.label
           </label>
           <div
             class="css-18uljbk"
@@ -639,7 +635,7 @@ exports[`PlanForm should render properly 1`] = `
             <span
               class="css-1ia2zn2"
             >
-              in days
+              components.frequency.in_days
             </span>
           </div>
         </div>

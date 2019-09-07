@@ -14,16 +14,11 @@ exports[`Schedule should render cards 1`] = `
         <div>
           <h1
             class="css-21eb7x"
-          >
-            Your schedule
-          </h1>
+          />
           <h6
             class="css-og9iw5"
           />
         </div>
-        <div
-          class="css-1ytm51z"
-        />
       </div>
     </div>
     <div
@@ -88,16 +83,11 @@ exports[`Schedule should render loading message 1`] = `
         <div>
           <h1
             class="css-21eb7x"
-          >
-            Your schedule
-          </h1>
+          />
           <h6
             class="css-og9iw5"
           />
         </div>
-        <div
-          class="css-1ytm51z"
-        />
       </div>
     </div>
     <div
@@ -161,16 +151,11 @@ exports[`Schedule should render properly 1`] = `
         <div>
           <h1
             class="css-21eb7x"
-          >
-            Your schedule
-          </h1>
+          />
           <h6
             class="css-og9iw5"
           />
         </div>
-        <div
-          class="css-1ytm51z"
-        />
       </div>
     </div>
     <div

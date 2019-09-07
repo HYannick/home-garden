@@ -76,7 +76,7 @@ exports[`SearchHeader should render properly 1`] = `
             autocomplete="off"
             id="search"
             name="query"
-            placeholder="Type a plant name"
+            placeholder="search.placeholder"
             type="search"
             value=""
           />

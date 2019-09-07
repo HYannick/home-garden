@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import {
   PieChart, Pie, Cell,
 } from 'recharts';
@@ -8,12 +8,14 @@ import ImageFade from '../../components/image-fade/ImageFade';
 import ActionBar from '../../layout/ActionBar';
 import { minTwoDigits } from '../../core/utils/min_two_digits';
 
+import LanguageSelector from '../../components/LanguageSelector';
+import Spacer from '../../layout/Spacer';
 import {
   Avatar,
   ChartContainer,
   Counters,
   Padding,
-  ProfileHeader, Spacer, TotalCount,
+  ProfileHeader, TotalCount,
   UserDetails,
   Username,
   ViewAll,
@@ -30,7 +32,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ t,userLoading, userInfos, cou
 
   return (
     <div>
-      <ActionBar title="About you"/>
+      <ActionBar title={t('profile_page.title')}/>
       <Padding>
         <ProfileHeader>
           <Avatar data-testid="avatar">
@@ -59,22 +61,24 @@ const ProfileView: React.FC<ProfileViewProps> = ({ t,userLoading, userInfos, cou
                   }
                 </Pie>
               </PieChart>
-              <TotalCount data-testid="total_plants"><h4>{minTwoDigits(counters.total)}</h4><span>Plants</span></TotalCount>
+              <TotalCount data-testid="total_plants"><h4>{minTwoDigits(counters.total)}</h4><span>{t('profile_page.plant_label', {count: counters.total})}</span></TotalCount>
             </div>
           </ChartContainer>
           <Counters data-testid="counters">
             {
-              chartData.map(({ name, variant, label, value }: { name: string, variant: string, label: string, value: number }) => (
+              chartData.map(({ name, variant, value }: { name: string, variant: string, label: string, value: number }) => (
                 <Counters.Block key={`${name}-counter`} variant={variant || 'primary'}>
                   <p>{minTwoDigits(value)}</p>
-                  <span>{label}</span>
+                  <span>{t(`profile_page.legend.${name}`)}</span>
                 </Counters.Block>
               ))
             }
           </Counters>
-          <ViewAll to="/plants">View plants</ViewAll>
+          <ViewAll to="/plants">{t('plant_list.view_all')}</ViewAll>
         </UserDetails>
-        <Spacer/>
+        <Spacer height={4}/>
+        <LanguageSelector />
+        <Spacer height={10}/>
       </Padding>
     </div>
   );

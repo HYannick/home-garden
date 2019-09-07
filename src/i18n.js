@@ -4,6 +4,7 @@ import enLang from './lang/en';
 import frLang from './lang/fr';
 // the translations
 // (tip move them in a JSON file and import them)
+
 const resources = {
   en: {
     translation: enLang,
@@ -17,8 +18,8 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng: 'en',
-    debug: true,
+    lng: window.localStorage.getItem('lang') || 'fr',
+    debug: process.env.NODE_ENV === 'development',
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

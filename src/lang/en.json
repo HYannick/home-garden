@@ -1,5 +1,11 @@
 {
+  "languages": {
+    "title": "Language",
+    "helper": "Please select the app language",
+    "note": "/!\\ The app is meant for French audience. Database informations will be in French for now :)."
+  },
   "welcome": "Hello fellow {{user}}",
+  "loading": "Loading...",
   "header": {
     "hi": "Hi"
   },
@@ -17,30 +23,58 @@
     "needy_plural": "{{count}} plants need your attention",
     "all_set": "You are all set ! :D"
   },
+  "components": {
+    "frequency": {
+      "label": "What will your watering frequency be?",
+      "in_days": "in days"
+    },
+    "image_upload": {
+      "label": "Please provide a photo",
+      "loading": "Loading ..."
+    },
+    "moisture_sensor_field": {
+      "watering_frequency": "Do you want to set a watering frequency?"
+    }
+  },
   "feed": {
+    "title": "What's up today?",
+    "subtitle": "Get Amazing tips and advices!",
     "no_feed": "No Feed :("
   },
   "plant_card": {
-    "days_left": "Next Watering in {{days_left}} days"
+    "days_left": "Next Watering in {{count}} day",
+    "days_left_plural": "Next Watering in {{count}} days"
   },
   "plant_list": {
-    "tip": "Want to add a plant?"
+    "title": "Your plants",
+    "tip": "Want to add a plant?",
+    "view_all": "View all plants"
   },
   "search_list": {
     "tip": "Can't find it?\nFill it's info!"
   },
   "search": {
-    "title": "Look for your plant here"
+    "title": "Look for your plant here",
+    "placeholder": "Type a plant name"
   },
   "profile_page": {
-    "loading": "Getting data ..."
+    "title": "About you",
+    "loading": "Getting data ...",
+    "plant_label_plural": "Plants",
+    "plant_label": "Plant",
+    "legend": {
+      "healthy": "Healthy",
+      "warning": "Warning",
+      "needy": "Needy"
+    }
   },
   "schedule": {
+    "title": "Your schedule",
     "loading": "Loading...",
     "all_set": "All your plants are safe !"
   },
   "onboarding": {
-    "welcome": "Welcome to your new watering manager.\nI am PyHerb and I will help you to take care of your plants!",
+    "welcome": "Welcome to your new watering manager.\nI am Mizu and I will help you to take care of your plants!",
     "introduction": "For starters\nhow can I call you?",
     "skip": "You can skip this one ;)",
     "greetings": "Greetings, {{username}}!\nDo you want to set an avatar?",
@@ -49,6 +83,7 @@
   "plant_create_title": "Plant Creation",
   "plant_edit_title": "Edit {{plant_name}}",
   "plant_form": {
+    "title": "Plant infos",
     "field_name": "What's it's custom name?",
     "field_last_watering_date": "When happened the last watering?",
     "field_has_moisture_sensor": "Have you got a moisture sensor?",
@@ -68,13 +103,15 @@
     }
   },
   "plant_infos_form": {
+    "title": "Plant infos",
     "helper_text": "Fill the plants informations.\nYou don’t need to fill everything, we will complete and review your submission :)",
     "field_name": "Name",
     "field_latin_name": "Latin name",
     "field_family": "Family",
     "field_description": "Description",
     "field_exposure": "Exposure",
-    "field_temperature": "Temperature",
+    "field_temperature": "Cold resistance",
+    "field_temperature_description": "What kind of temperature level does it need?",
     "field_watering": "Watering",
     "field_soil": "Soil type",
     "field_soil_helper": "What kind of soil does it need?",
@@ -88,7 +125,7 @@
     },
     "field_tips_label": "Some tips about it?",
     "button": {
-      "submit": "Submit",
+      "submit": "Next",
       "cancel": "Cancel"
     },
     "errors": {
@@ -99,10 +136,24 @@
     "loading": "Loading ...",
     "not_found": "Plant not found",
     "next_watering": "Next watering in",
-    "days_label": "days",
+    "days_label": "D",
+    "days_label_plural": "D",
     "frequency": "Water every ",
     "upcoming": "Data is coming ;)",
     "noConnexion": "Unable to fetch data :(",
-    "noConnexionDetails": "Please check your connexion."
+    "noConnexionDetails": "Please check your connexion.",
+    "description": {
+      "label": "Description",
+      "name": "Name",
+      "latin_name": "Latin name",
+      "family": "Family"
+    },
+    "tips_label": "Some tips",
+    "stats": {
+      "exposure_title": "Exposition",
+      "temperature_title": "Temperature",
+      "watering_title": "Watering",
+      "soil_title": "Soil"
+    }
   }
 }

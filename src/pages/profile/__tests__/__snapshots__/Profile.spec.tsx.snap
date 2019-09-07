@@ -36,7 +36,7 @@ exports[`Profile Page should render properly 1`] = `
         <span
           class="css-zrqali"
         >
-          About you
+          profile_page.loading
         </span>
       </div>
       <div
@@ -113,7 +113,7 @@ exports[`Profile Page should render properly 1`] = `
                 undefined
               </h4>
               <span>
-                Plants
+                profile_page.loading
               </span>
             </div>
           </div>
@@ -126,11 +126,53 @@ exports[`Profile Page should render properly 1`] = `
           class="css-1c7or4"
           href="/plants"
         >
-          View plants
+          profile_page.loading
         </a>
       </div>
-      <h4
+      <div
+        class="css-hxbr6w"
+        height="4"
+      />
+      <div
+        class="css-cpv6vp"
+      >
+        <div
+          class="css-1wc4bwd"
+        >
+          <h6>
+            languages.title
+          </h6>
+          <p>
+            languages.helper
+          </p>
+          <span>
+            languages.note
+          </span>
+        </div>
+        <div
+          class="css-1y0t4fe"
+        >
+          <div
+            class="css-1vsdpv7"
+          >
+            <img
+              alt="en"
+              src="united-kingdom.svg"
+            />
+          </div>
+          <div
+            class="css-1vsdpv7"
+          >
+            <img
+              alt="fr"
+              src="france.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
         class="css-hrp93d"
+        height="10"
       />
     </div>
   </div>

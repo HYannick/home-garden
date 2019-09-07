@@ -11,8 +11,9 @@ export const genericPlantData = (values: PlantProps): PlantProps => ({
   ...values.need_watering_frequency && ({ watering_frequency: values.watering_frequency }),
 });
 
-export const mapPlantData = (values: any, DBPlantID: any): MappedPlantProps => ({
+export const mapPlantData = (values: any, DBPlantID: string, picture?: string): MappedPlantProps => ({
   id: uuidv4(),
   DBPlantID,
-  ...genericPlantData(values),
+  picture: values.picture || picture,
+  ...genericPlantData({...values}),
 });

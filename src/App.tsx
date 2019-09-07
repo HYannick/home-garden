@@ -2,6 +2,8 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Global, jsx } from '@emotion/core';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 import { globalStyles } from './global-styles';
 import OnBoarding from './pages/onboarding/views/OnBoarding';
 import HomeScreen from './pages/home/Home';
@@ -15,7 +17,15 @@ import Profile from './pages/profile/Profile';
 import PlantsList from './pages/plant-list/PlantsList';
 import PlantInfosCreate from './pages/plant-infos-create/PlantInfosCreate';
 
-
+const Loader = styled('div')`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+`;
 export const CreateRoute: React.FC<any> = (props) => {
   const { location: { state } } = props;
   if (!state || (state && !state.plantInfos)) {
@@ -29,6 +39,7 @@ export const CreateRoute: React.FC<any> = (props) => {
 
 
 export const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) => {
+  const {t} = useTranslation();
   const [hasUserInfos, setUserInfos] = useState(false);
   const [loadingRoute, setLoadingRoute] = useState(true);
 
@@ -55,7 +66,7 @@ export const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) =
     {...rest}
     render={(props) => {
       if (loadingRoute) {
-        return <div>Loading ...</div>;
+        return <Loader><span>{t('loading')}</span></Loader>;
       }
       if (hasUserInfos) {
         return <Component {...props} />;
@@ -94,7 +105,7 @@ const App: React.FC = () => {
           <PrivateRoute path="/plants/:id" exact component={Plant}/>
           <PrivateRoute path="/plants/:id/edit" exact component={PlantEdit}/>
           <Route path="/onboarding" exact component={OnBoarding}/>
-          <Route component={NoMatch} />
+          <Route component={NoMatch}/>
         </Switch>
         <BottomNavBar/>
       </Router>

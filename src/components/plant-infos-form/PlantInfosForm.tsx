@@ -29,7 +29,7 @@ export const Spacer = styled('div')`
   height: 2rem;
 `;
 
-export const AreaField: React.FC<{ label: string, levelName: string, descriptionName: string }> = ({ label, levelName, descriptionName }) => {
+export const AreaField: React.FC<{ label: string, levelName: string, descriptionName: string, subLabel?: string }> = ({ label, subLabel, levelName, descriptionName }) => {
   const { t } = useTranslation();
 
   const selectors = [
@@ -50,7 +50,7 @@ export const AreaField: React.FC<{ label: string, levelName: string, description
   return (
     <FormCreate.Control>
       <Label>{label}</Label>
-      <span>{t('plant_infos_form.field_level_label')}</span>
+      <span>{subLabel || t('plant_infos_form.field_level_label')}</span>
       <Field type="text" name={levelName} selectors={selectors} component={SelectField}/>
       <Spacer />
       <span>{t('plant_infos_form.field_tips_label')}</span>
@@ -74,7 +74,7 @@ const PlantInfosForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues, sub
           <FormCreate>
             <FormCreate.Wrapper>
               <FormCreate.Title>
-                <p>Plant infos</p>
+                <p>{t('plant_infos_form.title')}</p>
               </FormCreate.Title>
               <div css={css`flex:1; padding: 0 2.5rem 0 2rem;`}>
                 <FormCreate.HelperText>
@@ -103,6 +103,7 @@ const PlantInfosForm: React.FC<PlantFormProps> = ({ onSubmit, initialValues, sub
                 <AreaField
                   label={t('plant_infos_form.field_temperature')}
                   levelName="temperature_level"
+                  subLabel={t('plant_infos_form.field_temperature_description')}
                   descriptionName="temperature_description"/>
                 <AreaField
                   label={t('plant_infos_form.field_watering')}
