@@ -74,7 +74,7 @@
     "all_set": "Toutes tes plantes sont en sécurité !"
   },
   "onboarding": {
-    "welcome": "Bienvenue dans ton gestionnaire d'arrosage. Je suis Mizu et je vais t'aider à prendre soin de tes plantes.",
+    "welcome": "Bienvenue dans ton gestionnaire d'arrosage. Je suis Mizu水 et je vais t'aider à prendre soin de tes plantes.",
     "introduction": "Pour commencer, comment t'appelles-tu ?",
     "skip": "Tu peux passer cette étape ;)",
     "greetings": "Enchanté, {{username}}!\nVeux tu un avatar ?",

@@ -17,6 +17,7 @@
     "enzyme": "latest",
     "enzyme-adapter-react-16": "latest",
     "enzyme-to-json": "latest",
+    "exif-js": "^2.3.0",
     "formik": "^1.5.7",
     "i18next": "^17.0.4",
     "jest-dom": "^3.5.0",
