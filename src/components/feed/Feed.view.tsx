@@ -41,7 +41,7 @@ const FeedView: React.FC<FeedViewProps> = (props) => {
               <animated.div style={{...props, overflow: 'hidden'}} key={key}>
                 {
                   articleTransition.map(({ item, key, props }) => (
-                    <animated.div key={key} style={{ ...props, overflow: 'hidden' }}>
+                    <animated.div key={key} style={{ ...props, overflow: 'hidden', position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}>
                       <Article
                         rel="noop" target="_blank"
                         href={item.link}>
