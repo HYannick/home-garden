@@ -4,32 +4,22 @@ import { jsx } from '@emotion/core';
 import List from '../../components/List';
 import PlantCard from '../../components/plant-list/plant-card/PlantCard';
 import SearchHeader from '../../layout/SearchHeader';
-import Add from '../../core/svg/Add';
-import Skeleton from '../../components/Skeleton';
-import { AddPlant, BottomSpacer, Padding } from './SearchList.styled';
+import AddPlantButton from '../../components/AddPlantButton';
+import { BottomSpacer } from './SearchList.styled';
 import { SearchListTypes } from './SearchList.types';
 
-const SearchListView: React.FC<SearchListTypes> = ({ loading, plants, setSearch, t, cover}) => {
+const SearchListView: React.FC<SearchListTypes> = ({ loading, plants, setSearch, t, cover }) => {
   return (
     <Fragment>
       <SearchHeader onSubmit={setSearch} cover={cover}/>
-      <List items={plants} card={(props: any) => <PlantCard
+      <List items={plants} loading={loading} card={(props: any) => <PlantCard
         {...props}
         asSearchCard
         path={{
           pathname: '/create',
           state: { plantInfos: props.plant, withoutCreation: true },
         }}/>}/>
-      {loading && <Padding><Skeleton nbRows={3}/></Padding>}
-      <AddPlant to="/plant-infos-create">
-        <AddPlant.Tip>
-          {t('search_list.tip')}
-        </AddPlant.Tip>
-        <AddPlant.Button>
-          <div><Add/></div>
-          <span>Create a plant</span>
-        </AddPlant.Button>
-      </AddPlant>
+      <AddPlantButton label={t('list.add_button_label')} subtitle={t('plant_list.tip')} path="/plant-infos-create"/>
       <BottomSpacer/>
     </Fragment>
   );

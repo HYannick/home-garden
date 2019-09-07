@@ -6,13 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import Heading from '../../layout/Heading';
 import List from '../List';
-import Skeleton from '../Skeleton';
 import PlantCard from './plant-card/PlantCard';
 import { useGetPlantList } from './PlantList.hooks';
-
-const Spacer = styled('div')`
-  padding: 0 2rem;
-`;
 
 const ViewMore = styled(NavLink)`
   display: flex;
@@ -51,8 +46,8 @@ const PlantList: React.FC = () => {
       </div>
       <List
         items={plants}
+        loading={plantsLoading}
         card={(props: any) => <PlantCard {...props} t={t} path={`/plants/${props.plant.id}`}/>}/>
-      {plantsLoading && <Spacer><Skeleton nbRows={3}/></Spacer>}
       <ViewMore to="/plants">View all plants</ViewMore>
     </Fragment>
   );

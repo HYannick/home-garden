@@ -3,6 +3,9 @@
   "header": {
     "hi": "Hi"
   },
+  "list": {
+    "add_button_label": "Create a plant"
+  },
   "modals": {
     "plant_removal": {
       "title": "Are you sure?",

@@ -5,15 +5,10 @@ import { jsx } from '@emotion/core';
 import List from '../../components/List';
 import PlantCard from '../../components/plant-list/plant-card/PlantCard';
 import SearchHeader from '../../layout/SearchHeader';
-import Skeleton from '../../components/Skeleton';
 import Modal from '../../components/modal/Modal';
 import ConfirmModal from '../../components/modal/templates/ConfirmModal';
-import { AddPlant } from '../search-list/SearchList.styled';
-import Add from '../../core/svg/Add';
+import AddPlantButton from '../../components/AddPlantButton';
 
-const Padding = styled('div')`
-  padding: 0 2rem;
-`;
 const BottomSpacer = styled('div')`
   height: 8rem;
 `;
@@ -32,7 +27,6 @@ export interface PlantsListProps {
   plantId: string,
   cover: string
 }
-
 
 
 const PlantsListView: React.FC<PlantsListProps> = (props) => {
@@ -67,20 +61,12 @@ const PlantsListView: React.FC<PlantsListProps> = (props) => {
       <List
         items={plants}
         onDeleteItem={openModal}
+        loading={loading}
         card={(props: any) => (
           <PlantCard
             {...props} t={t} path={`/plants/${props.plant.id}`}/>
         )}/>
-      {loading && <Padding><Skeleton nbRows={3}/></Padding>}
-      <AddPlant to="/search">
-        <AddPlant.Tip>
-          {t('plant_list.tip')}
-        </AddPlant.Tip>
-        <AddPlant.Button>
-          <div><Add/></div>
-          <span>Create a plant</span>
-        </AddPlant.Button>
-      </AddPlant>
+      <AddPlantButton label={t('list.add_button_label')} subtitle={t('plant_list.tip')} path="/search"/>
       <BottomSpacer/>
     </Fragment>
   );

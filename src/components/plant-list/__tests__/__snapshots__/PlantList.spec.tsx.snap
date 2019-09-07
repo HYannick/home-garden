@@ -29,17 +29,6 @@ exports[`PlantList should render properly 1`] = `
     class="css-4umray"
   >
     <div
-      class="css-yxamih"
-    >
-      <span>
-        No plants
-      </span>
-    </div>
-  </div>
-  <div
-    class="css-1ue9cr"
-  >
-    <div
       class="css-1bsqms9"
     />
     <div

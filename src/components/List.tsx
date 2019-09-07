@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Skeleton from './Skeleton';
 
 interface ListProps {
   items: any[],
   card: any,
+  loading?: boolean,
   emptyListMessage?: string,
   onDeleteItem?: Function
 }
@@ -19,12 +21,15 @@ const EmptyLabel = styled('div')`
   justify-content: center;
   span {
     font-size: 2rem;
-    color: ${({theme}) => theme.palette.grey.dark};
+    color: ${({ theme }) => theme.palette.grey.dark};
     font-weight: bold;
   }
 `;
 
-const List: React.FC<ListProps> = ({ items, card: Card, emptyListMessage = 'No plants', onDeleteItem }) => {
+const List: React.FC<ListProps> = ({ loading, items, card: Card, emptyListMessage = 'No plants', onDeleteItem }) => {
+  if (loading) {
+    return <Padding><Skeleton nbRows={3}/></Padding>;
+  }
   return (
     <Padding>
       {

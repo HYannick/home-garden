@@ -56,7 +56,15 @@ const Tip = styled('div')`
       stroke: ${({ theme }) => theme.palette.primary.dark};
     }
   }
-`
+`;
+
+const Loader = styled('div')`
+  span {
+    color: ${({ theme }) => theme.palette.primary.dark};
+    font-size: 2rem;
+    font-weight: 600;
+  }
+`;
 
 interface resizeOptionsProps {
   width: number,
@@ -89,10 +97,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ field, className, onImageLoad
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if(field.value) setSrc(field.value);
+    if (field.value) setSrc(field.value);
     return function cleanup() {
-      setSrc('')
-    }
+      setSrc('');
+    };
   }, [field.value]);
 
   const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -109,7 +117,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ field, className, onImageLoad
         onImageLoaded({ src: imgData, url: img });
         setLoading(false);
       }).catch((e) => {
-        console.log(e)
+        console.log(e);
       });
     };
     fr.readAsDataURL(img[0]);
@@ -121,14 +129,21 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ field, className, onImageLoad
       height: 100%;
     `}>
       <InputPlaceHolder htmlFor={field.name} bgImage={src}>
-        {!src && (
-          <Tip>
-            <Camera />
-            <span>Provide a photo here</span>
-          </Tip>
-        )}
+        {
+          loading ? (
+            <Loader>
+              <span>Loading ...</span>
+            </Loader>
+          ) : (
+            !src && (
+              <Tip>
+                <Camera/>
+                <span>Provide a photo here</span>
+              </Tip>
+            )
+          )
+        }
       </InputPlaceHolder>
-      {loading && <div>Loading ...</div>}
       <HiddenInput id={field.name} type="file" onChange={uploadImage}/>
     </div>
   );
