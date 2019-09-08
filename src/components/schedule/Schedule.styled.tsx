@@ -104,7 +104,7 @@ export const PlaceHolder = styled('div')`
   justify-content: center;
   width: 100%;
   padding: 2rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   height: 10rem;
   margin: 0 2rem;
