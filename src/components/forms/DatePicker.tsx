@@ -21,8 +21,95 @@ const StyledDayPicker = styled(DayPicker)`
     padding: 1rem;
 `;
 
+interface LocalesProps {
+  [en: string]: {
+    months: string[],
+    weekday_long: string[],
+    weekday_short: string[],
+  },
+
+  fr: {
+    months: string[],
+    weekday_long: string[],
+    weekday_short: string[],
+  }
+}
+
+const locales: LocalesProps = {
+  en: {
+    months: [
+      'January',
+      'February',
+      'Mars',
+      'April',
+      'May',
+      'Jun',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'Décember',
+    ],
+    weekday_long: [
+      'Monday',
+      'Tuestday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ],
+    weekday_short: [
+      'Mon',
+      'Tue',
+      'Wed',
+      'Thu',
+      'Fri',
+      'Sat',
+      'Sun',
+    ],
+  },
+  fr: {
+    months: [
+      'Janvier',
+      'Février',
+      'Mars',
+      'Avril',
+      'Mai',
+      'Juin',
+      'Juillet',
+      'Août',
+      'Septembre',
+      'Octobre',
+      'Novembre',
+      'Décembre',
+    ],
+    weekday_long: [
+      'Lundi',
+      'Mardi',
+      'Mercredi',
+      'Jeudi',
+      'Vendredi',
+      'Samedi',
+      'Dimanche',
+    ],
+    weekday_short: [
+      'Lun',
+      'Mar',
+      'Mer',
+      'Jeu',
+      'Ven',
+      'Sam',
+      'Dim',
+    ],
+  },
+};
+
+
 const DatePicker: React.FC<DateProps> = ({ field, label, onDateSelected }) => {
   const [selectedDay, setSelectedDay] = useState<Date | undefined>(new Date(field.value));
+  const lang = window.localStorage.getItem('lang') || 'fr';
   const handleDateClick = (day: Date, { selected }: DayModifiers) => {
     if (selected) {
       setSelectedDay(undefined);
@@ -32,11 +119,18 @@ const DatePicker: React.FC<DateProps> = ({ field, label, onDateSelected }) => {
     setSelectedDay(day);
     onDateSelected(day);
   };
-
+  const { months, weekday_long, weekday_short } = locales[lang];
   return (
     <Fragment>
       <Label htmlFor={field.name}>{label}</Label>
-      <StyledDayPicker disabledDays={{ after: new Date() }} onDayClick={handleDateClick} selectedDays={selectedDay}/>
+      <StyledDayPicker
+        locale={lang}
+        months={months}
+        weekdaysLong={weekday_long}
+        weekdaysShort={weekday_short}
+        disabledDays={{ after: new Date() }}
+        onDayClick={handleDateClick}
+        selectedDays={selectedDay}/>
     </Fragment>
   );
 };
